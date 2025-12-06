@@ -1,4 +1,4 @@
-package umu.tds.proyectoJ2eeTDS;
+package umu.tds.gestor;
 
 /**
  * Hello world!
