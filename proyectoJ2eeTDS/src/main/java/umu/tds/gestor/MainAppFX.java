@@ -1,11 +1,23 @@
 package umu.tds.gestor;
 
-/**
- * Hello world!
- */
-public class MainAppFX {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+
+public class MainAppFX extends Application {
 	
+	@Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
+        primaryStage.setTitle("Ejemplo FXML");
+        primaryStage.setScene(new Scene(root, 300, 200));
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        launch(args);
     }
 }
