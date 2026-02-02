@@ -6,14 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 public class MainAppFX extends Application {
-	
-	@Override
+    @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
         primaryStage.setTitle("Ejemplo FXML");
-        primaryStage.setScene(new Scene(root, 300, 200));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
     }
 

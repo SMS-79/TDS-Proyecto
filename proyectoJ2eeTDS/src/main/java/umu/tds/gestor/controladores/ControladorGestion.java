@@ -1,5 +1,11 @@
 package umu.tds.gestor.controladores;
 
-public class ControladorGestion {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+
+public class ControladorGestion {
+	
+	private static final Logger log = LogManager.getLogger(); 
+	
 }
