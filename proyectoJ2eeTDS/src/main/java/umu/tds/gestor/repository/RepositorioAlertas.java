@@ -3,18 +3,18 @@ package umu.tds.gestor.repository;
 import java.util.List;
 
 import umu.tds.gestor.modelo.Intervalo;
-import umu.tds.gestor.modelo.impl.AlertaImpl;
+import umu.tds.gestor.modelo.impl.AlertaSemanal;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 
 public interface RepositorioAlertas {
 	
-	List<? extends AlertaImpl> getAlertas();
+	List<? extends AlertaSemanal> getAlertas();
 	
-	AlertaImpl filtrarAlerta(CategoriaImpl categoria, Intervalo interv, double limite);
+	AlertaSemanal filtrarAlerta(CategoriaImpl categoria, Intervalo interv, double limite);
 	
 	void createAlerta(CategoriaImpl categoria, Intervalo interv, double limite);
 	
-	void borrarAlerta(AlertaImpl alerta);
+	void borrarAlerta(AlertaSemanal alerta);
 	
 	
 

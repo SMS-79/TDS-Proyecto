@@ -6,12 +6,14 @@ public interface Alerta {
 	
 	void setCategoria(Categoria categoria);
 	
-	Intervalo getIntervalo();
-	
-	void setIntervalo(Intervalo interv);
-	
 	double getLimite();
 	
 	void setLimite(double lim);
+	
+	void reiniciar();
+	
+	void añadirGastoAlerta(double g);
+	
+	void generarNotificacion();
 
 }
