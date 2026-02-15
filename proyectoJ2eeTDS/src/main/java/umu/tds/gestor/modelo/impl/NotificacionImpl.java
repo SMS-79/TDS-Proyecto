@@ -1,6 +1,5 @@
 package umu.tds.gestor.modelo.impl;
 
-import java.util.Random;
 import java.util.UUID;
 
 import umu.tds.gestor.modelo.Notificacion;

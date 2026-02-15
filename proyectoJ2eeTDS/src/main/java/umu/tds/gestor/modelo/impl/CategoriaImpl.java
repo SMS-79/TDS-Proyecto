@@ -1,5 +1,7 @@
 package umu.tds.gestor.modelo.impl;
 
-public class CategoriaImpl {
+import umu.tds.gestor.modelo.Categoria;
+
+public class CategoriaImpl implements Categoria{
 
 }

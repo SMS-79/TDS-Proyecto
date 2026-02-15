@@ -1,10 +1,12 @@
 package umu.tds.gestor.modelo.impl;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.Categoria;
-import umu.tds.gestor.modelo.Intervalo;
+import umu.tds.gestor.modelo.Gasto;
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class AlertaSemanal implements Alerta {
 
@@ -40,19 +42,29 @@ public class AlertaSemanal implements Alerta {
 		this.gastoRealizado = 0;
 	}
 	
-	public void añadirGastoAlerta(double g) {
-		gastoRealizado += g;
+	public void añadirGastoAlerta(Gasto g) throws LimiteAlertaException{
+		
+		// Si ha pasado una semana se reinicia el contador del gasto total
+		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
+			reiniciar();
+		}
+		
+		// Comprobación de categoría
+		if(Objects.isNull(this.categoria) || this.categoria.equals(g.getCategoria())) {
+			gastoRealizado += g.getCantidad();
+		}
+		
+		// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
 		if(gastoRealizado >= limite) {
-			generarNotificacion();
+			String mensaje = "Limite semanal de " + limite +  "superado. " + gastoRealizado + "€ gastados en total";
+			if(Objects.nonNull(this.categoria)) {
+				mensaje += " en la catgoría " + this.categoria.getNombre(); 
+			}	
+			
+			mensaje += '.';
+			throw new LimiteAlertaException(mensaje);
 		}
 	}
-	
-	public void generarNotificacion() {
-		
-		
-	}
 
-	
-	
-	
+
 }

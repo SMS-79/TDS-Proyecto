@@ -1,5 +1,7 @@
 package umu.tds.gestor.modelo;
 
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
+
 public interface Alerta {
 	
 	Categoria getCategoria();
@@ -12,8 +14,6 @@ public interface Alerta {
 	
 	void reiniciar();
 	
-	void añadirGastoAlerta(double g);
-	
-	void generarNotificacion();
+	void añadirGastoAlerta(Gasto g) throws LimiteAlertaException;
 
 }
