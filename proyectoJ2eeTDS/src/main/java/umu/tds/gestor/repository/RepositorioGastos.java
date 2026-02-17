@@ -12,7 +12,7 @@ public interface RepositorioGastos {
 	
 	GastoImpl filtrarGasto();
 	
-	void crearGasto(double precio, LocalDate fecha, CategoriaImpl categoria);
+	void añadirGasto(double precio, LocalDate fecha, CategoriaImpl categoria);
 	
 	void borrarGasto(GastoImpl gasto);
 	
