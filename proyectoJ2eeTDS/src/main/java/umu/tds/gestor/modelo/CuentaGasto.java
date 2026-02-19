@@ -11,12 +11,16 @@ public interface CuentaGasto {
 	
 	Map<String, Double> getDistribuciones();
 	
-	Double getSaldo(String nombre);
+	Double getGasto(String nombre);
+	
+	void setGasto(double saldo);
 	
 	void setDistribucion(String nombre, double value);
 	
 	void setDistribuciones(Map<String, Double> distribuciones);
 	
 	void introducirGasto(String nombre, GastoImpl gasto);
+	
+	void recalcularSaldos();
 	
 }

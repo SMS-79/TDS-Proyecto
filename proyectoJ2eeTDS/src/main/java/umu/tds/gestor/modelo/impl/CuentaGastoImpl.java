@@ -1,26 +1,50 @@
 package umu.tds.gestor.modelo.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import umu.tds.gestor.modelo.CuentaGasto;
 
+
+
+//TODO: EL GASTO AHORA MISMO NO ESTA ASOCIADO A UNA PERSONA Y CALCULAR LOS SALDOS DE CADA UNO NO LO TIENE EN CUENTA
+
+
+
 public class CuentaGastoImpl implements CuentaGasto {
 
-	private double saldo;
+	private double gasto;
+	//Distribuiciones es para porcentajes, saldos es para valores enteros como tal
 	private Map<String, Double> distribuiciones;
+	private Map<String, Double> saldos;
 	private List<String> participantes;
+	//Identificador único de la cuenta
+	private UUID ID;
+	//Nombre a quien se le asocia el gasto original
 	
 	//Constructor vacio para la persistencia
 	public CuentaGastoImpl() {
 	}
 	
-	public CuentaGastoImpl(double saldo) {
-		this.saldo = saldo;
+	//TODO: Comprobacion de errores y persistencia
+	public CuentaGastoImpl(String... participantes) {
+		this.gasto = 0;
 		this.distribuiciones = new HashMap<String, Double>();
-		this.participantes = new ArrayList<String>();
+		this.saldos = new HashMap<String, Double>();
+		this.participantes = Arrays.asList(participantes);
+		//Esto podria cambiarse para que haya repeticiones pero por el momento lo dejo así.
+		this.ID = UUID.randomUUID();
+		
+		for (String p : this.participantes) {
+			//100.0 entre la longitud de la lista para sacar porcentajes iguales
+			this.distribuiciones.put(p, 100.0/this.participantes.size());
+			//El saldo incial de cada persona será 0
+			this.saldos.put(p,0.0);
+		}
 	}
 	
 	@Override
@@ -34,8 +58,13 @@ public class CuentaGastoImpl implements CuentaGasto {
 	}
 
 	@Override
-	public Double getSaldo(String nombre) {
-		return this.saldo;
+	public Double getGasto(String nombre) {
+		return this.gasto;
+	}
+	
+	@Override
+	public void setGasto(double gasto) {
+		this.gasto = gasto;
 	}
 
 	@Override
@@ -57,12 +86,20 @@ public class CuentaGastoImpl implements CuentaGasto {
 			throw new IllegalArgumentException("Debe haber al menos una distribuición.");
 		}
 		this.distribuiciones = distribuciones;
-		
 	}
 
 	@Override
 	public void introducirGasto(String nombre, GastoImpl gasto) {
 		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void recalcularSaldos() {
+		for(String p : this.participantes) {
+			//Multiplica el gasto total por el porcentaje que le corresponde a la persona
+			double gasto = this.gasto*(this.distribuiciones.get(p)/100.0);
+			this.saldos.put(p, gasto);
+		}
 	}
 
 }
