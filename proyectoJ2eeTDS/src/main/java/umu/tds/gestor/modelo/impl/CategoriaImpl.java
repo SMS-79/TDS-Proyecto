@@ -1,6 +1,11 @@
 package umu.tds.gestor.modelo.impl;
 
 import umu.tds.gestor.modelo.Categoria;
+<<<<<<< HEAD
+
+public class CategoriaImpl implements Categoria{
+=======
+>>>>>>> 35c3bb57b310b68ea469759a565824f61269ae14
 
 public class CategoriaImpl implements Categoria {
 	
