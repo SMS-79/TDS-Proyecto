@@ -41,8 +41,7 @@ public class AlertaMensual implements Alerta {
 	
 	
 	
-	
-	
+
 	
 	//Getters y setters
 	
