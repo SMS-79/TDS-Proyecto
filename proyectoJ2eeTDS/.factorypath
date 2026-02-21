@@ -7,6 +7,12 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openjfx/javafx-base/21/javafx-base-21-win.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openjfx/javafx-fxml/21/javafx-fxml-21.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openjfx/javafx-fxml/21/javafx-fxml-21-win.jar" enabled="true" runInBatchMode="false"/>
+<<<<<<< HEAD
+=======
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.19.4/jackson-core-2.19.4.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.19.4/jackson-annotations-2.19.4.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.19.4/jackson-databind-2.19.4.jar" enabled="true" runInBatchMode="false"/>
+>>>>>>> 35c3bb57b310b68ea469759a565824f61269ae14
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.25.2/log4j-core-2.25.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.25.2/log4j-api-2.25.2.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
