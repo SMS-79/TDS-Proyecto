@@ -1,6 +1,7 @@
 package umu.tds.gestor.repository;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
@@ -10,9 +11,9 @@ public interface RepositorioGastos {
 
 	List<? extends GastoImpl> getGastos();
 	
-	GastoImpl filtrarGasto();
+	List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias);
 	
-	void crearGasto(double precio, LocalDate fecha, CategoriaImpl categoria);
+	void añadirGasto(GastoImpl gasto);
 	
 	void borrarGasto(GastoImpl gasto);
 	
@@ -21,8 +22,5 @@ public interface RepositorioGastos {
 	void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha);
 	
 	void cambiarCategoriaGasto(GastoImpl gasto, CategoriaImpl categoria);
-	
-	
-	
-	
+
 }

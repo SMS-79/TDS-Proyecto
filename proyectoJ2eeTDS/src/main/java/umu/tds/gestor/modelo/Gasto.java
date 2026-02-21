@@ -17,7 +17,5 @@ public interface Gasto {
 	double getCantidad();
 	
 	void setCantidad(double precio);
-	
-	void borrar();
-	
+		
 }
