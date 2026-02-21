@@ -9,6 +9,6 @@
       <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
-      <Label text="Droga" BorderPane.alignment="CENTER" />
+      <Label text="Jamón Serrano" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

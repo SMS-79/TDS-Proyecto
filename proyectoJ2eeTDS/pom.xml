@@ -51,6 +51,7 @@
       <version>21</version>
     </dependency>
     <dependency>
+
 	        <groupId>com.fasterxml.jackson.core</groupId>
 	        <artifactId>jackson-core</artifactId>
 	        <version>2.19.4</version>
@@ -69,8 +70,11 @@
 	        <artifactId>jackson-databind</artifactId>
 	        <version>2.19.4</version>
 	    </dependency>
-	    
-    
+	<dependency>   
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-core</artifactId>
+	  <version>2.25.2</version>
+	</dependency>
   </dependencies>
 
   <build>
@@ -123,6 +127,14 @@
                 <mainClass>umu.tds.gestor.MainAppFX</mainClass>
             </configuration>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>21</release>
+            </configuration>
+         </plugin>
       </plugins>
     </pluginManagement>
   </build>
