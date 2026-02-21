@@ -3,16 +3,31 @@ package umu.tds.gestor.modelo.impl;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.Categoria;
 import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id_alert"
+)
+
 public class AlertaMensual implements Alerta {
+	
+	@JsonProperty("id_alert")
+	private String id;
+	
 	private Categoria categoria;
 	private double limite;
 	private double gastoRealizado;
 	private LocalDate activacion;
+	
+	public AlertaMensual() {}
 	
 	public AlertaMensual(double lim) {
 		this(null, lim);
@@ -26,22 +41,48 @@ public class AlertaMensual implements Alerta {
 	
 	
 	
+	
+	
+	
+	//Getters y setters
+	
+	@Override
+	public String getId() { return id;	}
+	@Override
+	public void setId(String id) { this.id = id;	}
+	@Override
 	public Categoria getCategoria() { return this.categoria;	}
-	
+	@Override
 	public void setCategoria(Categoria categ) {	this.categoria = categ;	}
-	
+	@Override
 	public double getLimite() { return this.limite;	}
-
+	@Override
 	public void setLimite(double lim) {	this.limite = lim;	}
+	@Override
+	public double getGastoRealizado() { return gastoRealizado;	}
+	@Override
+	public void setGastoRealizado(double gastoRealizado) { this.gastoRealizado = gastoRealizado;	}
+	@Override
+	public LocalDate getActivacion() { return activacion;	}
+	@Override
+	public void setActivacion(LocalDate activacion) { this.activacion = activacion;		}
+	
+	
+	
+	
+	
+	
 	
 	
 	// Reinicia el temporizador de la alerta
+	@Override
 	public void reiniciar() {
 		this.activacion = LocalDate.now();
 		this.gastoRealizado = 0;
 	}
 	
-public void añadirGastoAlerta(Gasto g) throws LimiteAlertaException{
+	@Override
+	public void añadirGastoAlerta(Gasto g) throws LimiteAlertaException{
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {

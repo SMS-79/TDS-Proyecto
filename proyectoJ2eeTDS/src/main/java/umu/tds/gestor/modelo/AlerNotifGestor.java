@@ -13,7 +13,4 @@ public interface AlerNotifGestor {
 	
 	Notificacion crearNotificacion(String mensaje);
 	
-	
-	
-
 }
