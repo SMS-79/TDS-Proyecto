@@ -1,6 +1,7 @@
 package umu.tds.gestor.controladores;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,7 +11,11 @@ import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
 
 public class ControladorGestion {
 
-	private RepositorioGastosImpl repGastos = RepositorioGastosImpl.getInstacia();
+	private RepositorioGastosImpl repGastos = RepositorioGastosImpl.getInstancia();
+	
+	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
+	    return repGastos.filtrarGasto(meses, fechaInicio, fechaFin, categorias);
+	}
 	
 	public void borrarGasto(GastoImpl gasto) {
 		repGastos.borrarGasto(gasto); 
@@ -28,5 +33,13 @@ public class ControladorGestion {
 		// newGasto.setIdGasto(idGasto); 
 		
 		repGastos.añadirGasto(newGasto); 
+	}
+	
+	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
+		repGastos.cambiarCantidadGasto(gasto, precio); 
+	}
+	
+	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
+		repGastos.cambiarFechaGasto(gasto, fecha); 
 	}
 }
