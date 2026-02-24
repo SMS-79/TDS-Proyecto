@@ -1,17 +1,17 @@
 package umu.tds.gestor.repository;
 
 import java.util.List;
-
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
+import java.util.UUID;
+import umu.tds.gestor.modelo.CuentaGasto;
 
 public interface RepositorioCuentas {
 	
-	List<? extends CuentaGastoImpl> getCuentas();
+	List<? extends CuentaGasto> getCuentas();
 	
-	CuentaGastoImpl filtrarCuenta(String id);
+	CuentaGasto getCuenta(UUID id);
 
 	void crearCuenta(String... nombres);
 	
-	
+	List<CuentaGasto> filtrarCuentas(String... nombres);
 	
 }

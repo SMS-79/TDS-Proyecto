@@ -2,8 +2,7 @@ package umu.tds.gestor.modelo;
 
 import java.util.List;
 import java.util.Map;
-
-import umu.tds.gestor.modelo.impl.GastoImpl;
+import java.util.UUID;
 
 public interface CuentaGasto {
 	
@@ -11,12 +10,16 @@ public interface CuentaGasto {
 	
 	Map<String, Double> getDistribuciones();
 	
-	Double getSaldo(String nombre);
+	Gasto getGasto(String nombre);
+	
+	void setGasto(String pagador, Gasto gasto);
 	
 	void setDistribucion(String nombre, double value);
 	
 	void setDistribuciones(Map<String, Double> distribuciones);
 	
-	void introducirGasto(String nombre, GastoImpl gasto);
+	void recalcularSaldos();
+	
+	UUID getId();
 	
 }
