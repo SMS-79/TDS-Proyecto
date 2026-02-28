@@ -7,7 +7,7 @@ import umu.tds.gestor.modelo.impl.Intervalo;
 
 public interface AlerNotifGestor {
 	
-	Alerta crearAlerta(double lim, Intervalo tipo);
+	Alerta crearAlerta(Categoria cat, double lim, Intervalo tipo);
 	
 	void gastoAlerta(Alerta a, Gasto g) throws LimiteAlertaException;
 	

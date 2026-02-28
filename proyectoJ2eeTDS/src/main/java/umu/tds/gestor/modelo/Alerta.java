@@ -1,8 +1,10 @@
 package umu.tds.gestor.modelo;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
+import umu.tds.gestor.modelo.impl.Intervalo;
 
 public interface Alerta {
 	
@@ -13,6 +15,10 @@ public interface Alerta {
 	Categoria getCategoria();
 	
 	void setCategoria(Categoria categoria);
+	
+	Intervalo getIntervalo();
+	
+	void setIntervalo(Intervalo inter);
 	
 	double getLimite();
 	

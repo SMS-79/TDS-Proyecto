@@ -27,7 +27,10 @@ private static RepositorioNotificacionesImpl instancia = null;
 	}
 	
 	public NotificacionImpl filtrarNotificacion(String id) {
-		
+		return notificaciones.stream()
+				.filter(n -> n.getId().equals(id))
+				.findFirst()
+				.orElse(null);
 		
 	}
 	

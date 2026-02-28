@@ -2,6 +2,7 @@ package umu.tds.gestor.modelo.impl;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,7 +23,8 @@ public class AlertaMensual implements Alerta {
 	@JsonProperty("id_alert")
 	private String id;
 	
-	private Categoria categoria;
+	private Optional<Categoria> categoria;
+	private Intervalo intervalo;
 	private double limite;
 	private double gastoRealizado;
 	private LocalDate activacion;
@@ -34,12 +36,11 @@ public class AlertaMensual implements Alerta {
 	}
 	
 	public AlertaMensual(Categoria c, double lim) {
-		this.categoria = c;
+		this.categoria = Optional.ofNullable(c);
 		this.limite = lim;
 		this.activacion = LocalDate.now();
+		this.intervalo = Intervalo.MENSUAL;
 	}
-	
-	
 	
 
 	
@@ -50,9 +51,13 @@ public class AlertaMensual implements Alerta {
 	@Override
 	public void setId(String id) { this.id = id;	}
 	@Override
-	public Categoria getCategoria() { return this.categoria;	}
+	public Categoria getCategoria() { return this.categoria.orElse(null);	}
 	@Override
-	public void setCategoria(Categoria categ) {	this.categoria = categ;	}
+	public void setCategoria(Categoria categ) {	this.categoria = Optional.of(categ);	}
+	@Override
+	public Intervalo getIntervalo() { return this.intervalo; }
+	@Override
+	public void setIntervalo(Intervalo inter) { this.intervalo = inter; }
 	@Override
 	public double getLimite() { return this.limite;	}
 	@Override
