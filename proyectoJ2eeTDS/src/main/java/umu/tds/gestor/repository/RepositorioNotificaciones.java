@@ -10,6 +10,6 @@ public interface RepositorioNotificaciones {
 
 	NotificacionImpl filtrarNotificacion(String id);
 	
-	void añadirNotificacion(String mensaje);
+	void añadirNotificacion(NotificacionImpl notif);
 	
 }

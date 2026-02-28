@@ -23,23 +23,25 @@ public class AlertaSemanal implements Alerta {
 	@JsonProperty("id_alert")
 	private String id;
 	
-	private Optional<Categoria> categoria;
-	private Intervalo intervalo;
+	private Optional<CategoriaImpl> categoria;
+	private final Intervalo intervalo = Intervalo.SEMANAL;
 	private double limite;
 	private double gastoRealizado;
 	private LocalDate activacion;
 	
+	// Constructor vacío para la persistencia
 	public AlertaSemanal() {}
 	
+	// Constructor sin categoria
 	public AlertaSemanal(double lim) {
 		this(null, lim);
 	}
 	
-	public AlertaSemanal(Categoria c,  double lim) {
-		this.categoria = Optional.ofNullable(c);;
+	// Constructor con categoría
+	public AlertaSemanal(CategoriaImpl c,  double lim) {
+		this.categoria = Optional.ofNullable(c);
 		this.limite = lim;
 		this.activacion = LocalDate.now();
-		this.intervalo = Intervalo.SEMANAL;
 	}
 	
 	
@@ -52,13 +54,11 @@ public class AlertaSemanal implements Alerta {
 	@Override
 	public void setId(String id) { this.id = id;	}
 	@Override
-	public Categoria getCategoria() { return this.categoria.orElse(null);	}
+	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
 	@Override
-	public void setCategoria(Categoria categ) {	this.categoria = Optional.of(categ);	}
+	public void setCategoria(CategoriaImpl categ) {	this.categoria = Optional.of(categ);	}
 	@Override
 	public Intervalo getIntervalo() { return this.intervalo; }
-	@Override
-	public void setIntervalo(Intervalo inter) { this.intervalo = inter; }
 	@Override
 	public double getLimite() { return this.limite;	}
 	@Override
@@ -66,12 +66,7 @@ public class AlertaSemanal implements Alerta {
 	@Override
 	public double getGastoRealizado() { return gastoRealizado;	}
 	@Override
-	public void setGastoRealizado(double gastoRealizado) { this.gastoRealizado = gastoRealizado;	}
-	@Override
 	public LocalDate getActivacion() { return activacion;	}
-	@Override
-	public void setActivacion(LocalDate activacion) { this.activacion = activacion;		}
-	
 	
 	
 	
@@ -84,7 +79,7 @@ public class AlertaSemanal implements Alerta {
 	}
 	
 	@Override
-	public void añadirGastoAlerta(Gasto g) throws LimiteAlertaException{
+	public void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
@@ -92,17 +87,16 @@ public class AlertaSemanal implements Alerta {
 		}
 		
 		// Comprobación de categoría
-		if(Objects.isNull(this.categoria) || this.categoria.equals(g.getCategoria())) {
+		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
 			gastoRealizado += g.getCantidad();
 		}
 		
 		// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
 		if(gastoRealizado >= limite) {
-			String mensaje = "Limite semanal de " + limite +  "superado. " + gastoRealizado + "€ gastados en total";
-			if(Objects.nonNull(this.categoria)) {
-				mensaje += " en la catgoría " + this.categoria.getNombre(); 
+			String mensaje = "Limite semanal de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
+			if(this.categoria.isPresent()) {
+				mensaje += " en la categoría " + this.categoria.get().getNombre(); 
 			}	
-			
 			mensaje += '.';
 			throw new LimiteAlertaException(mensaje);
 		}

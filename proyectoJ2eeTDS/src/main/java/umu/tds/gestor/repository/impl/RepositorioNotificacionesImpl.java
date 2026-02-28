@@ -8,8 +8,9 @@ import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.modelo.impl.NotificacionImpl;
+import umu.tds.gestor.repository.RepositorioNotificaciones;
 
-public class RepositorioNotificacionesImpl {
+public class RepositorioNotificacionesImpl implements RepositorioNotificaciones {
 
 private static RepositorioNotificacionesImpl instancia = null;
 	
@@ -22,10 +23,12 @@ private static RepositorioNotificacionesImpl instancia = null;
 	
 	private List<NotificacionImpl> notificaciones;
 	
+	@Override
 	public List<? extends NotificacionImpl> getNotificaciones(){
 		return Collections.unmodifiableList(notificaciones);
 	}
 	
+	@Override
 	public NotificacionImpl filtrarNotificacion(String id) {
 		return notificaciones.stream()
 				.filter(n -> n.getId().equals(id))
@@ -34,6 +37,7 @@ private static RepositorioNotificacionesImpl instancia = null;
 		
 	}
 	
+	@Override
 	public void añadirNotificacion(NotificacionImpl notif){
 		notificaciones.add(notif);
 	}

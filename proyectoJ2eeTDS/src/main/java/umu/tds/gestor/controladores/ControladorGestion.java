@@ -41,6 +41,7 @@ public class ControladorGestion {
 		// newGasto.setIdGasto(idGasto); 
 		
 		repGastos.añadirGasto(newGasto);
+		
 		for(Alerta a : repAlertas.getAlertas()) {
 			if(a.getCategoria() == null && a.getCategoria() == categoria) {
 				try{
@@ -62,9 +63,7 @@ public class ControladorGestion {
 	}
 	
 	public void crearAlerta(double limite, Intervalo intervalo) {
-		
 		crearAlerta(null, limite, intervalo);
-		
 	}
 	
 	public void crearNotificacion(String mensaje){

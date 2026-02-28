@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
+import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 
 public interface Alerta {
@@ -12,13 +14,11 @@ public interface Alerta {
 
 	public void setId(String id);
 	
-	Categoria getCategoria();
+	CategoriaImpl getCategoria();
 	
-	void setCategoria(Categoria categoria);
+	void setCategoria(CategoriaImpl categoria);
 	
-	Intervalo getIntervalo();
-	
-	void setIntervalo(Intervalo inter);
+	public Intervalo getIntervalo();
 	
 	double getLimite();
 	
@@ -26,14 +26,10 @@ public interface Alerta {
 	
 	public double getGastoRealizado();
 
-	public void setGastoRealizado(double gastoRealizado);
-
 	public LocalDate getActivacion();
-
-	public void setActivacion(LocalDate activacion);
 	
 	void reiniciar();
 	
-	void añadirGastoAlerta(Gasto g) throws LimiteAlertaException;
+	void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException;
 
 }

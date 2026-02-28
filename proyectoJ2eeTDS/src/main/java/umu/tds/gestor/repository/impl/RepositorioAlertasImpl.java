@@ -14,6 +14,7 @@ import umu.tds.gestor.repository.RepositorioAlertas;
 
 public class RepositorioAlertasImpl implements RepositorioAlertas {
 
+	// Patron Singleton
 	private static RepositorioAlertasImpl instancia = null;
 	
 	public static RepositorioAlertasImpl getInstancia() {
@@ -25,23 +26,25 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 	
 	private List<Alerta> alertas;
 	
+	@Override
 	public List<? extends Alerta> getAlertas(){
 		return Collections.unmodifiableList(alertas);
 	}
 	
+	
 	@Override
 	public List<? extends Alerta> filtrarAlerta(Optional<Categoria> categoria, Intervalo interv, double limite){
-	
 		return alertas.stream()
 			.filter(a -> a.getLimite() == limite && a.getIntervalo().equals(interv) && a.getCategoria().equals(categoria.orElse(null)))
 			.collect(Collectors.toList());
-				
 	}
 	
+	@Override
 	public void añadirAlerta(Alerta alerta) {
 		alertas.add(alerta);
 	}
 	
+	@Override
 	public void borrarAlerta(Alerta alerta) {
 		alertas.remove(alerta);
 	}
