@@ -12,7 +12,6 @@ public interface Alerta {
 	
 	public String getId();
 
-	public void setId(String id);
 	
 	CategoriaImpl getCategoria();
 	
@@ -31,5 +30,7 @@ public interface Alerta {
 	void reiniciar();
 	
 	void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException;
+	
+	void quitarGastoAlerta(GastoImpl g);
 
 }

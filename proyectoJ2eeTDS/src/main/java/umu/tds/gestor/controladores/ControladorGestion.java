@@ -43,9 +43,9 @@ public class ControladorGestion {
 		repGastos.añadirGasto(newGasto);
 		
 		for(Alerta a : repAlertas.getAlertas()) {
-			if(a.getCategoria() == null && a.getCategoria() == categoria) {
+			if(a.getCategoria() == null || a.getCategoria() == categoria) {
 				try{
-					gestorAlertas.gastoAlerta(a, newGasto);
+					gestorAlertas.añadirGastoAlerta(a, newGasto);
 				}catch(LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
 				}
@@ -71,7 +71,20 @@ public class ControladorGestion {
 	}
 	
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
+
+		for(Alerta a : repAlertas.getAlertas()) {
+			gestorAlertas.quitarGastoAlerta(a, gasto);
+		}
+		
 		repGastos.cambiarCantidadGasto(gasto, precio); 
+		
+		for(Alerta a : repAlertas.getAlertas()) {
+			try{
+				gestorAlertas.añadirGastoAlerta(a, gasto);
+			}catch(LimiteAlertaException e) {
+				crearNotificacion(e.getMessage());
+			}
+		}
 	}
 	
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {

@@ -51,6 +51,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
 		gasto.setCantidad(precio);
+		
 	}
 	
 	@Override

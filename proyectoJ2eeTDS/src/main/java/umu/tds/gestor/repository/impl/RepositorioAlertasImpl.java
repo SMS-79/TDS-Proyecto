@@ -35,8 +35,10 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 	@Override
 	public List<? extends Alerta> filtrarAlerta(Optional<Categoria> categoria, Intervalo interv, double limite){
 		return alertas.stream()
-			.filter(a -> a.getLimite() == limite && a.getIntervalo().equals(interv) && a.getCategoria().equals(categoria.orElse(null)))
-			.collect(Collectors.toList());
+			.filter(a -> a.getLimite() == limite)
+			.filter(a -> a.getIntervalo().equals(interv))
+			.filter(a -> a.getCategoria().equals(categoria.orElse(null)))
+			.toList();
 	}
 	
 	@Override

@@ -11,7 +11,9 @@ public interface AlerNotifGestor {
 	
 	Alerta crearAlerta(CategoriaImpl cat, double lim, Intervalo tipo);
 	
-	void gastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException;
+	void añadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException;
+	
+	void quitarGastoAlerta(Alerta a, GastoImpl g);
 	
 	Notificacion crearNotificacion(String mensaje);
 	

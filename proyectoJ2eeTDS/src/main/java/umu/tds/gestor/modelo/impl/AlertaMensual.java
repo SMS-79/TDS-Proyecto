@@ -51,8 +51,6 @@ public class AlertaMensual implements Alerta {
 	@Override
 	public String getId() { return id;	}
 	@Override
-	public void setId(String id) { this.id = id;	}
-	@Override
 	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
 	@Override
 	public void setCategoria(CategoriaImpl categ) {	this.categoria = Optional.of(categ);	}
@@ -66,10 +64,6 @@ public class AlertaMensual implements Alerta {
 	public double getGastoRealizado() { return gastoRealizado;	}
 	@Override
 	public LocalDate getActivacion() { return activacion;	}
-	
-	
-	
-	
 	
 	
 	
@@ -103,6 +97,21 @@ public class AlertaMensual implements Alerta {
 			mensaje += '.';
 			throw new LimiteAlertaException(mensaje);
 		}
+	}
+	
+	@Override
+	public void quitarGastoAlerta(GastoImpl g){
+		
+		// Si ha pasado una semana se reinicia el contador del gasto total
+		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {
+			reiniciar();
+		}
+		
+		// Comprobación de categoría
+		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+			gastoRealizado += g.getCantidad();
+		}
+		
 	}
 	
 	

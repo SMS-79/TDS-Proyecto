@@ -52,8 +52,6 @@ public class AlertaSemanal implements Alerta {
 	@Override
 	public String getId() { return id;	}
 	@Override
-	public void setId(String id) { this.id = id;	}
-	@Override
 	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
 	@Override
 	public void setCategoria(CategoriaImpl categ) {	this.categoria = Optional.of(categ);	}
@@ -100,6 +98,24 @@ public class AlertaSemanal implements Alerta {
 			mensaje += '.';
 			throw new LimiteAlertaException(mensaje);
 		}
+	}
+	
+	@Override
+	public void quitarGastoAlerta(GastoImpl g){
+		
+		// Si ha pasado una semana se reinicia el contador del gasto total
+		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
+			reiniciar();
+		}
+		
+		// Comprobación de categoría
+		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+			gastoRealizado -= g.getCantidad();
+			if(gastoRealizado < 0) {
+				gastoRealizado = 0;
+			}
+		}
+		
 	}
 
 
