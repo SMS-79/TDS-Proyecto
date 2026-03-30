@@ -18,19 +18,15 @@ import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 		property = "id_alert"
 )
 
-public class AlertaMensual implements Alerta {
+public class AlertaMensual extends Alerta {
 	
 	@JsonProperty("id_alert")
 	private String id;
 	
-	private Optional<CategoriaImpl> categoria;
 	private final Intervalo intervalo = Intervalo.MENSUAL;
-	private double limite;
-	private double gastoRealizado;
-	private LocalDate activacion;
 	
 	// Constructor vacío para la persistencia
-	public AlertaMensual() {}
+	public AlertaMensual() { super(); }
 	
 	// Constructor sin categoria
 	public AlertaMensual(double lim) {
@@ -39,41 +35,15 @@ public class AlertaMensual implements Alerta {
 	
 	// Constructor con categoría
 	public AlertaMensual(CategoriaImpl c, double lim) {
-		this.categoria = Optional.ofNullable(c);
-		this.limite = lim;
-		this.activacion = LocalDate.now();
+		super(c, lim);
 	}
 	
 
 	
-	//Getters y setters
 	
-	@Override
-	public String getId() { return id;	}
-	@Override
-	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
-	@Override
-	public void setCategoria(CategoriaImpl categ) {	this.categoria = Optional.of(categ);	}
 	@Override
 	public Intervalo getIntervalo() { return this.intervalo; }
-	@Override
-	public double getLimite() { return this.limite;	}
-	@Override
-	public void setLimite(double lim) {	this.limite = lim;	}
-	@Override
-	public double getGastoRealizado() { return gastoRealizado;	}
-	@Override
-	public LocalDate getActivacion() { return activacion;	}
 	
-	
-	
-	
-	// Reinicia el temporizador de la alerta
-	@Override
-	public void reiniciar() {
-		this.activacion = LocalDate.now();
-		this.gastoRealizado = 0;
-	}
 	
 	@Override
 	public void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
