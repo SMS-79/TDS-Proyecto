@@ -1,6 +1,7 @@
 package umu.tds.gestor.modelo.impl;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +18,7 @@ import umu.tds.gestor.modelo.Notificacion;
 public class NotificacionImpl implements Notificacion {
 	
 	@JsonProperty("id_notif")
-	private String id;
+	private UUID id = UUID.randomUUID();
 	
 	private String mensaje;
 	
@@ -27,13 +28,10 @@ public class NotificacionImpl implements Notificacion {
 		this.mensaje = m;
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getMensaje() {
 		return mensaje;

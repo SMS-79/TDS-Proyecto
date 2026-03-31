@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import umu.tds.gestor.modelo.Gasto;
 
@@ -16,7 +17,7 @@ import umu.tds.gestor.modelo.Gasto;
 
 public class GastoImpl implements Gasto{
 	@JsonProperty
-	private String idGasto; 
+	private UUID idGasto ; 
 	
 	private CategoriaImpl categoria; 
 	private LocalDate fecha; 
@@ -26,6 +27,7 @@ public class GastoImpl implements Gasto{
 	
 	// constructor por defecto para mantener la persistencia en JSON
 	public GastoImpl() {
+		idGasto = UUID.randomUUID(); 
 	}
 	
 	public GastoImpl(CategoriaImpl categoria, LocalDate fecha, double cantidad) {

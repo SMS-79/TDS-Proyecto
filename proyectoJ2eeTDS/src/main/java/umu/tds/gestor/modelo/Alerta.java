@@ -2,6 +2,7 @@ package umu.tds.gestor.modelo;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -29,7 +30,7 @@ import umu.tds.gestor.modelo.impl.Intervalo;
 public abstract class Alerta {
 	
 	@JsonProperty("id_alert")
-	protected String id;
+	protected UUID id = UUID.randomUUID();
 	
 	protected Optional<CategoriaImpl> categoria;
 	protected double limite;
@@ -55,7 +56,7 @@ public abstract class Alerta {
 	
 	//Getters y setters
 	
-	public String getId() { return id;	}
+	public UUID getId() { return id;	}
 	
 	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
 	

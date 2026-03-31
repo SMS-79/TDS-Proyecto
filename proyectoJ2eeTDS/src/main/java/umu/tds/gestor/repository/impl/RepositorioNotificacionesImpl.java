@@ -3,6 +3,7 @@ package umu.tds.gestor.repository.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
@@ -29,7 +30,7 @@ private static RepositorioNotificacionesImpl instancia = null;
 	}
 	
 	@Override
-	public NotificacionImpl filtrarNotificacion(String id) {
+	public NotificacionImpl filtrarNotificacion(UUID id) {
 		return notificaciones.stream()
 				.filter(n -> n.getId().equals(id))
 				.findFirst()

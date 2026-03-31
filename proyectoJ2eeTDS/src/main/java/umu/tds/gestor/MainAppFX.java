@@ -9,10 +9,12 @@ import javafx.stage.Stage;
 public class MainAppFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
-        primaryStage.setTitle("Ejemplo FXML");
-        primaryStage.setScene(new Scene(root, 800, 400));
-        primaryStage.show();
+    	Configuracion configuracion = new ConfiguracionImpl();
+    	Configuracion.setInstancia(configuracion);
+    	configuracion.getSceneManager().inicializar(primaryStage);
+    	
+    	configuracion.getSceneManager().showVentanaPrincipal();
+        
     }
 
     public static void main(String[] args) {
