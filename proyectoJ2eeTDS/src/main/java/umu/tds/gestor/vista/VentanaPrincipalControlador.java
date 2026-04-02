@@ -5,12 +5,10 @@ import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.swing.text.TableView;
-
-import org.w3c.dom.Node;
-
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.GastoImpl;
