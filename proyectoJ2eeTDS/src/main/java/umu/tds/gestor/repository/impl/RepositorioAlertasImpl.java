@@ -3,12 +3,9 @@ package umu.tds.gestor.repository.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.Categoria;
-import umu.tds.gestor.modelo.impl.AlertaSemanal;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.RepositorioAlertas;
 

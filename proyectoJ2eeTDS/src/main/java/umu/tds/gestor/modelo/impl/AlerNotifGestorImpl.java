@@ -1,14 +1,9 @@
 package umu.tds.gestor.modelo.impl;
 
-import java.util.Optional;
-
 import umu.tds.gestor.modelo.AlerNotifGestor;
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.Categoria;
-import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.Notificacion;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
-import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 
 public class AlerNotifGestorImpl implements AlerNotifGestor {
 	

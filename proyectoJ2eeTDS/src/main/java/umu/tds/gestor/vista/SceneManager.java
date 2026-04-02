@@ -1,13 +1,12 @@
 package umu.tds.gestor.vista;
 
-import javafx.scene.Scene;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
-import umu.tds.gestor.MainAppFX;
-
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import umu.tds.gestor.MainAppFX;
 
 public class SceneManager {
 	

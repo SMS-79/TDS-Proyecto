@@ -4,7 +4,6 @@ package umu.tds.gestor.controladores;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
-import java.util.UUID;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;

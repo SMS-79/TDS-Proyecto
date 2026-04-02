@@ -1,6 +1,5 @@
 package umu.tds.gestor.modelo.impl;
 
-import java.util.Objects;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

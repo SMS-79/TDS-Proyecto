@@ -5,10 +5,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlertaMensual;

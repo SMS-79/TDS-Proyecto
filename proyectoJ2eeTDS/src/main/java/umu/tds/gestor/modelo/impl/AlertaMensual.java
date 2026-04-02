@@ -1,16 +1,12 @@
 package umu.tds.gestor.modelo.impl;
 
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.Categoria;
-import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 @JsonIdentityInfo(

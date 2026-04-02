@@ -2,6 +2,7 @@ package umu.tds.gestor.repository;
 
 import java.util.List;
 import java.util.UUID;
+
 import umu.tds.gestor.modelo.CuentaGasto;
 
 public interface RepositorioCuentas {

@@ -6,8 +6,6 @@ import java.util.Optional;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.Categoria;
 import umu.tds.gestor.modelo.impl.Intervalo;
-import umu.tds.gestor.modelo.impl.AlertaSemanal;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
 
 public interface RepositorioAlertas {
 	

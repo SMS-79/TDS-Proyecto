@@ -2,12 +2,8 @@ package umu.tds.gestor.repository.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
-import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
-import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.modelo.impl.NotificacionImpl;
 import umu.tds.gestor.repository.RepositorioNotificaciones;
 
