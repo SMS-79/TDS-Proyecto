@@ -59,7 +59,7 @@
          	<TextField fx:id="categoria" GridPane.columnIndex="0"/>	
             <DatePicker fx:id="fecha" GridPane.columnIndex="1" />
             <TextField fx:id="cantidad" GridPane.columnIndex="2" />
-            <Button onaction="#mostrarDatos" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button onAction="#mostrarDatos" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
