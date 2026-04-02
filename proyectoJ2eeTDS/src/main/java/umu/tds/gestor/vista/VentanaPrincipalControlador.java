@@ -1,4 +1,4 @@
-package umu.tds.gestor.vista.controlador;
+package umu.tds.gestor.vista;
 
 import java.awt.Button;
 import java.awt.event.ActionEvent;

@@ -7,13 +7,12 @@ public class ConfiguracionImpl extends Configuracion{
 	private ControladorGestion controlador; 
 	
 	public ConfiguracionImpl() {
-		//this.controlador = new ControladorGestion(new )
+		this.controlador = new ControladorGestion();
 	}
 
 	@Override
 	public ControladorGestion getControladorGestion() {
-		// TODO Auto-generated method stub
-		return null;
+		return controlador;
 	}
 
 	@Override

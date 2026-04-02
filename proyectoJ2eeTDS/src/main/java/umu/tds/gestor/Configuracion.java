@@ -6,7 +6,7 @@ import umu.tds.gestor.vista.SceneManager;
 public abstract class Configuracion {
 	
 	private static Configuracion instancia; 
-	private final SceneManager	sceneManager = new SceneManager(); 
+	private final SceneManager sceneManager = new SceneManager(); 
 	
 	static Configuracion setInstancia(Configuracion impl) {
 		return Configuracion.instancia = impl; 

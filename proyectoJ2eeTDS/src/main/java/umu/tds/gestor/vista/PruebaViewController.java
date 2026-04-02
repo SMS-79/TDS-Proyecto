@@ -1,4 +1,4 @@
-package umu.tds.gestor.vista.controlador;
+package umu.tds.gestor.vista;
 
 import java.io.IOException;
 
@@ -26,6 +26,6 @@ public class PruebaViewController {
 	
 	@FXML
 	private void mostrarDatos() throws IOException{
-		System.out.println("Categoría " + categoria.getText() + " fecha " + fecha.toString() + " cantidad " + cantidad.getText());
+		System.out.println("Categoría " + categoria.getText() + " fecha " + fecha.getValue().toString() + " cantidad " + cantidad.getText());
 	}
 }
