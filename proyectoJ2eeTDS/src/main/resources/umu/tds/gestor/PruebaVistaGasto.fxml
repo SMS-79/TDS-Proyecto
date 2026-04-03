@@ -21,6 +21,6 @@
         <TextField fx:id="categoria" GridPane.columnIndex="0" />
         <DatePicker fx:id="fecha" GridPane.columnIndex="1" />
         <TextField fx:id="cantidad" GridPane.columnIndex="2" />
-        <Button onAction="#mostrarDatos" mnemonicParsing="false" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button onAction="#crearGasto" mnemonicParsing="false" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>

@@ -14,6 +14,8 @@ import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
+import umu.tds.gestor.vista.PruebaViewController;
+import umu.tds.gestor.vista.VentanaPrincipalControlador;
 
 public class ControladorGestion {
 
@@ -42,6 +44,8 @@ public class ControladorGestion {
 		
 		repGastos.añadirGasto(newGasto);
 		
+	
+		/*
 		for(Alerta a : repAlertas.getAlertas()) {
 			if(a.getCategoria() == null || a.getCategoria() == categoria) {
 				try{
@@ -52,6 +56,7 @@ public class ControladorGestion {
 			}
 			
 		}
+		*/
 		
 	}
 	

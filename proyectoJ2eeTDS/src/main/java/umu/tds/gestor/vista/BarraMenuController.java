@@ -9,7 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import umu.tds.gestor.Configuracion;
 
-public class BarraMenuControllerView {
+public class BarraMenuController {
 
 	
 	@FXML
@@ -19,7 +19,7 @@ public class BarraMenuControllerView {
 	
 	@FXML
 	private void irAddGasto(ActionEvent e) {
-		Configuracion.getInstancia().getSceneManager().mostrarAddGasto();;
+		Configuracion.getInstancia().getSceneManager().mostrarAddGasto();
 	}
 
 	@FXML

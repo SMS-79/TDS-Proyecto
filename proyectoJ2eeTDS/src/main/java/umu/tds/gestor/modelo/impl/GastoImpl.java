@@ -17,7 +17,7 @@ import umu.tds.gestor.modelo.Gasto;
 
 public class GastoImpl implements Gasto{
 	@JsonProperty
-	private UUID idGasto ; 
+	private UUID idGasto; 
 	
 	private CategoriaImpl categoria; 
 	private LocalDate fecha; 
@@ -27,10 +27,11 @@ public class GastoImpl implements Gasto{
 	
 	// constructor por defecto para mantener la persistencia en JSON
 	public GastoImpl() {
-		idGasto = UUID.randomUUID(); 
+		
 	}
 	
 	public GastoImpl(CategoriaImpl categoria, LocalDate fecha, double cantidad) {
+		idGasto = UUID.randomUUID(); 
 		if (cantidad < 0) {
 			throw new IllegalArgumentException("La cantidad debe de ser postiva.");
 		}
@@ -43,6 +44,10 @@ public class GastoImpl implements Gasto{
 		this.cantidad = cantidad; 
 		this.categoria = categoria; 
 		this.fecha = fecha; 
+	}
+	
+	public UUID getIdGasto() {
+		return this.idGasto;
 	}
 	
 	public CategoriaImpl getCategoria() {

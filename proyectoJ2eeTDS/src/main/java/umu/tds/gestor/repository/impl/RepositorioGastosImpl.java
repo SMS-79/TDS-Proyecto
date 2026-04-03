@@ -3,6 +3,7 @@ package umu.tds.gestor.repository.impl;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,14 +15,17 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	private static RepositorioGastosImpl instancia = null;
 	
+	
+	
 	public static RepositorioGastosImpl getInstancia() {
 		if (instancia == null) {
 			instancia = new RepositorioGastosImpl();
 		}
+		
 		return instancia; 
 	}
 	
-	private List<GastoImpl> gastos; 
+	private List<GastoImpl> gastos = new ArrayList<GastoImpl>(); 
 	
 	@Override
 	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {

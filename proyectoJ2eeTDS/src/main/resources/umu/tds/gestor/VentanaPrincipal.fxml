@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:controller="umu.tds.gestor.vista.VentanaPrincipalControlador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -23,14 +23,14 @@
    <children>
       <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="600.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
          <content>
-            <TableView prefHeight="260.0" prefWidth="600.0">
+            <TableView fx:id="tablaGastos" prefHeight="260.0" prefWidth="600.0">
               <columns>
                   <TableColumn prefWidth="75.0" text="Lista de Gastos">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Id" />
-                      <TableColumn prefWidth="175.0" text="Categoría" />
-                      <TableColumn prefWidth="175.0" text="Cantidad" />
-                        <TableColumn prefWidth="175.0" text="Fecha" />
+                        <TableColumn fx:id="colID" prefWidth="75.0" text="Id" />
+                      	<TableColumn fx:id="colCategoria" prefWidth="175.0" text="Categoría" />
+                      	<TableColumn fx:id="colCantidad" prefWidth="175.0" text="Cantidad" />
+                        <TableColumn fx:id="colFecha" prefWidth="175.0" text="Fecha" />
                      </columns>
                   </TableColumn>
               </columns>

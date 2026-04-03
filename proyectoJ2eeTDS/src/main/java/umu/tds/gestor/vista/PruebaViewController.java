@@ -9,10 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import umu.tds.gestor.Configuracion;
+import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.impl.CategoriaImpl;
 
 public class PruebaViewController {
 
 	private static final Logger log = LogManager.getLogger();
+	
+	private ControladorGestion controlador;
 	
 	@FXML
 	private TextField categoria;
@@ -23,9 +28,15 @@ public class PruebaViewController {
 	@FXML
 	private TextField cantidad;	
 	
+	@FXML
+	public void initialize() {
+		this.controlador = Configuracion.getInstancia().getControladorGestion();
+	}
 	
 	@FXML
-	private void mostrarDatos() throws IOException{
-		System.out.println("Categoría " + categoria.getText() + " fecha " + fecha.getValue().toString() + " cantidad " + cantidad.getText());
+	private void crearGasto() throws IOException{
+		System.out.println(categoria.getText() + fecha.getValue().toString() + cantidad.getText());
+		controlador.crearGasto(new CategoriaImpl(categoria.getText()), fecha.getValue(), Double.parseDouble(cantidad.getText()));
+		
 	}
 }
