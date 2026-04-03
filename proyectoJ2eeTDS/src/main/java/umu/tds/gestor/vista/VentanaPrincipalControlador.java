@@ -1,10 +1,10 @@
 package umu.tds.gestor.vista;
 
 import java.awt.Button;
-import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;

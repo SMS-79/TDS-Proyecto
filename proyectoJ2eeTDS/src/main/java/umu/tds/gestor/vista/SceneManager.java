@@ -1,6 +1,7 @@
 package umu.tds.gestor.vista;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
@@ -13,6 +14,7 @@ public class SceneManager {
 	
 	private Stage stage;
 	private Scene escenaActual;
+	private BorderPane layoutPrincipal; 
 	
 	
 	public void inicializar(Stage stage) {
@@ -20,29 +22,42 @@ public class SceneManager {
 	}
 	
 	public void showVentanaPrincipal() {
-		cargarYMostrar("PruebaVistaGasto");
+		try {
+			FXMLLoader loader = new FXMLLoader(MainAppFX.class.getResource("BarraMenu.fxml")); 
+			layoutPrincipal = (BorderPane) loader.load();
+			
+			escenaActual = new Scene(layoutPrincipal, 800, 600); 
+			stage.setScene(escenaActual);
+			stage.setTitle("Gestor de Gastos");
+			stage.show();
+			mostrarTablaGastos(); 
+			
+		} catch (IOException e){
+			throw new RuntimeException(e);
+		}
 	}
 	
-	private void cargarYMostrar(String fxml){
+	private void cambiarVista(String fxml){
 		try {
-			Parent root = loadFXML(fxml);
-			if(escenaActual == null) {
-				escenaActual = new Scene(root);
-				stage.setScene(escenaActual);
-		        stage.setTitle("Prueba FXML");
-				stage.show();
-			}
-			else {
-				escenaActual.setRoot(root);
+			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource(fxml + ".fxml"));
+			Parent nuevaVista = fxmlLoader.load(); 
+			
+			if (layoutPrincipal != null) {
+				layoutPrincipal.setCenter(nuevaVista); 
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	private Parent loadFXML(String fxml) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource(fxml + ".fxml"));
-		return fxmlLoader.load();
+	public void mostrarTablaGastos() {
+		cambiarVista("VentanaPrincipal");
 	}
+	
+	public void mostrarAddGasto() {
+		cambiarVista("PruebaVistaGasto");
+	}
+	
+
 	
 }
