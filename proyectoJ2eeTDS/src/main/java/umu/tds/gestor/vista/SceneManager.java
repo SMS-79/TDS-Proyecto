@@ -3,6 +3,7 @@ package umu.tds.gestor.vista;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Parent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
 
@@ -55,7 +56,24 @@ public class SceneManager {
 	}
 	
 	public void mostrarAddGasto() {
-		cambiarVista("PruebaVistaGasto");
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("AddGastoViewPopUp.fxml"));
+			Parent root = fxmlLoader.load();
+			
+			Stage popUpAddGasto = new Stage(); 
+			popUpAddGasto.setTitle("Añadir gasto nuevo");
+			
+			popUpAddGasto.initModality(Modality.APPLICATION_MODAL);
+			popUpAddGasto.initOwner(this.stage);
+			popUpAddGasto.setResizable(false);
+			
+			Scene scene = new Scene(root);
+			popUpAddGasto.setScene(scene);
+			popUpAddGasto.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 

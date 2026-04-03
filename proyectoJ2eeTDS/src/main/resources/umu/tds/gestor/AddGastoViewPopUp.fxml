@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:controller="umu.tds.gestor.vista.PruebaViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:controller="umu.tds.gestor.vista.AddGastoViewPopUpController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -18,9 +18,9 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TextField fx:id="categoria" GridPane.columnIndex="0" />
-        <DatePicker fx:id="fecha" GridPane.columnIndex="1" />
-        <TextField fx:id="cantidad" GridPane.columnIndex="2" />
-        <Button onAction="#crearGasto" mnemonicParsing="false" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="categoria" promptText="Ej: Personal, Estudios..." GridPane.columnIndex="0" />
+        <DatePicker fx:id="fecha" promptText="Fecha del gasto" GridPane.columnIndex="1" />
+        <TextField fx:id="cantidad" promptText="Ej: 100.50" GridPane.columnIndex="2" />
+        <Button onAction="#crearGasto" mnemonicParsing="false" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" />
     </children>
 </GridPane>

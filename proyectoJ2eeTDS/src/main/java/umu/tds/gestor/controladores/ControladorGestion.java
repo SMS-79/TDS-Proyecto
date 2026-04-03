@@ -14,7 +14,7 @@ import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
-import umu.tds.gestor.vista.PruebaViewController;
+import umu.tds.gestor.vista.AddGastoViewPopUpController;
 import umu.tds.gestor.vista.VentanaPrincipalControlador;
 
 public class ControladorGestion {
