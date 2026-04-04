@@ -11,7 +11,9 @@ import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
+import umu.tds.gestor.repository.RepositorioCategorias;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
+import umu.tds.gestor.repository.impl.RepositorioCategoriasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
 import umu.tds.gestor.vista.AddGastoViewPopUpController;
 import umu.tds.gestor.vista.VentanaPrincipalControlador;
@@ -19,11 +21,16 @@ import umu.tds.gestor.vista.VentanaPrincipalControlador;
 public class ControladorGestion {
 
 	private RepositorioGastosImpl repGastos = RepositorioGastosImpl.getInstancia();
+	private RepositorioCategoriasImpl repCategorias = RepositorioCategoriasImpl.getInstancia();
 	private RepositorioAlertasImpl repAlertas = RepositorioAlertasImpl.getInstancia();
 	private AlerNotifGestorImpl gestorAlertas = AlerNotifGestorImpl.getInstancia();
 	
 	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
 	    return repGastos.filtrarGasto(meses, fechaInicio, fechaFin, categorias);
+	}
+	
+	public List<? extends CategoriaImpl> filtrarCategoria(String categoriaId) {
+	    return repCategorias.filtrarCategorias(categoriaId);
 	}
 	
 	public void borrarGasto(GastoImpl gasto) {
@@ -33,6 +40,12 @@ public class ControladorGestion {
 	public List<? extends GastoImpl> getGastos(){
 		return repGastos.getGastos(); 
 	}
+	
+	public List<? extends CategoriaImpl> getCategoria(){
+		return repCategorias.getCategorias();
+	}
+	
+	
 	
 	public void crearGasto(CategoriaImpl categoria, LocalDate fecha, double precio ) {
 		GastoImpl newGasto = new GastoImpl(categoria, fecha, precio); 
@@ -57,6 +70,11 @@ public class ControladorGestion {
 		}
 		*/
 		
+	}
+	
+	public void crearCategoria(String cat) {
+		CategoriaImpl nuevaCategoria = new CategoriaImpl(cat);
+		repCategorias.aniadirCategoria(nuevaCategoria);
 	}
 	
 	

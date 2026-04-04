@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
@@ -32,6 +34,12 @@ public class VentanaPrincipalControlador {
 	private ControladorGestion controlador; 
 	
 	private GastoImpl gastoSeleccionado;
+	
+	@FXML
+	private ComboBox<CategoriaImpl> categoria;
+	
+	@FXML 
+	private TextField precio;
 	
 	@FXML 
 	private DatePicker dpFechaInicio; 
@@ -64,6 +72,8 @@ public class VentanaPrincipalControlador {
 		
 		cargarDatosEnTabla();
 		
+		cargarCategoriasEnBox();
+		
 		tablaGastos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				this.gastoSeleccionado = newSelection;
@@ -86,6 +96,15 @@ public class VentanaPrincipalControlador {
 		}
 	}
 	
+	// Para cuando se hagan los repositorios de categoría
+	/*
+	public void cargarCategoriasEnBox() { // Método para recargar la tabla cuando queramos
+		if(controlador.getCategorias() != null) {
+			ObservableList<GastoImpl> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
+			tablaGastos.setItems(listaModif);
+		}
+	}
+	*/
 	@FXML
 	private void botonBuscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
