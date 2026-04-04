@@ -13,7 +13,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
+    <javafx.version>21</javafx.version>
+    <jackson.version>2.19.4</jackson.version>
   </properties>
 
   <dependencyManagement>
@@ -34,7 +36,6 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Optionally: parameterized tests support -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
@@ -50,138 +51,97 @@
       <artifactId>javafx-fxml</artifactId>
       <version>21</version>
     </dependency>
-    
     <dependency>
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-core</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	
-	    <!-- Jackson annotations -->
-	    <dependency>
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-annotations</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	
-	    <!-- Jackson databind -->
-	    <dependency>
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-databind</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	    
-    
-    
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
     <dependency>
-
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-core</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	
-	    <!-- Jackson annotations -->
-	    <dependency>
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-annotations</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	
-	    <!-- Jackson databind -->
-	    <dependency>
-	        <groupId>com.fasterxml.jackson.core</groupId>
-	        <artifactId>jackson-databind</artifactId>
-	        <version>2.19.4</version>
-	    </dependency>
-	<dependency>   
-	  <groupId>org.apache.logging.log4j</groupId>
-	  <artifactId>log4j-core</artifactId>
-	  <version>2.25.2</version>
-	</dependency>
-	<dependency>
-	  <groupId>com.fasterxml.jackson.core</groupId>
-	  <artifactId>jackson-core</artifactId>
-	  <version>2.19.4</version>
-	</dependency>
-	<!-- Jackson annotations -->
-	<dependency>
-	  <groupId>com.fasterxml.jackson.core</groupId>
-	  <artifactId>jackson-annotations</artifactId>
-	  <version>2.19.4</version>
-	</dependency>
-	<dependency>
-	  <groupId>com.fasterxml.jackson.core</groupId>
-	  <artifactId>jackson-databind</artifactId>
-	  <version>2.19.4</version>
-	</dependency>
-	
-	<dependency>
-    	<groupId>com.fasterxml.jackson.datatype</groupId>
-    	<artifactId>jackson-datatype-jsr310</artifactId>
-    	<version>2.15.2</version> 
-	</dependency>
-	
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.25.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>2.15.2</version> 
+    </dependency>
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.4.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.13.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.3.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.2</version>
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.12.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.6.1</version>
-        </plugin>
-        <plugin>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>0.0.8</version>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>umu.tds.gestor.MainAppFX</mainClass>
+        </configuration>
+      </plugin>
+      <!-- Copia solo los JAR win de OpenJFX (evita stubs sin classifier y duplicados de modulo) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.7.0</version>
+        <executions>
+          <execution>
+            <id>copy-javafx-for-ide</id>
+            <!-- compile no incluye process-classes; enlazamos a compile para que mvn compile deje listo javafx-lib -->
+            <phase>compile</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
             <configuration>
-                <mainClass>umu.tds.gestor.MainAppFX</mainClass>
+              <outputDirectory>${project.build.directory}/javafx-lib</outputDirectory>
+              <overWriteReleases>true</overWriteReleases>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.openjfx</groupId>
+                  <artifactId>javafx-base</artifactId>
+                  <version>${javafx.version}</version>
+                  <classifier>win</classifier>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.openjfx</groupId>
+                  <artifactId>javafx-graphics</artifactId>
+                  <version>${javafx.version}</version>
+                  <classifier>win</classifier>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.openjfx</groupId>
+                  <artifactId>javafx-controls</artifactId>
+                  <version>${javafx.version}</version>
+                  <classifier>win</classifier>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.openjfx</groupId>
+                  <artifactId>javafx-fxml</artifactId>
+                  <version>${javafx.version}</version>
+                  <classifier>win</classifier>
+                </artifactItem>
+              </artifactItems>
             </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.0</version>
-            <configuration>
-                <release>21</release>
-            </configuration>
-         </plugin>
-      </plugins>
-    </pluginManagement>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
