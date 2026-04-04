@@ -41,7 +41,7 @@ public class ControladorGestion {
 		return repGastos.getGastos(); 
 	}
 	
-	public List<? extends CategoriaImpl> getCategoria(){
+	public List<? extends CategoriaImpl> getCategorias(){
 		return repCategorias.getCategorias();
 	}
 	

@@ -97,14 +97,14 @@ public class VentanaPrincipalControlador {
 	}
 	
 	// Para cuando se hagan los repositorios de categoría
-	/*
+	
 	public void cargarCategoriasEnBox() { // Método para recargar la tabla cuando queramos
 		if(controlador.getCategorias() != null) {
 			ObservableList<GastoImpl> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
 			tablaGastos.setItems(listaModif);
 		}
 	}
-	*/
+	
 	@FXML
 	private void botonBuscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
