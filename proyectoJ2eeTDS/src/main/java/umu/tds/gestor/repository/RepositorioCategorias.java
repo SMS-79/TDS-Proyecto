@@ -1,17 +1,15 @@
 package umu.tds.gestor.repository;
 
 import java.util.List;
-
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public interface RepositorioCategorias {
 
 	List<? extends CategoriaImpl> getCategorias();
 	
-	CategoriaImpl filtrarCategoria(String categoriaId);
+	List<? extends CategoriaImpl> filtrarCategorias(String categoriaId);
 	
-	void crearCategoria(String categoriaId);
-	
-	
+	void aniadirCategoria(CategoriaImpl categoria);
 	
 }

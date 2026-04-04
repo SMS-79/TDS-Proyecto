@@ -35,7 +35,6 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	       
 	        File fichero = new File("gastos.json");
 	        
-	       
 	        CarteraImpl cartera = CarteraImpl.getCartera();  
 	        
 	        mapper.writerWithDefaultPrettyPrinter().writeValue(fichero, cartera);
