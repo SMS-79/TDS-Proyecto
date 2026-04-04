@@ -1,6 +1,6 @@
 package umu.tds.gestor.vista;
 
-import java.awt.Button;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javafx.scene.control.Button;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class VentanaPrincipalControlador {
 	private DatePicker dpFechaFin; 
 	
 	@FXML 
-	public TableView<GastoImpl> tablaGastos = new TableView<GastoImpl>(); 
+	public TableView<GastoImpl> tablaGastos; 
 	
 	
 	@FXML
@@ -56,20 +57,18 @@ public class VentanaPrincipalControlador {
 	public void initialize() {
 		this.controlador = Configuracion.getInstancia().getControladorGestion();
 		
-		for(GastoImpl g : controlador.getGastos()) {
-			aniadirGasto(g);
-		}
+		colID.setCellValueFactory(new PropertyValueFactory<>("idGasto"));
+		colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+		colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+		colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+		
+		cargarDatosEnTabla();
 		
 		tablaGastos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				this.gastoSeleccionado = newSelection;
 			}
 		});
-		
-		colID.setCellValueFactory(new PropertyValueFactory<>("idGasto"));
-		colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-		colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
-		colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 		
 		ObservableList<GastoImpl> lista = null;
 		try {
@@ -78,38 +77,39 @@ public class VentanaPrincipalControlador {
 			log.error("Error inicializando TiendaViewController", e);
 		}
 		
-		//tablaGastos.setItems(lista);	
-		
+	}
+	
+	public void cargarDatosEnTabla() { // Método para recargar la tabla cuando queramos
+		if(controlador.getGastos() != null) {
+			ObservableList<GastoImpl> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
+			tablaGastos.setItems(listaModif);
+		}
 	}
 	
 	@FXML
-	private void botonBuscar(ActionEvent evento) { // método con el que enlazamos On Action de SceneBuilder
+	private void botonBuscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
 		Button botonPulsado = (Button) evento.getSource();
-		System.out.println("Has pulsado el boton: " + botonPulsado); // usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
+		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
 		LocalDate inicio = dpFechaInicio.getValue(); 
 		LocalDate fin = dpFechaFin.getValue(); 
 		
 		List<? extends GastoImpl> resultados = controlador.filtrarGastos(null, inicio, fin, null);
 		tablaGastos.getItems().setAll(resultados);
 		
-		
+		if(resultados != null) {
+			tablaGastos.setItems(FXCollections.observableArrayList(resultados));
+		}
 	}
+	
 	
 	@FXML
 	private void botonCerrar(ActionEvent event) {
-	    // sacamos el botón del evento, luego su escena, y luego su ventana, y la cerramos
+	    // Sacamos el botón del evento, luego su escena, y luego su ventana, y la cerramos
 	    Node source = (Node) event.getSource();
 	    Stage stage = (Stage) source.getScene().getWindow();
 	    stage.close();
 	}
 	
-	public void aniadirGasto(GastoImpl g) {
-		System.out.println(g.toString());
-		
-		tablaGastos.getItems().add(g);
-		tablaGastos.refresh();
-		
-	}
 
 }

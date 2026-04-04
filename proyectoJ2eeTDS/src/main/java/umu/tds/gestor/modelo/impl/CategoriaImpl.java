@@ -22,13 +22,16 @@ public class CategoriaImpl implements Categoria {
 	
 	@Override
 	public void setNombre(String nombre) {
-		/*trim se usa para ignorar los espacios, 
-		 * así cubrimos el caso en el que se pueda introducir
-		   una cadena en blanco que sean solo espacios*/
+		
 		if(nombre == null || nombre.trim().isEmpty()) {
 			throw new IllegalArgumentException("El nombre de la categoría no puede estar vacío."); 
 		}
 		this.nombre = nombre.trim(); //uso de trim para recibir cadena limpia de espacios
+	}
+	
+	@Override
+	public String toString() { 
+		return this.nombre; // Para que luego salga el texto del campo en la lista de la vista principal
 	}
 	
 	

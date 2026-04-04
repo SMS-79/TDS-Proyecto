@@ -1,12 +1,12 @@
 package umu.tds.gestor.vista;
 
-import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
@@ -48,14 +48,14 @@ public class AddGastoViewPopUpController{
 			controlador.crearGasto(cat, fechaGasto, precio);
 			System.out.println("Gasto guardado exitosamente.");
 			
-			Configuracion.getInstancia().getSceneManager().mostrarAddGasto();
+			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
 			
 			Node source = (Node) event.getSource();
 			Stage stage = (Stage) source.getScene().getWindow();
 			stage.close();
 			
-		} catch (NumberFormatException e) {
-			System.err.println("Error");
+		} catch (IllegalArgumentException e) {
+			System.err.println("Error al crear el gasto: " + e.getMessage());
 		}
 		
 		
