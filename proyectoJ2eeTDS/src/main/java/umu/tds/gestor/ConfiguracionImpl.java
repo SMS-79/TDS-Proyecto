@@ -8,7 +8,6 @@ public class ConfiguracionImpl extends Configuracion{
 	
 	public ConfiguracionImpl() {
 		this.controlador = new ControladorGestion();
-		controlador.crearCategoria("prueba");
 	}
 
 	@Override

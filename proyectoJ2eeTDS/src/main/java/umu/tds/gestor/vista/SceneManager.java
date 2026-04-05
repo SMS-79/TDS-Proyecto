@@ -76,6 +76,10 @@ public class SceneManager {
 		
 	}
 	
+	public void mostrarCreadorCategorias() {
+		cambiarVista("CategoriaCreator");
+	}
+	
 
 	
 }
