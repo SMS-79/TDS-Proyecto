@@ -9,13 +9,12 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,7 +26,7 @@ import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 
-public class VentanaPrincipalControlador {
+public class ListaGastosViewController {
 	
 	private static final Logger log = LogManager.getLogger();
 	

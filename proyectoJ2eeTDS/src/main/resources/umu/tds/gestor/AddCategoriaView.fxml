@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<HBox fx:controller="umu.tds.gestor.vista.CategoriaCreatorController" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:controller="umu.tds.gestor.vista.AddCategoriaViewController" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="tablaCategorias" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
         <columns>
