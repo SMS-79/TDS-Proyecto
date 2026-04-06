@@ -31,12 +31,8 @@ public class AlertaSemanal extends Alerta {
 		super(c, lim);
 	}
 	
-	
-
 	@Override
 	public Intervalo getIntervalo() { return this.intervalo; }
-	
-	
 	
 	@Override
 	public void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
