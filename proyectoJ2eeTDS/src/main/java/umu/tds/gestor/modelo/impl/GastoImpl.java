@@ -16,7 +16,7 @@ import umu.tds.gestor.modelo.Gasto;
 
 
 public class GastoImpl implements Gasto{
-	@JsonProperty
+	@JsonProperty("id_gastos")
 	private UUID idGasto; 
 	
 	private CategoriaImpl categoria; 
