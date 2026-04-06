@@ -38,7 +38,9 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 
 	@Override
 	public void aniadirCategoria(CategoriaImpl categoria) {
-		categorias.add(categoria);	
+		if(!categorias.contains(categoria)) {
+			categorias.add(categoria);	
+		}
 	}
 
 }

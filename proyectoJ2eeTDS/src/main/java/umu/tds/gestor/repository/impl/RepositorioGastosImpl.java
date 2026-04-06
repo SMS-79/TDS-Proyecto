@@ -84,7 +84,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 				.filter(f -> meses == null || meses.isEmpty() || meses.contains(f.getFecha().getMonth()))
 				.filter(f -> fechaInicio == null || !f.getFecha().isBefore(fechaInicio))
 				.filter(f -> fechaFin == null || !f.getFecha().isAfter(fechaFin))
-				.filter(f -> categorias == null || categorias.isEmpty() || categorias.contains(f.getCategoria()))
+				.filter(f -> categorias == null || categorias.contains(f.getCategoria()))
 				.toList();
 	}
 	
