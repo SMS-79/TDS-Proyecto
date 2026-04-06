@@ -15,6 +15,6 @@ public abstract class ImportadorGastos {
 	
 	protected ImportadorGastos() {}
 	
-	protected abstract void leerFichero(String path);
+	public abstract void leerFichero(String path);
 
 }

@@ -7,9 +7,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.stage.FileChooser;
 
 public class SceneManager {
 	
@@ -76,6 +78,14 @@ public class SceneManager {
 		
 	}
 	
+	public File mostrarSelectorFicheroGastos() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Seleccionar fichero para importar gastos");
+		fileChooser.getExtensionFilters().add(
+			new FileChooser.ExtensionFilter("Archivos de gastos", "*.csv", "*.txt")
+		);
 
-	
+		return fileChooser.showOpenDialog(this.stage);
+	}
+
 }

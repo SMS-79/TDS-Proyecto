@@ -1,6 +1,7 @@
 package umu.tds.gestor.vista;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Platform;
@@ -20,6 +21,19 @@ public class BarraMenuController {
 	@FXML
 	private void irAddGasto(ActionEvent e) {
 		Configuracion.getInstancia().getSceneManager().mostrarAddGasto();
+	}
+
+	@FXML
+	private void irImportarGastos(ActionEvent e) {
+		File file = Configuracion.getInstancia().getSceneManager().mostrarSelectorFicheroGastos();
+
+		if (file != null) {
+			// TODO: Esto creo que puede estar violando algún patrón
+			Configuracion.getInstancia().getControladorGestion().importarGastosCSV(file.getAbsolutePath());
+			
+			// Volvemos a mostrar la tabla para actualizarla
+			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
+		}
 	}
 
 	@FXML
