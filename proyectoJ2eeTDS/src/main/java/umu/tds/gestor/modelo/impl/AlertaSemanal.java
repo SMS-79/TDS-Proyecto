@@ -1,6 +1,7 @@
 package umu.tds.gestor.modelo.impl;
 
 import java.time.LocalDate;
+import java.time.temporal.IsoFields;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -41,12 +42,19 @@ public class AlertaSemanal extends Alerta {
 		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
 			reiniciar();
 		}
-		
-		// Comprobación de categoría
-		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
-			gastoRealizado += g.getCantidad();
+
+		int semanaGasto = g.getFecha().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		int anoGasto = g.getFecha().get(IsoFields.WEEK_BASED_YEAR);
+
+		int semanaActual =LocalDate.now().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		int anoActual = LocalDate.now().get(IsoFields.WEEK_BASED_YEAR);
+
+		if(semanaGasto == semanaActual && anoGasto == anoActual){	
+			// Comprobación de categoría
+			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+				gastoRealizado += g.getCantidad();
+			}
 		}
-		
 		// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
 		if(gastoRealizado >= limite) {
 			String mensaje = "Limite semanal de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
@@ -65,15 +73,22 @@ public class AlertaSemanal extends Alerta {
 		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
 			reiniciar();
 		}
+
+		int semanaGasto = g.getFecha().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		int anoGasto = g.getFecha().get(IsoFields.WEEK_BASED_YEAR);
+
+		int semanaActual =LocalDate.now().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		int anoActual = LocalDate.now().get(IsoFields.WEEK_BASED_YEAR);
 		
-		// Comprobación de categoría
-		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
-			gastoRealizado -= g.getCantidad();
-			if(gastoRealizado < 0) {
-				gastoRealizado = 0;
+		if(semanaGasto == semanaActual && anoGasto == anoActual){
+			// Comprobación de categoría
+			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+				gastoRealizado -= g.getCantidad();
+				if(gastoRealizado < 0) {
+					gastoRealizado = 0;
+				}
 			}
 		}
-		
 	}
 
 

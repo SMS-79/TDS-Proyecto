@@ -77,10 +77,13 @@ public class AlertaMensual extends Alerta {
 		boolean isMesActual = g.getFecha().getMonth() == LocalDate.now().getMonth();
 		boolean isAnoActual = g.getFecha().getYear() == LocalDate.now().getYear();
 
-		if (isAnoActual && isMesActual){			 
+		if(isAnoActual && isMesActual){			 
 			// Comprobación de categoría
 			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
 				gastoRealizado -= g.getCantidad();
+				if(gastoRealizado < 0){
+					gastoRealizado = 0; 
+				}
 			}
 		}
 	}
