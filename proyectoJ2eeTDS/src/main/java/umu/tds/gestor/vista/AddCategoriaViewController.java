@@ -68,10 +68,11 @@ public class AddCategoriaViewController {
 	
 	@FXML
 	private void crearCategoria() {
-		System.out.println("Categoría creada: " + categoriaId.getText());
-		CategoriaImpl cat = controlador.crearCategoria(categoriaId.getText());
-		addCategoriaTabla(cat);
-		categoriaId.clear();
+		if(!categoriaId.getText().equals("")) {
+			CategoriaImpl cat = controlador.crearCategoria(categoriaId.getText());
+			addCategoriaTabla(cat);
+			categoriaId.clear();
+		}
 	}
 	
 	private void addCategoriaTabla(CategoriaImpl categoria) {

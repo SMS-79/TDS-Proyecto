@@ -101,9 +101,10 @@ public class ListaGastosViewController {
 		
 		Button botonPulsado = (Button) evento.getSource();
 		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
-		List<? extends CategoriaImpl> categorias = controlador.filtrarCategoria(categoriaFilter.getText());
-		for(CategoriaImpl c : categorias) {
-			System.out.println(c);
+		List<? extends CategoriaImpl> categorias = null;
+		
+		if(!categoriaFilter.getText().equals("")) {
+			categorias = controlador.filtrarCategoria(categoriaFilter.getText());
 		}
 		LocalDate inicio = dpFechaInicio.getValue(); 
 		LocalDate fin = dpFechaFin.getValue(); 

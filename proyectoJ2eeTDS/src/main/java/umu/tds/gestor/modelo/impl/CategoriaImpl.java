@@ -1,5 +1,7 @@
 package umu.tds.gestor.modelo.impl;
 
+import java.util.Objects;
+
 import umu.tds.gestor.modelo.Categoria;
 
 public class CategoriaImpl implements Categoria {
@@ -33,6 +35,21 @@ public class CategoriaImpl implements Categoria {
 	public String toString() { 
 		return this.nombre; // Para que luego salga el texto del campo en la lista de la vista principal
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CategoriaImpl other = (CategoriaImpl) obj;
+		return Objects.equals(nombre, other.nombre);
+	}
+	
+	
 	
 	
 }
