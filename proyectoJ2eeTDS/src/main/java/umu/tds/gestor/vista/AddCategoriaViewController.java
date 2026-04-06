@@ -15,9 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
-public class CategoriaCreatorController {
+public class AddCategoriaViewController {
 
 	private static final Logger log = LogManager.getLogger();
 	
@@ -72,6 +71,7 @@ public class CategoriaCreatorController {
 		System.out.println("Categoría creada: " + categoriaId.getText());
 		CategoriaImpl cat = controlador.crearCategoria(categoriaId.getText());
 		addCategoriaTabla(cat);
+		categoriaId.clear();
 	}
 	
 	private void addCategoriaTabla(CategoriaImpl categoria) {

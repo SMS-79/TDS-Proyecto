@@ -1,15 +1,14 @@
 package umu.tds.gestor.vista;
 
-import javafx.scene.Scene;
+import java.io.IOException;
+
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
-
-import java.io.IOException;
-
-import javafx.fxml.FXMLLoader;
 
 public class SceneManager {
 	
@@ -24,7 +23,7 @@ public class SceneManager {
 	
 	public void showVentanaPrincipal() {
 		try {
-			FXMLLoader loader = new FXMLLoader(MainAppFX.class.getResource("BarraMenu.fxml")); 
+			FXMLLoader loader = new FXMLLoader(MainAppFX.class.getResource("BarraMenuView.fxml")); 
 			layoutPrincipal = (BorderPane) loader.load();
 			
 			escenaActual = new Scene(layoutPrincipal, 800, 600); 
@@ -52,7 +51,7 @@ public class SceneManager {
 	}
 	
 	public void mostrarTablaGastos() {
-		cambiarVista("VentanaPrincipal");
+		cambiarVista("ListaGastosView");
 	}
 	
 	public void mostrarAddGasto() {
@@ -77,7 +76,7 @@ public class SceneManager {
 	}
 	
 	public void mostrarCreadorCategorias() {
-		cambiarVista("CategoriaCreator");
+		cambiarVista("AddCategoriaView");
 	}
 	
 

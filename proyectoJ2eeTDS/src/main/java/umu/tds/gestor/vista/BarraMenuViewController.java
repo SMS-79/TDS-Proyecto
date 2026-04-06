@@ -3,13 +3,11 @@ package umu.tds.gestor.vista;
 
 import java.io.IOException;
 
-import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import umu.tds.gestor.Configuracion;
 
-public class BarraMenuController {
+public class BarraMenuViewController {
 
 	
 	@FXML
@@ -28,12 +26,12 @@ public class BarraMenuController {
 	}
 
 	@FXML
-	public void salir(Event e) {
+	public void salir(ActionEvent e) {
 		System.exit(0);
 	}
 	
 	@FXML
-	void abrirAcerca(Event e) {
+	void abrirAcerca(ActionEvent e) {
 		System.out.println();
 	}
 

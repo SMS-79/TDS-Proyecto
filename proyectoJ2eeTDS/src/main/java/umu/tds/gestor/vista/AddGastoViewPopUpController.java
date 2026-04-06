@@ -18,13 +18,12 @@ import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class AddGastoViewPopUpController{
 
 	private static final Logger log = LogManager.getLogger();
 	
-	private ControladorGestion controlador = new ControladorGestion();
+	private ControladorGestion controlador;
 	
 	@FXML
 	private ChoiceBox<CategoriaImpl> boxCategorias;
