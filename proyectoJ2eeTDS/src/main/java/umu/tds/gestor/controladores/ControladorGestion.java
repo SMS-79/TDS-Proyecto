@@ -13,12 +13,9 @@ import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
-import umu.tds.gestor.repository.RepositorioCategorias;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 import umu.tds.gestor.repository.impl.RepositorioCategoriasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
-import umu.tds.gestor.vista.AddGastoViewPopUpController;
-import umu.tds.gestor.vista.VentanaPrincipalControlador;
 
 public class ControladorGestion {
 
@@ -74,9 +71,10 @@ public class ControladorGestion {
 		
 	}
 	
-	public void crearCategoria(String cat) {
+	public CategoriaImpl crearCategoria(String cat) {
 		CategoriaImpl nuevaCategoria = new CategoriaImpl(cat);
 		repCategorias.aniadirCategoria(nuevaCategoria);
+		return nuevaCategoria;
 	}
 	
 	
