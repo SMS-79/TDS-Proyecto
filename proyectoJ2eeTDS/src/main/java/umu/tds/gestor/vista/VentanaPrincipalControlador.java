@@ -36,7 +36,7 @@ public class VentanaPrincipalControlador {
 	private GastoImpl gastoSeleccionado;
 	
 	@FXML
-	private ComboBox<CategoriaImpl> categoria;
+	private TextField categoriaFilter;
 	
 	@FXML 
 	private TextField precio;
@@ -72,7 +72,6 @@ public class VentanaPrincipalControlador {
 		
 		cargarDatosEnTabla();
 		
-		cargarCategoriasEnBox();
 		
 		tablaGastos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
@@ -98,22 +97,19 @@ public class VentanaPrincipalControlador {
 	
 	// Para cuando se hagan los repositorios de categoría
 	
-	public void cargarCategoriasEnBox() { // Método para recargar la tabla cuando queramos
-		if(controlador.getCategorias() != null) {
-			ObservableList<GastoImpl> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
-			tablaGastos.setItems(listaModif);
-		}
-	}
-	
 	@FXML
 	private void botonBuscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
 		Button botonPulsado = (Button) evento.getSource();
 		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
+		List<? extends CategoriaImpl> categorias = controlador.filtrarCategoria(categoriaFilter.getText());
+		for(CategoriaImpl c : categorias) {
+			System.out.println(c);
+		}
 		LocalDate inicio = dpFechaInicio.getValue(); 
 		LocalDate fin = dpFechaFin.getValue(); 
 		
-		List<? extends GastoImpl> resultados = controlador.filtrarGastos(null, inicio, fin, null);
+		List<? extends GastoImpl> resultados = controlador.filtrarGastos(null, inicio, fin, categorias);
 		tablaGastos.getItems().setAll(resultados);
 		
 		if(resultados != null) {

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane fx:controller="umu.tds.gestor.vista.AddGastoViewPopUpController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-            prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.AddGastoViewPopUpController">
     <columnConstraints>
         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
@@ -24,26 +23,25 @@
         <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Categoría" GridPane.columnIndex="0" GridPane.rowIndex="0" >
+        <Label text="Categoría" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <font>
                 <Font size="12.0" />
             </font>
         </Label>
-        <Label text="Fecha del gasto" GridPane.columnIndex="0" GridPane.rowIndex="1" >
+        <Label text="Fecha del gasto" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <font>
                 <Font size="12.0" />
             </font>
         </Label>
-        <Label text="Cantidad" GridPane.columnIndex="0" GridPane.rowIndex="2" >
+        <Label text="Cantidad" GridPane.columnIndex="0" GridPane.rowIndex="2">
             <font>
                 <Font size="12.0" />
             </font>
         </Label>
-        <TextField fx:id="categoria" promptText="Ej: Personal, Estudios..." maxWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <DatePicker fx:id="fecha" promptText="Fecha del gasto" maxWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="cantidad" promptText="Ej: 100.50" maxWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      	<ChoiceBox fx:id="boxCategorias" prefWidth="150.0" GridPane.columnIndex="1" />
+        <DatePicker fx:id="fecha" maxWidth="130.0" promptText="Fecha del gasto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="cantidad" maxWidth="130.0" promptText="Ej: 100.50" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <Button onAction="#crearGasto" mnemonicParsing="false" text="Añadir Gasto" 
-                prefWidth="100.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.halignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#crearGasto" prefHeight="30.0" prefWidth="100.0" text="Añadir Gasto" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
     </children>
 </GridPane>

@@ -23,8 +23,8 @@ public class BarraMenuController {
 	}
 
 	@FXML
-	private void irAStock() throws IOException {
-		System.out.println();
+	private void irACategorias() throws IOException {
+		Configuracion.getInstancia().getSceneManager().mostrarCreadorCategorias();
 	}
 
 	@FXML

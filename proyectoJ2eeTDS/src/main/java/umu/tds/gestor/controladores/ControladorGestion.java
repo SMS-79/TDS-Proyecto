@@ -72,9 +72,10 @@ public class ControladorGestion {
 		
 	}
 	
-	public void crearCategoria(String cat) {
+	public CategoriaImpl crearCategoria(String cat) {
 		CategoriaImpl nuevaCategoria = new CategoriaImpl(cat);
 		repCategorias.aniadirCategoria(nuevaCategoria);
+		return nuevaCategoria;
 	}
 	
 	
