@@ -34,9 +34,6 @@ public class AlertaMensual extends Alerta {
 		super(c, lim);
 	}
 	
-
-	
-	
 	@Override
 	public Intervalo getIntervalo() { return this.intervalo; }
 	
@@ -48,12 +45,16 @@ public class AlertaMensual extends Alerta {
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {
 			reiniciar();
 		}
-		
-		// Comprobación de categoría
-		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
-			gastoRealizado += g.getCantidad();
-		}
-		
+
+		boolean isMesActual = g.getFecha().getMonth() == LocalDate.now().getMonth();
+		boolean isAnoActual = g.getFecha().getYear() == LocalDate.now().getYear();
+
+		if(isAnoActual && isMesActual){
+			// Comprobación de categoría
+			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+				gastoRealizado += g.getCantidad();
+			}
+		}	
 		// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
 		if(gastoRealizado >= limite) {
 			String mensaje = "Limite mensual de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
@@ -72,12 +73,19 @@ public class AlertaMensual extends Alerta {
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {
 			reiniciar();
 		}
-		
-		// Comprobación de categoría
-		if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
-			gastoRealizado += g.getCantidad();
+	
+		boolean isMesActual = g.getFecha().getMonth() == LocalDate.now().getMonth();
+		boolean isAnoActual = g.getFecha().getYear() == LocalDate.now().getYear();
+
+		if(isAnoActual && isMesActual){			 
+			// Comprobación de categoría
+			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
+				gastoRealizado -= g.getCantidad();
+				if(gastoRealizado < 0){
+					gastoRealizado = 0; 
+				}
+			}
 		}
-		
 	}
 	
 	
