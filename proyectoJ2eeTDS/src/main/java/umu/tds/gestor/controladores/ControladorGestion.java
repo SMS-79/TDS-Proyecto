@@ -24,6 +24,12 @@ public class ControladorGestion {
 	private RepositorioAlertasImpl repAlertas = RepositorioAlertasImpl.getInstancia();
 	private AlerNotifGestorImpl gestorAlertas = AlerNotifGestorImpl.getInstancia();
 	
+	public ControladorGestion() {
+		crearCategoria("Alimentación");
+		crearCategoria("Transporte");
+		crearCategoria("Entretenimiento");
+	}
+	
 	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
 	    return repGastos.filtrarGasto(meses, fechaInicio, fechaFin, categorias);
 	}
