@@ -59,6 +59,9 @@ public class ListaGastosViewController {
 	@FXML
 	private TableColumn<GastoImpl, Double> colCantidad;
 	
+	@FXML
+	private Button botonBorrar;
+	
 	
 	@FXML
 	public void initialize() {
@@ -84,6 +87,8 @@ public class ListaGastosViewController {
 		} catch (Exception e) {
 			log.error("Error inicializando TiendaViewController", e);
 		}
+		
+		botonBorrar.disableProperty().bind(tablaGastos.getSelectionModel().selectedItemProperty().isNull());
 		
 	}
 	
@@ -117,7 +122,14 @@ public class ListaGastosViewController {
 		}
 	}
 	
+	@FXML
+	private void botonBorrar(ActionEvent evento) {
+		controlador.borrarGasto(gastoSeleccionado);
+		tablaGastos.getItems().remove(gastoSeleccionado);
+		tablaGastos.getSelectionModel().clearSelection();
+	}
 	
+	/*
 	@FXML
 	private void botonCerrar(ActionEvent event) {
 	    // Sacamos el botón del evento, luego su escena, y luego su ventana, y la cerramos
@@ -125,6 +137,6 @@ public class ListaGastosViewController {
 	    Stage stage = (Stage) source.getScene().getWindow();
 	    stage.close();
 	}
-	
+	*/
 
 }
