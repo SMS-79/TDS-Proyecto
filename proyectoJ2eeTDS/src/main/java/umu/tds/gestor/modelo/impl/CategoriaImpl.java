@@ -2,10 +2,20 @@ package umu.tds.gestor.modelo.impl;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import umu.tds.gestor.modelo.Categoria;
+
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id_categorias"
+		)
 
 public class CategoriaImpl implements Categoria {
 	
+	@JsonProperty("id_categorias")
 	private String nombre; //identificador de la categoría (atributo único)
 	
 	
