@@ -1,11 +1,18 @@
 {
   "gastos" : [ {
-    "id_gastos" : "a64e5302-2a5c-411e-ad16-ad14605a298f",
+    "id_gastos" : "a7b05b87-f02d-4cd2-b93e-4e27e1392fe1",
+    "categoria" : {
+      "nombre" : "Entretenimiento"
+    },
+    "fecha" : [ 2026, 4, 1 ],
+    "cantidad" : 50.0
+  }, {
+    "id_gastos" : "42d5eb09-60a9-4f14-a71e-6a6b774aa47f",
     "categoria" : {
       "nombre" : "Transporte"
     },
-    "fecha" : [ 2026, 4, 2 ],
-    "cantidad" : 90.0
+    "fecha" : [ 2026, 4, 1 ],
+    "cantidad" : 22.0
   } ],
   "categorias" : [ ],
   "alertas" : [ ],
