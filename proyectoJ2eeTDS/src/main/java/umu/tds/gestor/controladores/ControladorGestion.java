@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+import umu.tds.gestor.importador.ImportadorGastos;
+import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
@@ -115,6 +117,11 @@ public class ControladorGestion {
 	
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		repGastos.cambiarFechaGasto(gasto, fecha); 
+	}
+	
+	public void importarGastosCSV(String rutaFichero) {
+		ImportadorGastos importador = new ImportadorGastosCSVImpl();
+		importador.leerFichero(rutaFichero);
 	}
 }
 
