@@ -79,6 +79,8 @@ public class SceneManager {
 		cambiarVista("AddCategoriaView");
 	}
 	
-
+	public void mostrarAddAlerta(){
+		cambiarVista("AddAlertaView");
+	}
 	
 }
