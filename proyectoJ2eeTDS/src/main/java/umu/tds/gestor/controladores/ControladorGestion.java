@@ -47,6 +47,10 @@ public class ControladorGestion {
 	public List<? extends CategoriaImpl> getCategorias(){
 		return repCategorias.getCategorias();
 	}
+
+	public List<? extends Alerta> getAlertas(){
+		return repAlertas.getAlertas(); 
+	}
 	
 	
 	
