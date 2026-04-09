@@ -19,6 +19,8 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	private static RepositorioGastosImpl instancia = null;
 	
+	private CarteraImpl cartera = CarteraImpl.getCartera();
+	
 	public static RepositorioGastosImpl getInstancia() {
 		if (instancia == null) {
 			instancia = new RepositorioGastosImpl();
@@ -27,46 +29,10 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 		return instancia; 
 	}
 	
-	private void guardarFichero() {
-	    try {
-	      
-	        ObjectMapper mapper = new ObjectMapper();
-	        mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
-	       
-	        File fichero = new File("gastos.json");
-	        
-	        CarteraImpl cartera = CarteraImpl.getCartera();  
-	        
-	        mapper.writerWithDefaultPrettyPrinter().writeValue(fichero, cartera);
-	        
-	    } catch (Exception e) {
-	    	System.err.println("Error al guardar el fichero de gastos: " + e.getMessage()); 
-	        e.printStackTrace();
-	    }
-	}
-	
-	private void cargarFichero() {
-	    try {
-	        File fichero = new File("gastos.json");
-	        
-	        if (fichero.exists()) {
-	            ObjectMapper mapper = new ObjectMapper();
-	            mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
-	            
-	            CarteraImpl carteraCargada = mapper.readValue(fichero, CarteraImpl.class);
-	            
-	            CarteraImpl.setCartera(carteraCargada);
-	        }
-	    } catch (Exception e) {
-	        System.err.println("Error al cargar el fichero de gastos: " + e.getMessage());
-	        e.printStackTrace();
-	    }
-	}
 	
 	private List<GastoImpl> gastos;
 	
 	private RepositorioGastosImpl() {
-		cargarFichero();
 		
 		if(CarteraImpl.getCartera() != null && CarteraImpl.getCartera().getGastos() != null) {
 			this.gastos = (List<GastoImpl>) CarteraImpl.getCartera().getGastos();
@@ -91,7 +57,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void borrarGasto(GastoImpl gasto) {
 		gastos.remove(gasto);
-		guardarFichero();
+		CarteraImpl.getCartera().guardarFichero();
 	}
 	
 	@Override
@@ -102,25 +68,25 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void añadirGasto(GastoImpl gasto) {
 		gastos.add(gasto); 
-		guardarFichero(); 
+		cartera.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
 		gasto.setCantidad(precio);
-		guardarFichero();
+		cartera.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		gasto.setFecha(fecha);
-		guardarFichero();
+		cartera.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarCategoriaGasto(GastoImpl gasto, CategoriaImpl categoriaImpl) {
 		gasto.setCategoria(categoriaImpl);
-		guardarFichero();
+		cartera.guardarFichero();
 	}
 	
 
