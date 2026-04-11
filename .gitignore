@@ -20,8 +20,10 @@
 *.rar
 .classpath
 .factorypath
-./.classpath
-./.factorypath
+proyectoJ2eeTDS/.factorypath
+proyectoJ2eeTDS/.settings/
+proyectoJ2eeTDS/.classpath
+proyectoJ2eeTDS/.project
 .sonarlint
 .project
 .settings/
@@ -29,4 +31,6 @@
 hs_err_pid*
 replay_pid*
 /.metadata/
+/target/
+/bin/
 *.json
