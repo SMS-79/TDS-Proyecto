@@ -1,11 +1,20 @@
 {
-  "gastos" : [ ],
+  "gastos" : [ {
+    "id_gastos" : "6548ee5c-bca3-470d-8f01-310c4be3fc4a",
+    "categoria" : {
+      "nombre" : "Entretenimiento"
+    },
+    "fecha" : [ 2026, 4, 14 ],
+    "cantidad" : 100.5
+  } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
     "nombre" : "Transporte"
   }, {
     "nombre" : "Entretenimiento"
+  }, {
+    "nombre" : "Prueba"
   } ],
   "alertas" : [ ],
   "cuentas" : [ ]

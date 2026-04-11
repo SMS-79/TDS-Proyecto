@@ -15,7 +15,10 @@ public class CarteraImpl implements Cartera{
 	private static CarteraImpl cartera = null; 
 	
 	public static CarteraImpl getCartera() {
-		if (cartera == null) cartera = new CarteraImpl(); 
+		if (cartera == null) {
+			cartera = new CarteraImpl(); 
+			cartera.cargarFichero();
+		}
 		return cartera; 
 	}
 	
@@ -43,6 +46,7 @@ public class CarteraImpl implements Cartera{
 		this.categorias = categorias;
 		this.alertas = alertas;
 		this.cuentas = cuentas; 
+		
 		
 		
 	}
