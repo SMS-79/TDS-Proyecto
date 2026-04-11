@@ -32,6 +32,3 @@ proyectoJ2eeTDS/bin/
 hs_err_pid*
 replay_pid*
 /.metadata/
-/target/
-/bin/
-*.json
