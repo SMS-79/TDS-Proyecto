@@ -1,9 +1,11 @@
 package umu.tds.gestor.modelo.impl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.Cartera;
@@ -13,9 +15,13 @@ public class CarteraImpl implements Cartera{
 	private static CarteraImpl cartera = null; 
 	
 	public static CarteraImpl getCartera() {
-		if (cartera == null) cartera = new CarteraImpl(); 
+		if (cartera == null) {
+			cartera = new CarteraImpl(); 
+			cartera.cargarFichero();
+		}
 		return cartera; 
 	}
+	
 	@JsonProperty("gastos")
 	private List<GastoImpl> gastos;
 	@JsonProperty("categorias")
@@ -25,19 +31,58 @@ public class CarteraImpl implements Cartera{
 	@JsonProperty("cuentas")
 	private List<CuentaGastoImpl> cuentas;
 	
+	private File fichero;
+	
 	
 	private CarteraImpl() {
-		this(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		this(new ArrayList<GastoImpl>(), new ArrayList<CategoriaImpl>(), new ArrayList<Alerta>(), new ArrayList<CuentaGastoImpl>());
 	}
 	
 	private CarteraImpl(List<GastoImpl> gastos, 
 						List<CategoriaImpl> categorias,
 						List<Alerta> alertas,
 						List<CuentaGastoImpl> cuentas) {
-		this.gastos = (List<GastoImpl>) gastos; 
-		this.categorias = (List<CategoriaImpl>) categorias;
-		this.alertas = (List<Alerta>) alertas;
-		this.cuentas = (List<CuentaGastoImpl>) cuentas; 
+		this.gastos = gastos; 
+		this.categorias = categorias;
+		this.alertas = alertas;
+		this.cuentas = cuentas; 
+		
+		
+		
+	}
+	
+	
+	
+	public void cargarFichero(){
+		System.out.println("haciendolo");
+		try {
+			fichero = new File("gastos.json");
+	        if (fichero.exists()) {
+	            ObjectMapper mapper = new ObjectMapper();
+	            mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+	            
+	            
+	            setCartera(mapper.readValue(fichero, CarteraImpl.class));
+	        }
+	    } catch (Exception e) {
+	        System.err.println("Error al cargar el fichero de gastos: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	}
+	
+	public void guardarFichero(){
+		try {
+			fichero = new File("gastos.json");
+	        ObjectMapper mapper = new ObjectMapper();
+	        mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+	       
+	        
+	        mapper.writerWithDefaultPrettyPrinter().writeValue(fichero, this);
+	        
+	    } catch (Exception e) {
+	    	System.err.println("Error al guardar el fichero de gastos: " + e.getMessage()); 
+	        e.printStackTrace();
+	    }
 	}
 
 	public List<GastoImpl> getGastos() {
