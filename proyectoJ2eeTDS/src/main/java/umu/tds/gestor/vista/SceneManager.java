@@ -91,5 +91,8 @@ public class SceneManager {
 		return fileChooser.showOpenDialog(this.stage);
 	}
 	
+	public void mostrarAddAlerta(){
+		cambiarVista("AddAlertaView");
+	}
 	
 }

@@ -11,7 +11,7 @@ import umu.tds.gestor.importador.impl.ImportadorGastosTXTImpl;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
@@ -31,11 +31,11 @@ public class ControladorGestion {
 		crearCategoria("Entretenimiento");
 	}
 	
-	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
+	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
 	    return repGastos.filtrarGasto(meses, fechaInicio, fechaFin, categorias);
 	}
 	
-	public List<? extends CategoriaImpl> filtrarCategoria(String categoriaId) {
+	public List<? extends Categoria> filtrarCategoria(String categoriaId) {
 	    return repCategorias.filtrarCategorias(categoriaId);
 	}
 	
@@ -47,13 +47,17 @@ public class ControladorGestion {
 		return repGastos.getGastos(); 
 	}
 	
-	public List<? extends CategoriaImpl> getCategorias(){
+	public List<? extends Categoria> getCategorias(){
 		return repCategorias.getCategorias();
+	}
+
+	public List<? extends Alerta> getAlertas(){
+		return repAlertas.getAlertas(); 
 	}
 	
 	
 	
-	public void crearGasto(CategoriaImpl categoria, LocalDate fecha, double precio ) {
+	public void crearGasto(Categoria categoria, LocalDate fecha, double precio ) {
 		GastoImpl newGasto = new GastoImpl(categoria, fecha, precio); 
 		
 		// String idGasto = UUID.randomUUID().toString(); 
@@ -78,14 +82,14 @@ public class ControladorGestion {
 		
 	}
 	
-	public CategoriaImpl crearCategoria(String cat) {
-		CategoriaImpl nuevaCategoria = new CategoriaImpl(cat);
+	public Categoria crearCategoria(String cat) {
+		Categoria nuevaCategoria = new Categoria(cat);
 		repCategorias.aniadirCategoria(nuevaCategoria);
 		return nuevaCategoria;
 	}
 	
 	
-	public void crearAlerta(CategoriaImpl categoria, double limite, Intervalo intervalo) {
+	public void crearAlerta(Categoria categoria, double limite, Intervalo intervalo) {
 		
 		repAlertas.añadirAlerta(gestorAlertas.crearAlerta(limite, intervalo));
 		

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlertaMensual;
 import umu.tds.gestor.modelo.impl.AlertaSemanal;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 
@@ -30,7 +30,7 @@ public abstract class Alerta {
 	@JsonProperty("id_alert")
 	protected UUID id = UUID.randomUUID();
 	
-	protected Optional<CategoriaImpl> categoria;
+	protected Optional<Categoria> categoria;
 	protected double limite;
 	protected double gastoRealizado;
 	protected LocalDate activacion;
@@ -44,7 +44,7 @@ public abstract class Alerta {
 	}
 	
 	// Constructor con categoría
-	protected Alerta(CategoriaImpl c, double lim) {
+	protected Alerta(Categoria c, double lim) {
 		this.categoria = Optional.ofNullable(c);
 		this.limite = lim;
 		this.activacion = LocalDate.now();
@@ -56,9 +56,9 @@ public abstract class Alerta {
 	
 	public UUID getId() { return id;	}
 	
-	public CategoriaImpl getCategoria() { return this.categoria.orElse(null);	}
+	public Categoria getCategoria() { return this.categoria.orElse(null);	}
 	
-	public void setCategoria(CategoriaImpl categ) {	this.categoria = Optional.of(categ);	}
+	public void setCategoria(Categoria categ) {	this.categoria = Optional.of(categ);	}
 	
 	public double getLimite() { return this.limite;	}
 

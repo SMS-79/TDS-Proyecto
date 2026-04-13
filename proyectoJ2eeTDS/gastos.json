@@ -1,5 +1,6 @@
 {
   "gastos" : [ {
+
     "id_gastos" : "bd10ffb5-fb55-4dd0-81ed-e226af35da87",
     "categoria" : {
       "nombre" : "CatPrueba1"
@@ -8,6 +9,7 @@
     "cantidad" : 500.0
   }, {
     "id_gastos" : "2ee08ac1-08ec-4d76-bfba-5de9f76aa3e9",
+
     "categoria" : {
       "nombre" : "CatPrueba2"
     },
@@ -427,7 +429,6 @@
     "fecha" : [ 2022, 2, 20 ],
     "cantidad" : 16.0
   } ],
-  "categorias" : [ ],
   "alertas" : [ ],
   "cuentas" : [ ]
 }

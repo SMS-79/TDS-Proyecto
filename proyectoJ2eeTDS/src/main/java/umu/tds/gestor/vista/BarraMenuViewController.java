@@ -4,12 +4,16 @@ package umu.tds.gestor.vista;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import umu.tds.gestor.Configuracion;
 
 public class BarraMenuViewController {
 
+	private static final Logger log = LogManager.getLogger();
 	
 	@FXML
 	private void irAGastos(ActionEvent e) {
@@ -27,13 +31,18 @@ public class BarraMenuViewController {
 	}
 
 	@FXML
+	private void irAddAlerta() throws IOException{
+		Configuracion.getInstancia().getSceneManager().mostrarAddAlerta();
+	}
+
+	@FXML
 	public void salir(ActionEvent e) {
 		System.exit(0);
 	}
 	
 	@FXML
 	void abrirAcerca(ActionEvent e) {
-		System.out.println();
+		log.info("Abriendo acerca de...");
 	}
 	
 	@FXML

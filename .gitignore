@@ -20,8 +20,11 @@
 *.rar
 .classpath
 .factorypath
-./.classpath
-./.factorypath
+proyectoJ2eeTDS/.factorypath
+proyectoJ2eeTDS/.settings/
+proyectoJ2eeTDS/.classpath
+proyectoJ2eeTDS/.project
+proyectoJ2eeTDS/bin/
 .sonarlint
 .project
 .settings/

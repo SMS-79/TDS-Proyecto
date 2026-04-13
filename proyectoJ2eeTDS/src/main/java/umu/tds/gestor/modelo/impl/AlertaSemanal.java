@@ -28,7 +28,7 @@ public class AlertaSemanal extends Alerta {
 	}
 	
 	// Constructor con categoría
-	public AlertaSemanal(CategoriaImpl c,  double lim) {
+	public AlertaSemanal(Categoria c,  double lim) {
 		super(c, lim);
 	}
 	

@@ -10,14 +10,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import umu.tds.gestor.modelo.impl.CarteraImpl;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioGastos;
 
 public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	private static RepositorioGastosImpl instancia = null;
+	
+	private BaseDeDatosImpl BD = BaseDeDatosImpl.getBD();
 	
 	public static RepositorioGastosImpl getInstancia() {
 		if (instancia == null) {
@@ -27,49 +28,17 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 		return instancia; 
 	}
 	
-	private void guardarFichero() {
-	    try {
-	      
-	        ObjectMapper mapper = new ObjectMapper();
-	        mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
-	       
-	        File fichero = new File("gastos.json");
-	        
-	        CarteraImpl cartera = CarteraImpl.getCartera();  
-	        
-	        mapper.writerWithDefaultPrettyPrinter().writeValue(fichero, cartera);
-	        
-	    } catch (Exception e) {
-	    	System.err.println("Error al guardar el fichero de gastos: " + e.getMessage()); 
-	        e.printStackTrace();
-	    }
-	}
-	
-	private void cargarFichero() {
-	    try {
-	        File fichero = new File("gastos.json");
-	        
-	        if (fichero.exists()) {
-	            ObjectMapper mapper = new ObjectMapper();
-	            mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
-	            
-	            CarteraImpl carteraCargada = mapper.readValue(fichero, CarteraImpl.class);
-	            
-	            CarteraImpl.setCartera(carteraCargada);
-	        }
-	    } catch (Exception e) {
-	        System.err.println("Error al cargar el fichero de gastos: " + e.getMessage());
-	        e.printStackTrace();
-	    }
-	}
 	
 	private List<GastoImpl> gastos;
 	
 	private RepositorioGastosImpl() {
-		cargarFichero();
 		
-		if(CarteraImpl.getCartera() != null && CarteraImpl.getCartera().getGastos() != null) {
-			this.gastos = (List<GastoImpl>) CarteraImpl.getCartera().getGastos();
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getGastos() != null) {
+			this.gastos = (List<GastoImpl>) BD.getGastos();
 		}
 		else {
 			this.gastos = new ArrayList<GastoImpl>();
@@ -79,7 +48,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	
 	@Override
-	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
+	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
 		return gastos.stream()
 				.filter(f -> meses == null || meses.isEmpty() || meses.contains(f.getFecha().getMonth()))
 				.filter(f -> fechaInicio == null || !f.getFecha().isBefore(fechaInicio))
@@ -91,7 +60,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void borrarGasto(GastoImpl gasto) {
 		gastos.remove(gasto);
-		guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
@@ -102,25 +71,25 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void añadirGasto(GastoImpl gasto) {
 		gastos.add(gasto); 
-		guardarFichero(); 
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
 		gasto.setCantidad(precio);
-		guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		gasto.setFecha(fecha);
-		guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
-	public void cambiarCategoriaGasto(GastoImpl gasto, CategoriaImpl categoriaImpl) {
-		gasto.setCategoria(categoriaImpl);
-		guardarFichero();
+	public void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria) {
+		gasto.setCategoria(categoria);
+		BD.guardarFichero();
 	}
 	
 

@@ -1,11 +1,12 @@
 package umu.tds.gestor.repository.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.Categoria;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.RepositorioAlertas;
 
@@ -21,7 +22,7 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 		return instancia;
 	}
 	
-	private List<Alerta> alertas;
+	private List<Alerta> alertas = new ArrayList<>();
 	
 	@Override
 	public List<? extends Alerta> getAlertas(){
