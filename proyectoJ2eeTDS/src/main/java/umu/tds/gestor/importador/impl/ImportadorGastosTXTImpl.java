@@ -12,7 +12,7 @@ import java.util.List;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.importador.ImportadorGastos;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.Gasto;
 
@@ -70,7 +70,7 @@ public class ImportadorGastosTXTImpl extends ImportadorGastos {
 					
 					//Guardamos las categorias y gastos temporalmente para crearlas al leer todo el fichero
 					categoriasLeidas.add(this.categoria);
-					CategoriaImpl cat = new CategoriaImpl(this.categoria);
+					Categoria cat = new Categoria(this.categoria);
 					Gasto gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
 					gastosValidos.add(gastoTemporal);
 					
