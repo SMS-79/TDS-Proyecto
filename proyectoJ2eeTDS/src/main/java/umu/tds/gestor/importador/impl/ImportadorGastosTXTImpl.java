@@ -71,7 +71,7 @@ public class ImportadorGastosTXTImpl extends ImportadorGastos {
 					//Guardamos las categorias y gastos temporalmente para crearlas al leer todo el fichero
 					categoriasLeidas.add(this.categoria);
 					CategoriaImpl cat = new CategoriaImpl(this.categoria);
-					GastoImpl gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
+					Gasto gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
 					gastosValidos.add(gastoTemporal);
 					
 				} catch (DateTimeParseException e) {

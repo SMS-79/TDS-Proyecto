@@ -12,6 +12,7 @@ import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.importador.ImportadorGastos;
 
 
@@ -26,7 +27,8 @@ public class ImportadorGastosCSVImpl extends ImportadorGastos {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy H:mm");
 		
 		//Lista temporal de gastos mientras leemos el fichero
-		List<GastoImpl> gastosValidos = new ArrayList<>();
+		List<Gasto> gastosValidos = new ArrayList<>();
+		List<String> categoriasLeidas = new ArrayList<>();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			
@@ -72,8 +74,9 @@ public class ImportadorGastosCSVImpl extends ImportadorGastos {
 					
 					//TODO: Crear categoria si no existe. Si existe, no crearla
 					//Usamos subcategoria porque creo que tiene mas sentido, pero se puede cambiar
+					categoriasLeidas.add(this.subcategoria);
 					CategoriaImpl cat = new CategoriaImpl(this.subcategoria);
-					GastoImpl gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
+					Gasto gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
 					gastosValidos.add(gastoTemporal);
 					
 				} catch (DateTimeParseException e) {
@@ -88,8 +91,11 @@ public class ImportadorGastosCSVImpl extends ImportadorGastos {
 			}
 			
 			ControladorGestion controlador = Configuracion.getInstancia().getControladorGestion();
-			for(GastoImpl g : gastosValidos) {
+			for(Gasto g : gastosValidos) {
 				controlador.crearGasto(g.getCategoria(), g.getFecha(), g.getCantidad());
+			}
+			for(String cat : categoriasLeidas) {
+				controlador.crearCategoria(cat);
 			}
 
 		} catch (IOException e) {
