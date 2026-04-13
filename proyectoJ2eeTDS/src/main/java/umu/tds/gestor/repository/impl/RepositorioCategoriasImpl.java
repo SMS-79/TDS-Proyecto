@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import umu.tds.gestor.modelo.impl.CarteraImpl;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioCategorias;
@@ -18,7 +17,7 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 	
 	private static RepositorioCategoriasImpl instancia = null;
 	
-	private CarteraImpl cartera = CarteraImpl.getCartera();
+	private BaseDeDatosImpl BD = BaseDeDatosImpl.getBD();
 	
 	public static RepositorioCategoriasImpl getInstancia() {
 		if (instancia == null) {
@@ -31,8 +30,12 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 	
 	public RepositorioCategoriasImpl() {
 		
-		if(CarteraImpl.getCartera() != null && CarteraImpl.getCartera().getCategorias() != null) {
-			this.categorias = (List<CategoriaImpl>) CarteraImpl.getCartera().getCategorias();
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getCategorias() != null) {
+			this.categorias = (List<CategoriaImpl>) BD.getCategorias();
 		}
 		else {
 			this.categorias = new ArrayList<CategoriaImpl>();
@@ -60,7 +63,7 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 	public void aniadirCategoria(CategoriaImpl categoria) {
 		if(!categorias.contains(categoria)) {
 			categorias.add(categoria);	
-			cartera.guardarFichero();
+			BD.guardarFichero();
 		}
 	}
 
