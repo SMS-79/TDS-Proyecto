@@ -41,8 +41,8 @@ public class BarraMenuViewController {
 		File file = Configuracion.getInstancia().getSceneManager().mostrarSelectorFicheroGastos();
 
 		if (file != null) {
-			// TODO: Esto creo que puede estar violando algún patrón
-			Configuracion.getInstancia().getControladorGestion().importarGastosCSV(file.getAbsolutePath());
+
+			Configuracion.getInstancia().getControladorGestion().importarGastos(file.getAbsolutePath());
 			
 			// Volvemos a mostrar la tabla para actualizarla
 			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
