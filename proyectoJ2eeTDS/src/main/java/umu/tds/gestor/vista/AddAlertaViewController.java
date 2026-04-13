@@ -17,7 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.Intervalo;
 
 
@@ -37,7 +37,7 @@ public class AddAlertaViewController {
     private TableColumn<Alerta, Intervalo> colNombre; 
 
     @FXML
-    private TableColumn<Alerta, CategoriaImpl> colCategoria; 
+    private TableColumn<Alerta, Categoria> colCategoria; 
 
     @FXML
     private TableColumn<Alerta, Double> colLimite;
@@ -46,7 +46,7 @@ public class AddAlertaViewController {
     private ComboBox<String> comboTipo; 
 
     @FXML
-    private ComboBox<CategoriaImpl> comboCategoria; 
+    private ComboBox<Categoria> comboCategoria; 
 
     @FXML
     private TextField campoLimite; 
@@ -103,7 +103,7 @@ public class AddAlertaViewController {
     private void crearAlerta() {
         try {
             String tipo = comboTipo.getValue();
-            CategoriaImpl categoria = comboCategoria.getValue(); 
+            Categoria categoria = comboCategoria.getValue(); 
             double limite = Double.parseDouble(campoLimite.getText());
 
             if (tipo == null || campoLimite.getText().isEmpty()) {

@@ -49,15 +49,12 @@ private static BaseDeDatosImpl BD = null;
 		this.categorias = categorias;
 		this.alertas = alertas;
 		this.cuentas = cuentas; 
-		
-		
-		
 	}
 	
 	
 	@Override
 	public void cargarFichero(){
-		System.out.println("haciendolo");
+	
 		try {
 			fichero = new File("gastos.json");
 	        if (fichero.exists()) {
