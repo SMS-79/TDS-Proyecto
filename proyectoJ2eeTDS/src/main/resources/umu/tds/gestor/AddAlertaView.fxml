@@ -20,7 +20,7 @@
               <columns>
                 <TableColumn text="Alertas existentes">
                    <columns>
-                      <TableColumn fx:id="colNombre" prefWidth="90.0" text="Nombre" />
+                      <TableColumn fx:id="colNombre" prefWidth="90.0" text="Tipo" />
                       <TableColumn fx:id="colCategoria" prefWidth="130.0" text="Categoría" />
                       <TableColumn fx:id="colLimite" prefWidth="80.0" text="Límite" />
                    </columns>

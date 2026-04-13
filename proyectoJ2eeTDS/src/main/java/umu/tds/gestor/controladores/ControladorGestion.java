@@ -88,7 +88,7 @@ public class ControladorGestion {
 	
 	public void crearAlerta(Categoria categoria, double limite, Intervalo intervalo) {
 		
-		repAlertas.añadirAlerta(gestorAlertas.crearAlerta(limite, intervalo));
+		repAlertas.añadirAlerta(gestorAlertas.crearAlerta(categoria ,limite, intervalo));
 		
 	}
 	
