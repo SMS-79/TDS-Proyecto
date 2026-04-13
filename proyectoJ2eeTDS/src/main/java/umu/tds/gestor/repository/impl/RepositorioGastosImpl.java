@@ -10,7 +10,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import umu.tds.gestor.modelo.impl.CarteraImpl;
 import umu.tds.gestor.modelo.impl.CategoriaImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioGastos;
@@ -19,7 +18,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	private static RepositorioGastosImpl instancia = null;
 	
-	private CarteraImpl cartera = CarteraImpl.getCartera();
+	private BaseDeDatosImpl BD = BaseDeDatosImpl.getBD();
 	
 	public static RepositorioGastosImpl getInstancia() {
 		if (instancia == null) {
@@ -34,8 +33,12 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	private RepositorioGastosImpl() {
 		
-		if(CarteraImpl.getCartera() != null && CarteraImpl.getCartera().getGastos() != null) {
-			this.gastos = (List<GastoImpl>) CarteraImpl.getCartera().getGastos();
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getGastos() != null) {
+			this.gastos = (List<GastoImpl>) BD.getGastos();
 		}
 		else {
 			this.gastos = new ArrayList<GastoImpl>();
@@ -57,7 +60,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void borrarGasto(GastoImpl gasto) {
 		gastos.remove(gasto);
-		CarteraImpl.getCartera().guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
@@ -68,25 +71,25 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	@Override
 	public void añadirGasto(GastoImpl gasto) {
 		gastos.add(gasto); 
-		cartera.guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
 		gasto.setCantidad(precio);
-		cartera.guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		gasto.setFecha(fecha);
-		cartera.guardarFichero();
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void cambiarCategoriaGasto(GastoImpl gasto, CategoriaImpl categoriaImpl) {
 		gasto.setCategoria(categoriaImpl);
-		cartera.guardarFichero();
+		BD.guardarFichero();
 	}
 	
 
