@@ -30,7 +30,7 @@ public class AlertaMensual extends Alerta {
 	}
 	
 	// Constructor con categoría
-	public AlertaMensual(CategoriaImpl c, double lim) {
+	public AlertaMensual(Categoria c, double lim) {
 		super(c, lim);
 	}
 	

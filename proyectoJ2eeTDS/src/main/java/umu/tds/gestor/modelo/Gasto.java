@@ -2,13 +2,13 @@ package umu.tds.gestor.modelo;
 
 import java.time.LocalDate;
 
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 
 public interface Gasto {
 
-	CategoriaImpl getCategoria();
+	Categoria getCategoria();
 	
-	void setCategoria(CategoriaImpl categoria);
+	void setCategoria(Categoria categoria);
 	
 	LocalDate getFecha();
 	

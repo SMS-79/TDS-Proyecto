@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.BaseDeDatos;
@@ -28,7 +28,7 @@ private static BaseDeDatosImpl BD = null;
 	@JsonProperty("gastos")
 	private List<GastoImpl> gastos;
 	@JsonProperty("categorias")
-	private List<CategoriaImpl> categorias; 
+	private List<Categoria> categorias; 
 	@JsonProperty("alertas")
 	private List<Alerta> alertas;
 	@JsonProperty("cuentas")
@@ -38,11 +38,11 @@ private static BaseDeDatosImpl BD = null;
 	
 	
 	private BaseDeDatosImpl() {
-		this(new ArrayList<GastoImpl>(), new ArrayList<CategoriaImpl>(), new ArrayList<Alerta>(), new ArrayList<CuentaGastoImpl>());
+		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<CuentaGastoImpl>());
 	}
 	
 	private BaseDeDatosImpl(List<GastoImpl> gastos, 
-						List<CategoriaImpl> categorias,
+						List<Categoria> categorias,
 						List<Alerta> alertas,
 						List<CuentaGastoImpl> cuentas) {
 		this.gastos = gastos; 
@@ -97,11 +97,11 @@ private static BaseDeDatosImpl BD = null;
 		this.gastos = gastos;
 	}
 
-	public List<CategoriaImpl> getCategorias() {
+	public List<Categoria> getCategorias() {
 		return categorias;
 	}
 
-	public void setCategorias(List<CategoriaImpl> categorias) {
+	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
 

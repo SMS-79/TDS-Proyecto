@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioGastos;
 
@@ -48,7 +48,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	
 	
 	@Override
-	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends CategoriaImpl> categorias) {
+	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
 		return gastos.stream()
 				.filter(f -> meses == null || meses.isEmpty() || meses.contains(f.getFecha().getMonth()))
 				.filter(f -> fechaInicio == null || !f.getFecha().isBefore(fechaInicio))
@@ -87,8 +87,8 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	}
 	
 	@Override
-	public void cambiarCategoriaGasto(GastoImpl gasto, CategoriaImpl categoriaImpl) {
-		gasto.setCategoria(categoriaImpl);
+	public void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria) {
+		gasto.setCategoria(categoria);
 		BD.guardarFichero();
 	}
 	

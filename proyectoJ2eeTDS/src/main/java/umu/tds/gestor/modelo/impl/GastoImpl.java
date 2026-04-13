@@ -19,7 +19,7 @@ public class GastoImpl implements Gasto{
 	@JsonProperty("id_gastos")
 	private UUID idGasto; 
 	
-	private CategoriaImpl categoria; 
+	private Categoria categoria; 
 	private LocalDate fecha; 
 	private double cantidad; 
 	
@@ -30,7 +30,7 @@ public class GastoImpl implements Gasto{
 		
 	}
 	
-	public GastoImpl(CategoriaImpl categoria, LocalDate fecha, double cantidad) {
+	public GastoImpl(Categoria categoria, LocalDate fecha, double cantidad) {
 		idGasto = UUID.randomUUID(); 
 		if (cantidad < 0) {
 			throw new IllegalArgumentException("La cantidad debe de ser postiva.");
@@ -50,7 +50,7 @@ public class GastoImpl implements Gasto{
 		return this.idGasto;
 	}
 	
-	public CategoriaImpl getCategoria() {
+	public Categoria getCategoria() {
 		return categoria; 
 	}
 	
@@ -75,7 +75,7 @@ public class GastoImpl implements Gasto{
 	}
 	
 
-	public void setCategoria(CategoriaImpl newCategoria) {
+	public void setCategoria(Categoria newCategoria) {
 		if(this.categoria == newCategoria) {
 			throw new IllegalArgumentException("La categoria no puede ser la misma."); 
 		}

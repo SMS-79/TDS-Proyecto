@@ -20,7 +20,7 @@ public class AlerNotifGestorImpl implements AlerNotifGestor {
 	
 	// Método factoría para crear alertas segun el tipo
 	@Override
-	public Alerta crearAlerta(CategoriaImpl cat, double lim, Intervalo tipo) {
+	public Alerta crearAlerta(Categoria cat, double lim, Intervalo tipo) {
 		Alerta a;
 		switch(tipo) {
 		case SEMANAL: 

@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 
 public class AddGastoViewPopUpController{
 
@@ -26,7 +26,7 @@ public class AddGastoViewPopUpController{
 	private ControladorGestion controlador;
 	
 	@FXML
-	private ChoiceBox<CategoriaImpl> boxCategorias;
+	private ChoiceBox<Categoria> boxCategorias;
 	
 	@FXML
 	private DatePicker fecha;
@@ -43,7 +43,7 @@ public class AddGastoViewPopUpController{
 	@FXML
 	private void crearGasto(ActionEvent event) throws IOException{
 		try {
-			CategoriaImpl cat = boxCategorias.getValue();
+			Categoria cat = boxCategorias.getValue();
 			LocalDate fechaGasto = fecha.getValue(); 
 			double precio = Double.parseDouble(cantidad.getText());
 			
@@ -65,7 +65,7 @@ public class AddGastoViewPopUpController{
 	
 	public void cargarCategoriasEnBox() {
 		if(controlador.getCategorias() != null) {
-			ObservableList<CategoriaImpl> listaModif = FXCollections.observableArrayList(controlador.getCategorias()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
+			ObservableList<Categoria> listaModif = FXCollections.observableArrayList(controlador.getCategorias()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
 			boxCategorias.setItems(listaModif);
 		}
 	}
