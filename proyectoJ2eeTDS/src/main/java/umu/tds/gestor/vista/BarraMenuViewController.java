@@ -1,5 +1,7 @@
 package umu.tds.gestor.vista;
 
+
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +43,19 @@ public class BarraMenuViewController {
 	@FXML
 	void abrirAcerca(ActionEvent e) {
 		log.info("Abriendo acerca de...");
+	}
+	
+	@FXML
+	private void irImportarGastos(ActionEvent e) {
+		File file = Configuracion.getInstancia().getSceneManager().mostrarSelectorFicheroGastos();
+
+		if (file != null) {
+
+			Configuracion.getInstancia().getControladorGestion().importarGastos(file.getAbsolutePath());
+			
+			// Volvemos a mostrar la tabla para actualizarla
+			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
+		}
 	}
 
 }

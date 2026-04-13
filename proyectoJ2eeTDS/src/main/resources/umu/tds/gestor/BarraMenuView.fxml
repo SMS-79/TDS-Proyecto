@@ -13,7 +13,8 @@
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#irAGastos" text="Lista de Gastos" />
 						<MenuItem mnemonicParsing="false" onAction="#irAddGasto" text="Añadir Gasto" />
-						<MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoría" />
+						<MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
+						<MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
 						<MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" /> 
 						<MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
 					</items>

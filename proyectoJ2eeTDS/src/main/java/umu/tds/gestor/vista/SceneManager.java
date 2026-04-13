@@ -1,11 +1,13 @@
 package umu.tds.gestor.vista;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
@@ -77,6 +79,16 @@ public class SceneManager {
 	
 	public void mostrarCreadorCategorias() {
 		cambiarVista("AddCategoriaView");
+	}
+	
+	public File mostrarSelectorFicheroGastos() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Seleccionar fichero para importar gastos");
+		fileChooser.getExtensionFilters().add(
+			new FileChooser.ExtensionFilter("Archivos de gastos", "*.csv", "*.txt")
+		);
+
+		return fileChooser.showOpenDialog(this.stage);
 	}
 	
 	public void mostrarAddAlerta(){

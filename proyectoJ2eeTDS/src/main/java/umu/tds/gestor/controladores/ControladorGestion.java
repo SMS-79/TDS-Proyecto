@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+import umu.tds.gestor.importador.ImportadorGastos;
+import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
+import umu.tds.gestor.importador.impl.ImportadorGastosTXTImpl;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
@@ -119,6 +122,21 @@ public class ControladorGestion {
 	
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		repGastos.cambiarFechaGasto(gasto, fecha); 
+	}
+	
+	public void importarGastos(String rutaFichero) {
+		ImportadorGastos importador = null;
+		String rutaMin = rutaFichero.toLowerCase();
+		//Aqui podria ser mejor usar una factoria, sacar la logica del if a un fichero a parte para crear el importador.
+		if (rutaMin.endsWith(".csv")) {
+			importador = new ImportadorGastosCSVImpl();
+		} else if (rutaMin.endsWith(".txt")) {
+			importador = new ImportadorGastosTXTImpl();
+		} else {
+			throw new IllegalArgumentException("Formato de fichero no soportado.");
+		}
+		
+		importador.leerFichero(rutaFichero);
 	}
 }
 
