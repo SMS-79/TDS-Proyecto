@@ -23,7 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class ListaGastosViewController {
@@ -53,7 +53,7 @@ public class ListaGastosViewController {
 	@FXML
 	private TableColumn<GastoImpl, UUID> colID;
 	@FXML
-	private TableColumn<GastoImpl, CategoriaImpl> colCategoria;
+	private TableColumn<GastoImpl, Categoria> colCategoria;
 	@FXML
 	private TableColumn<GastoImpl, LocalDate> colFecha;
 	@FXML
@@ -106,7 +106,7 @@ public class ListaGastosViewController {
 		
 		Button botonPulsado = (Button) evento.getSource();
 		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
-		List<? extends CategoriaImpl> categorias = null;
+		List<? extends Categoria> categorias = null;
 		
 		if(!categoriaFilter.getText().equals("")) {
 			categorias = controlador.filtrarCategoria(categoriaFilter.getText());

@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioCategorias;
 
@@ -35,32 +35,32 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 		}
 		
 		if(BD.getCategorias() != null) {
-			this.categorias = (List<CategoriaImpl>) BD.getCategorias();
+			this.categorias = (List<Categoria>) BD.getCategorias();
 		}
 		else {
-			this.categorias = new ArrayList<CategoriaImpl>();
+			this.categorias = new ArrayList<Categoria>();
 		}
 		
 	}
 	
 	
 	
-	private List<CategoriaImpl> categorias = new ArrayList<CategoriaImpl>(); 
+	private List<Categoria> categorias = new ArrayList<Categoria>(); 
 	
 	@Override
-	public List<? extends CategoriaImpl> getCategorias() {
+	public List<? extends Categoria> getCategorias() {
 		return Collections.unmodifiableList(categorias);
 	}
 
 	@Override
-	public List<? extends CategoriaImpl> filtrarCategorias(String categoriaId) {
+	public List<? extends Categoria> filtrarCategorias(String categoriaId) {
 		return categorias.stream()
 				.filter(c -> c.getNombre().startsWith(categoriaId))
 				.toList();
 	}
 
 	@Override
-	public void aniadirCategoria(CategoriaImpl categoria) {
+	public void aniadirCategoria(Categoria categoria) {
 		if(!categorias.contains(categoria)) {
 			categorias.add(categoria);	
 			BD.guardarFichero();
