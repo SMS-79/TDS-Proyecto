@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
-import umu.tds.gestor.modelo.impl.CategoriaImpl;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.importador.ImportadorGastos;
@@ -75,7 +75,7 @@ public class ImportadorGastosCSVImpl extends ImportadorGastos {
 					//TODO: Crear categoria si no existe. Si existe, no crearla
 					//Usamos subcategoria porque creo que tiene mas sentido, pero se puede cambiar
 					categoriasLeidas.add(this.subcategoria);
-					CategoriaImpl cat = new CategoriaImpl(this.subcategoria);
+					Categoria cat = new Categoria(this.subcategoria);
 					Gasto gastoTemporal = new GastoImpl(cat, this.fecha, this.cantidad);
 					gastosValidos.add(gastoTemporal);
 					
