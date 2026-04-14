@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,10 +35,10 @@ public class AddAlertaViewController {
     private TableView<Alerta> tablaAlertas;
 
     @FXML 
-    private TableColumn<Alerta, Intervalo> colNombre; 
+    private TableColumn<Alerta, String> colNombre; 
 
     @FXML
-    private TableColumn<Alerta, Categoria> colCategoria; 
+    private TableColumn<Alerta, String> colCategoria; 
 
     @FXML
     private TableColumn<Alerta, Double> colLimite;
@@ -57,8 +58,24 @@ public class AddAlertaViewController {
     public void initialize(){
         this.controlador = Configuracion.getInstancia().getControladorGestion();
         
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("intervalo"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colNombre.setCellValueFactory(cellData -> {
+        	Intervalo intervalo = cellData.getValue().getIntervalo();
+        	if (intervalo != null) {
+        		String texto = intervalo.toString().toLowerCase();
+        		texto = texto.substring(0,1).toUpperCase() + texto.substring(1);
+        		return new SimpleStringProperty(texto);
+        	}
+        	return new SimpleStringProperty("");
+        });
+        colCategoria.setCellValueFactory(cellData ->{
+        	Categoria categoria = cellData.getValue().getCategoria();
+        	if (categoria != null && categoria.getNombre() != null) {
+        		return new SimpleStringProperty(categoria.getNombre());
+        	}
+        	else {
+        		return new SimpleStringProperty("Sin categoria");
+        	}
+        });
         colLimite.setCellValueFactory(new PropertyValueFactory<>("limite"));
 
         comboFiltro.setItems(FXCollections.observableArrayList("Todas", "Mensual", "Semanal"));
@@ -70,7 +87,7 @@ public class AddAlertaViewController {
         }
 
         cargarDatosEnTabla();
-
+        // Filtro que se encarga de filtrar la lista de las alertas
         comboFiltro.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             filtrarTabla(newVal);
         });
@@ -99,29 +116,42 @@ public class AddAlertaViewController {
             tablaAlertas.setItems(filtradas);
     }
 
-    @FXML
-    private void crearAlerta() {
-        try {
-            String tipo = comboTipo.getValue();
-            Categoria categoria = comboCategoria.getValue(); 
-            double limite = Double.parseDouble(campoLimite.getText());
+        @FXML
+        private void crearAlerta() {
+            try {
+                String tipo = comboTipo.getValue();
+                Categoria categoria = comboCategoria.getValue(); 
+                String limiteStr = campoLimite.getText();
 
-            if (tipo == null || campoLimite.getText().isEmpty()) {
-                System.err.println("Faltan campos obligatorios");
-                return;
+                if (tipo == null || limiteStr == null || limiteStr.isEmpty()) {
+                    System.err.println("Faltan campos obligatorios");
+                    return;
+                }
+
+                double limite = Double.parseDouble(limiteStr);
+
+                Intervalo intervalo = tipo.equals("Mensual") ? Intervalo.MENSUAL : Intervalo.SEMANAL;
+                
+                if (categoria != null) {
+                    controlador.crearAlerta(categoria, limite, intervalo);
+                } 
+                else {
+                    controlador.crearAlerta(limite, intervalo);
+                }
+
+                cargarDatosEnTabla();
+                
+                
+                String filtroActual = comboFiltro.getValue();
+                filtrarTabla(filtroActual);
+                
+                tablaAlertas.refresh();
+                campoLimite.clear();
+                System.out.println("Alerta " + tipo + " creada correctamente.");
+                
+                Configuracion.getInstancia().getSceneManager().mostrarAddAlerta(); // Cargamos la vista nuevamente desde el SceneManager para que los promtText se carguen en los desplegables
+            } catch (NumberFormatException e) {
+                System.err.println("El límite debe ser un número válido. (Ej: 150.50)");
             }
-
-            cargarDatosEnTabla();
-            
-           
-            campoLimite.clear();
-            comboTipo.getSelectionModel().clearSelection();
-            comboCategoria.getSelectionModel().clearSelection();
-
-            System.out.println("Alerta " + tipo + " creada correctamente.");
-
-        } catch (NumberFormatException e) {
-            System.err.println("El límite debe ser un número válido.");
         }
-    }
 }
