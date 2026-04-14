@@ -87,7 +87,7 @@ public class AddAlertaViewController {
         }
 
         cargarDatosEnTabla();
-
+        // Filtro que se encarga de filtrar la lista de las alertas
         comboFiltro.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             filtrarTabla(newVal);
         });
@@ -141,24 +141,15 @@ public class AddAlertaViewController {
 
                 cargarDatosEnTabla();
                 
+                
                 String filtroActual = comboFiltro.getValue();
                 filtrarTabla(filtroActual);
                 
                 tablaAlertas.refresh();
-                
-                
-
                 campoLimite.clear();
-                comboTipo.getSelectionModel().clearSelection();
-                comboTipo.setValue(null);
-                comboCategoria.getSelectionModel().clearSelection();
-                comboCategoria.setValue(null);
-                comboTipo.setPromptText("Tipo (Mensual/Semanal)");
-                comboCategoria.setPromptText("Categoría (Opcional)");
-                
-                tablaAlertas.requestFocus(); // Se cambia el foco para que el promt se printee correctamente 
                 System.out.println("Alerta " + tipo + " creada correctamente.");
-
+                
+                Configuracion.getInstancia().getSceneManager().mostrarAddAlerta(); // Cargamos la vista nuevamente desde el SceneManager para que los promtText se carguen en los desplegables
             } catch (NumberFormatException e) {
                 System.err.println("El límite debe ser un número válido. (Ej: 150.50)");
             }
