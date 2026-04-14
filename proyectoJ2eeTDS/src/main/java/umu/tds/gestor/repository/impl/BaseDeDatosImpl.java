@@ -2,6 +2,7 @@ package umu.tds.gestor.repository.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,6 +12,7 @@ import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
+import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.BaseDeDatos;
 
 public class BaseDeDatosImpl implements BaseDeDatos {
@@ -31,6 +33,8 @@ private static BaseDeDatosImpl BD = null;
 	private List<Categoria> categorias; 
 	@JsonProperty("alertas")
 	private List<Alerta> alertas;
+	@JsonProperty("notificaciones")
+	private List<Notificacion> notificaciones;
 	@JsonProperty("cuentas")
 	private List<CuentaGastoImpl> cuentas;
 	
@@ -38,16 +42,17 @@ private static BaseDeDatosImpl BD = null;
 	
 	
 	private BaseDeDatosImpl() {
-		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<CuentaGastoImpl>());
+		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<Notificacion>(), new ArrayList<CuentaGastoImpl>());
 	}
 	
 	private BaseDeDatosImpl(List<GastoImpl> gastos, 
 						List<Categoria> categorias,
-						List<Alerta> alertas,
+						List<Alerta> alertas, List<Notificacion> notificaciones,
 						List<CuentaGastoImpl> cuentas) {
 		this.gastos = gastos; 
 		this.categorias = categorias;
 		this.alertas = alertas;
+		this.notificaciones = notificaciones;
 		this.cuentas = cuentas; 
 	}
 	
@@ -87,7 +92,7 @@ private static BaseDeDatosImpl BD = null;
 	}
 
 	public List<GastoImpl> getGastos() {
-		return gastos;
+		return this.gastos;
 	}
 
 	public void setGastos(List<GastoImpl> gastos) {
@@ -95,7 +100,7 @@ private static BaseDeDatosImpl BD = null;
 	}
 
 	public List<Categoria> getCategorias() {
-		return categorias;
+		return this.categorias;
 	}
 
 	public void setCategorias(List<Categoria> categorias) {
@@ -103,15 +108,23 @@ private static BaseDeDatosImpl BD = null;
 	}
 
 	public List<Alerta> getAlertas() {
-		return alertas;
+		return this.alertas;
 	}
 
 	public void setAlertas(List<Alerta> alertas) {
 		this.alertas = alertas;
 	}
 
+	public List<Notificacion> getNotificaciones() {
+		return this.notificaciones;
+	}
+
+	public void setNotificaciones(List<Notificacion> notificaciones) {
+		this.notificaciones = notificaciones;
+	}
+	
 	public List<CuentaGastoImpl> getCuentas() {
-		return cuentas;
+		return this.cuentas;
 	}
 
 	public void setCuentas(List<CuentaGastoImpl> cuentas) {

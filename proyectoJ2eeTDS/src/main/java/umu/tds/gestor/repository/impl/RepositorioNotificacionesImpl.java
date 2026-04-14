@@ -1,15 +1,19 @@
 package umu.tds.gestor.repository.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import umu.tds.gestor.modelo.impl.NotificacionImpl;
+import umu.tds.gestor.modelo.Alerta;
+import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.RepositorioNotificaciones;
 
 public class RepositorioNotificacionesImpl implements RepositorioNotificaciones {
 
-private static RepositorioNotificacionesImpl instancia = null;
+	private static RepositorioNotificacionesImpl instancia = null;
+
+	private BaseDeDatosImpl BD;
 	
 	public static RepositorioNotificacionesImpl getInstancia() {
 		if(instancia == null) {
@@ -18,15 +22,28 @@ private static RepositorioNotificacionesImpl instancia = null;
 		return instancia;
 	}
 	
-	private List<NotificacionImpl> notificaciones;
+	private List<Notificacion> notificaciones;
+	
+	public RepositorioNotificacionesImpl() {
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getAlertas() != null) {
+			this.notificaciones = (List<Notificacion>) BD.getNotificaciones();
+		}
+		else {
+			this.notificaciones = new ArrayList<Notificacion>();
+		}
+	}
 	
 	@Override
-	public List<? extends NotificacionImpl> getNotificaciones(){
+	public List<? extends Notificacion> getNotificaciones(){
 		return Collections.unmodifiableList(notificaciones);
 	}
 	
 	@Override
-	public NotificacionImpl filtrarNotificacion(UUID id) {
+	public Notificacion filtrarNotificacion(UUID id) {
 		return notificaciones.stream()
 				.filter(n -> n.getId().equals(id))
 				.findFirst()
@@ -35,8 +52,9 @@ private static RepositorioNotificacionesImpl instancia = null;
 	}
 	
 	@Override
-	public void añadirNotificacion(NotificacionImpl notif){
+	public void añadirNotificacion(Notificacion notif){
 		notificaciones.add(notif);
+		BD.guardarFichero();
 	}
 	
 	

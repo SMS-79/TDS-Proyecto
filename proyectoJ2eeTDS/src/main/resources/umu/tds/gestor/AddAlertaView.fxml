@@ -11,18 +11,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:controller="umu.tds.gestor.vista.AddAlertaViewController" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.AddAlertaViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" spacing="10.0">
+      <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
          <children>
-            <ComboBox fx:id="comboFiltro" maxWidth="1.7976931348623157E308" promptText="Seleccione filtro (Todas/Semanales/Mensuales)..." />
+            <ComboBox fx:id="comboFiltro" maxWidth="1.7976931348623157E308" />
             <TableView fx:id="tablaAlertas" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn text="Alertas existentes">
+                <TableColumn text="Alertas">
                    <columns>
                       <TableColumn fx:id="colNombre" prefWidth="90.0" text="Tipo" />
-                      <TableColumn fx:id="colCategoria" prefWidth="130.0" text="Categoría" />
-                      <TableColumn fx:id="colLimite" prefWidth="80.0" text="Límite" />
+                      <TableColumn fx:id="colCategoria" prefWidth="129.0" text="Categoría" />
+                      <TableColumn fx:id="colGastoRealizado" prefWidth="119.0" text="Gasto realizado" />
+                      <TableColumn fx:id="colLimite" prefWidth="74.0" text="Límite" />
                    </columns>
                 </TableColumn>
               </columns>
@@ -54,7 +55,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="0.0" />
                </VBox.margin>
             </TextField>
-            <Button onAction="#crearAlerta" mnemonicParsing="false" text="Crear alerta" VBox.vgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#crearAlerta" text="Crear alerta" VBox.vgrow="ALWAYS" />
          </children>
          <HBox.margin>
             <Insets top="70.0" />

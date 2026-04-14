@@ -41,6 +41,9 @@ public class AddAlertaViewController {
     private TableColumn<Alerta, String> colCategoria; 
 
     @FXML
+    private TableColumn<Alerta, Double> colGastoRealizado; 
+
+    @FXML
     private TableColumn<Alerta, Double> colLimite;
 
     @FXML
@@ -76,6 +79,9 @@ public class AddAlertaViewController {
         		return new SimpleStringProperty("Sin categoria");
         	}
         });
+        
+        colGastoRealizado.setCellValueFactory(new PropertyValueFactory<>("gastoRealizado"));
+        
         colLimite.setCellValueFactory(new PropertyValueFactory<>("limite"));
 
         comboFiltro.setItems(FXCollections.observableArrayList("Todas", "Mensual", "Semanal"));

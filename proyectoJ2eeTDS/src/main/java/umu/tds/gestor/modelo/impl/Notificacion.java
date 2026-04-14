@@ -6,24 +6,22 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import umu.tds.gestor.modelo.Notificacion;
-
 
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id_notif"
 )
 
-public class NotificacionImpl implements Notificacion {
+public class Notificacion {
 	
 	@JsonProperty("id_notif")
 	private UUID id = UUID.randomUUID();
 	
 	private String mensaje;
 	
-	public NotificacionImpl() {	}
+	public Notificacion() {	}
 	
-	public NotificacionImpl(String m) {
+	public Notificacion(String m) {
 		this.mensaje = m;
 	}
 
