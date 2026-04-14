@@ -27,6 +27,13 @@
     },
     "fecha" : [ 2026, 4, 15 ],
     "cantidad" : 500.0
+  }, {
+    "id_gastos" : "526b1977-9155-40b0-8ca5-fbe3cb60b41c",
+    "categoria" : {
+      "nombre" : "Alimentación"
+    },
+    "fecha" : [ 2026, 4, 15 ],
+    "cantidad" : 1201.0
   } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
@@ -45,6 +52,16 @@
     "activacion" : [ 2026, 4, 14 ],
     "intervalo" : "SEMANAL",
     "gasto_realizado" : 11500.0
+  }, {
+    "tipo" : "mensual",
+    "id_alert" : "ff453547-3a91-4ee7-83bf-2f94490f43ea",
+    "categoria" : {
+      "nombre" : "Alimentación"
+    },
+    "limite" : 1200.0,
+    "activacion" : [ 2026, 4, 14 ],
+    "intervalo" : "MENSUAL",
+    "gasto_realizado" : 1201.0
   } ],
   "notificaciones" : [ {
     "id_notif" : "67bb2627-f719-40b7-b908-18a4bdb6d6a5",
@@ -55,6 +72,9 @@
   }, {
     "id_notif" : "f975da24-bc13-4ad2-9549-c60e10bf518c",
     "mensaje" : "Limite semanal de 58.0€ superado. 11500.0€ gastados en total en la categoría Entretenimiento."
+  }, {
+    "id_notif" : "d0c39a3a-c1bc-4746-a2d9-db44eca7aebd",
+    "mensaje" : "Limite mensual de 1200.0€ superado. 1201.0€ gastados en total en la categoría Alimentación."
   } ],
   "cuentas" : [ ]
 }

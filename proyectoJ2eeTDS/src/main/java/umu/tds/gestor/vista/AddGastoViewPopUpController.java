@@ -11,12 +11,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.Categoria;
 
 public class AddGastoViewPopUpController{
@@ -55,12 +57,22 @@ public class AddGastoViewPopUpController{
 			Node source = (Node) event.getSource();
 			Stage stage = (Stage) source.getScene().getWindow();
 			stage.close();
+		} catch (LimiteAlertaException e){
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("¡Límite de Alerta Superado!");
+			alert.setHeaderText("Has superado uno o más límites de gasto");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 			
+			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
+			Node source = (Node) event.getSource();
+			Stage stage = (Stage) source.getScene().getWindow();
+			stage.close();
+	
 		} catch (IllegalArgumentException e) {
 			System.err.println("Error al crear el gasto: " + e.getMessage());
+	
 		}
-		
-		
 	}
 	
 	public void cargarCategoriasEnBox() {
