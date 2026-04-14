@@ -15,11 +15,12 @@ import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.Gasto;
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class ImportadorGastosTXTImpl extends ImportadorGastos {
 
 	@Override
-	public void leerFichero(String path) {
+	public void leerFichero(String path) throws LimiteAlertaException {
 		
 		String linea = "";
 		String separadorColumna = " - ";

@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import umu.tds.gestor.Configuracion;
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class BarraMenuViewController {
 
@@ -46,7 +47,7 @@ public class BarraMenuViewController {
 	}
 	
 	@FXML
-	private void irImportarGastos(ActionEvent e) {
+	private void irImportarGastos(ActionEvent e) throws LimiteAlertaException {
 		File file = Configuracion.getInstancia().getSceneManager().mostrarSelectorFicheroGastos();
 
 		if (file != null) {

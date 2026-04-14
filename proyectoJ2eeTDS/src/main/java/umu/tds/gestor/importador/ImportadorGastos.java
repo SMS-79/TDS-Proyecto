@@ -2,6 +2,8 @@ package umu.tds.gestor.importador;
 
 import java.time.LocalDate;
 
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
+
 public abstract class ImportadorGastos {
 	
 	protected LocalDate fecha;
@@ -15,6 +17,6 @@ public abstract class ImportadorGastos {
 	
 	protected ImportadorGastos() {}
 	
-	public abstract void leerFichero(String path);
+	public abstract void leerFichero(String path) throws LimiteAlertaException;
 
 }

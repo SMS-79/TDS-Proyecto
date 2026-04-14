@@ -65,26 +65,30 @@ public class ControladorGestion {
 	
 	
 	
-	public void crearGasto(Categoria categoria, LocalDate fecha, double precio ) {
+	public void crearGasto(Categoria categoria, LocalDate fecha, double precio ) throws LimiteAlertaException {
 		GastoImpl newGasto = new GastoImpl(categoria, fecha, precio); 
 		
 		
 		repGastos.añadirGasto(newGasto);
 		
-	
+		StringBuilder mensajesAlerta = new StringBuilder(); 
+		boolean saltaAlerta = false; 
 		
 		for(Alerta a : repAlertas.getAlertas()) {
 			if(a.getCategoria() == null || a.getCategoria().equals(categoria)) {
-				try{
+				try {
 					gestorAlertas.añadirGastoAlerta(a, newGasto);
-				}catch(LimiteAlertaException e) {
+					
+				} catch (LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
+					mensajesAlerta.append(e.getMessage()).append("\n");
+					saltaAlerta = true; 
 				}
 			}
-			
 		}
-		
-		
+		if (saltaAlerta) {
+			throw new LimiteAlertaException(mensajesAlerta.toString()); 
+		}
 	}
 	
 	public Categoria crearCategoria(String cat) {
@@ -106,7 +110,7 @@ public class ControladorGestion {
 		repNotif.añadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
 	
-	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
+	public void cambiarCantidadGasto(GastoImpl gasto, double precio) throws LimiteAlertaException {
 
 		for(Alerta a : repAlertas.getAlertas()) {
 			gestorAlertas.quitarGastoAlerta(a, gasto);
@@ -114,20 +118,31 @@ public class ControladorGestion {
 		
 		repGastos.cambiarCantidadGasto(gasto, precio); 
 		
+		StringBuilder mensajesAlerta = new StringBuilder(); 
+		boolean saltaAlerta = false; 
+		
 		for(Alerta a : repAlertas.getAlertas()) {
-			try{
-				gestorAlertas.añadirGastoAlerta(a, gasto);
-			}catch(LimiteAlertaException e) {
-				crearNotificacion(e.getMessage());
+			if(a.getCategoria() == null || a.getCategoria().equals(gasto.getCategoria())) {
+				try {
+					gestorAlertas.añadirGastoAlerta(a, gasto);
+					
+				} catch (LimiteAlertaException e) {
+					crearNotificacion(e.getMessage());
+					mensajesAlerta.append(e.getMessage()).append("\n");
+					saltaAlerta = true; 
+				}
 			}
 		}
+		if (saltaAlerta) {
+	        throw new LimiteAlertaException(mensajesAlerta.toString()); 
+	    }
 	}
 	
 	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
 		repGastos.cambiarFechaGasto(gasto, fecha); 
 	}
 	
-	public void importarGastos(String rutaFichero) {
+	public void importarGastos(String rutaFichero) throws LimiteAlertaException {
 		ImportadorGastos importador = null;
 		String rutaMin = rutaFichero.toLowerCase();
 		//Aqui podria ser mejor usar una factoria, sacar la logica del if a un fichero a parte para crear el importador.
