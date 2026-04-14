@@ -2,7 +2,7 @@ package umu.tds.gestor.modelo.impl;
 
 import umu.tds.gestor.modelo.AlerNotifGestor;
 import umu.tds.gestor.modelo.Alerta;
-import umu.tds.gestor.modelo.Notificacion;
+import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class AlerNotifGestorImpl implements AlerNotifGestor {
@@ -56,7 +56,7 @@ public class AlerNotifGestorImpl implements AlerNotifGestor {
 	// Función para crear Notificaciones
 	@Override
 	public Notificacion crearNotificacion(String mensaje) {
-		return new NotificacionImpl(mensaje);
+		return new Notificacion(mensaje);
 	}
 
 }

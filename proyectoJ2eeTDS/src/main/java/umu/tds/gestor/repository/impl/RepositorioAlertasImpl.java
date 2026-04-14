@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.Categoria;
+import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.repository.RepositorioAlertas;
 
@@ -15,6 +16,8 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 	// Patron Singleton
 	private static RepositorioAlertasImpl instancia = null;
 	
+	private BaseDeDatosImpl BD;
+	
 	public static RepositorioAlertasImpl getInstancia() {
 		if(instancia == null) {
 			instancia = new RepositorioAlertasImpl();
@@ -22,7 +25,20 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 		return instancia;
 	}
 	
-	private List<Alerta> alertas = new ArrayList<>();
+	private List<Alerta> alertas;
+	
+	public RepositorioAlertasImpl() {
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getAlertas() != null) {
+			this.alertas = (List<Alerta>) BD.getAlertas();
+		}
+		else {
+			this.alertas = new ArrayList<Alerta>();
+		}
+	}
 	
 	@Override
 	public List<? extends Alerta> getAlertas(){
@@ -42,11 +58,13 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 	@Override
 	public void añadirAlerta(Alerta alerta) {
 		alertas.add(alerta);
+		BD.guardarFichero();
 	}
 	
 	@Override
 	public void borrarAlerta(Alerta alerta) {
 		alertas.remove(alerta);
+		BD.guardarFichero();
 	}
 
 	

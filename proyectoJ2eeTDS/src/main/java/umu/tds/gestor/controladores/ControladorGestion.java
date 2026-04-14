@@ -14,16 +14,20 @@ import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
+import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 import umu.tds.gestor.repository.impl.RepositorioCategoriasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
+import umu.tds.gestor.repository.impl.RepositorioNotificacionesImpl;
 
 public class ControladorGestion {
 
 	private RepositorioGastosImpl repGastos = RepositorioGastosImpl.getInstancia();
 	private RepositorioCategoriasImpl repCategorias = RepositorioCategoriasImpl.getInstancia();
 	private RepositorioAlertasImpl repAlertas = RepositorioAlertasImpl.getInstancia();
+	private RepositorioNotificacionesImpl repNotif = RepositorioNotificacionesImpl.getInstancia();
 	private AlerNotifGestorImpl gestorAlertas = AlerNotifGestorImpl.getInstancia();
+	
 	
 	public ControladorGestion() {
 		crearCategoria("Alimentación");
@@ -55,21 +59,22 @@ public class ControladorGestion {
 		return repAlertas.getAlertas(); 
 	}
 	
+	public List<? extends Notificacion> getNotifs(){
+		return repNotif.getNotificaciones();
+	}
+	
 	
 	
 	public void crearGasto(Categoria categoria, LocalDate fecha, double precio ) {
 		GastoImpl newGasto = new GastoImpl(categoria, fecha, precio); 
 		
-		// String idGasto = UUID.randomUUID().toString(); 
-		
-		// newGasto.setIdGasto(idGasto); 
 		
 		repGastos.añadirGasto(newGasto);
 		
 	
-		/*
+		
 		for(Alerta a : repAlertas.getAlertas()) {
-			if(a.getCategoria() == null || a.getCategoria() == categoria) {
+			if(a.getCategoria() == null || a.getCategoria().equals(categoria)) {
 				try{
 					gestorAlertas.añadirGastoAlerta(a, newGasto);
 				}catch(LimiteAlertaException e) {
@@ -78,7 +83,7 @@ public class ControladorGestion {
 			}
 			
 		}
-		*/
+		
 		
 	}
 	
@@ -90,9 +95,7 @@ public class ControladorGestion {
 	
 	
 	public void crearAlerta(Categoria categoria, double limite, Intervalo intervalo) {
-		
 		repAlertas.añadirAlerta(gestorAlertas.crearAlerta(categoria ,limite, intervalo));
-		
 	}
 	
 	public void crearAlerta(double limite, Intervalo intervalo) {
@@ -100,7 +103,7 @@ public class ControladorGestion {
 	}
 	
 	public void crearNotificacion(String mensaje){
-		gestorAlertas.crearNotificacion(mensaje);
+		repNotif.añadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
 	
 	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {

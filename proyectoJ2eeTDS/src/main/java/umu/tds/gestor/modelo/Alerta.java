@@ -30,9 +30,12 @@ public abstract class Alerta {
 	@JsonProperty("id_alert")
 	protected UUID id = UUID.randomUUID();
 	
+	@JsonProperty("gasto_realizado")
+	protected double gastoRealizado;
+	
 	protected Optional<Categoria> categoria;
 	protected double limite;
-	protected double gastoRealizado;
+	
 	protected LocalDate activacion;
 	
 	// Constructor vacío para la persistencia

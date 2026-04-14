@@ -18,7 +18,6 @@ public class AlertaSemanal extends Alerta {
 	
 	private final Intervalo intervalo = Intervalo.SEMANAL;
 	
-	
 	// Constructor vacío para la persistencia
 	public AlertaSemanal() { super(); }
 	

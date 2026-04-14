@@ -16,9 +16,6 @@ import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class AlertaMensual extends Alerta {
 	
-	@JsonProperty("id_alert")
-	private String id;
-	
 	private final Intervalo intervalo = Intervalo.MENSUAL;
 	
 	// Constructor vacío para la persistencia
