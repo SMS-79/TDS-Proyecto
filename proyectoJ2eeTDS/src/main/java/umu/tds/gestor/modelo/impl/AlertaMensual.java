@@ -50,16 +50,16 @@ public class AlertaMensual extends Alerta {
 			// Comprobación de categoría
 			if(this.categoria.isEmpty() || this.categoria.orElse(null).equals(g.getCategoria())) {
 				gastoRealizado += g.getCantidad();
+				// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
+				if(gastoRealizado >= limite) {
+					String mensaje = "Limite mensual de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
+					if(this.categoria.isPresent()) {
+						mensaje += " en la categoría " + this.categoria.get().getNombre(); 
+					}	
+					mensaje += '.';
+					throw new LimiteAlertaException(mensaje);
+				}
 			}
-		}	
-		// Comprobación de gasto limite y generacion de alerta para creacion de Notificacion
-		if(gastoRealizado >= limite) {
-			String mensaje = "Limite mensual de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
-			if(this.categoria.isPresent()) {
-				mensaje += " en la categoría " + this.categoria.get().getNombre(); 
-			}	
-			mensaje += '.';
-			throw new LimiteAlertaException(mensaje);
 		}
 	}
 	
