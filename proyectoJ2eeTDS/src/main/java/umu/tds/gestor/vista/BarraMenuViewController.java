@@ -35,6 +35,11 @@ public class BarraMenuViewController {
 	private void irAddAlerta() throws IOException{
 		Configuracion.getInstancia().getSceneManager().mostrarAddAlerta();
 	}
+	
+	@FXML
+	private void irNotifList() throws IOException{
+		Configuracion.getInstancia().getSceneManager().mostrarNotifList();
+	}
 
 	@FXML
 	public void salir(ActionEvent e) {
