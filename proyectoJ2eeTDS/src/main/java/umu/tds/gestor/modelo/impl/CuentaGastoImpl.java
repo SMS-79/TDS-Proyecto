@@ -8,8 +8,10 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javafx.util.Pair;
 import umu.tds.gestor.modelo.CuentaGasto;
@@ -26,10 +28,14 @@ public class CuentaGastoImpl implements CuentaGasto {
 	@JsonProperty("id_cuenta")
 	private UUID ID;
 	
-	//Tupla que asocia un nombre a un gasto. La persona que mete el gasto principal
-	private Pair<String, Gasto> gasto;
+	@JsonProperty
+	private String nombrePagador;
+	@JsonProperty
+	@JsonDeserialize(as = GastoImpl.class) // Importante para que sepa qué clase concreta de Gasto crear
+	private Gasto gastoAsociado;
+	
 	//Distribuiciones es para porcentajes, saldos es para valores enteros como tal
-	private Map<String, Double> distribuiciones;
+	private Map<String, Double> distribuciones;
 	private Map<String, Double> saldos;
 	private List<String> participantes;
 	
@@ -43,8 +49,9 @@ public class CuentaGastoImpl implements CuentaGasto {
 			throw new IllegalArgumentException("Se debe añadir al menos una persona a la cuenta");
 		}
 		
-		this.gasto = new Pair<String, Gasto>(null, null);
-		this.distribuiciones = new HashMap<String, Double>();
+		this.nombrePagador = null;
+		this.gastoAsociado = null;
+		this.distribuciones = new HashMap<String, Double>();
 		//El saldo de cada persona es un double y no un gasto, ya que puede ser -20, +10, etc, no necesita mas informacion
 		this.saldos = new HashMap<String, Double>();
 		//Se hace asi para que sea modificable
@@ -54,12 +61,24 @@ public class CuentaGastoImpl implements CuentaGasto {
 		
 		for (String p : this.participantes) {
 			//100.0 entre la longitud de la lista para sacar porcentajes iguales
-			this.distribuiciones.put(p, 100.0/this.participantes.size());
+			this.distribuciones.put(p, 100.0/this.participantes.size());
 			//El saldo incial de cada persona será 0
 			this.saldos.put(p, 0.0);
 		}
 	}
-	
+
+	public void setSaldos(Map<String, Double> saldos) {
+		this.saldos = saldos;
+	}
+
+	public Map<String, Double> getSaldos() {
+		return saldos;
+	}
+
+	public void setParticipantes(List<String> participantes) {
+		this.participantes = participantes;
+	}
+
 	@Override
 	public List<String> getParticipantes() {
 		return participantes;
@@ -67,12 +86,12 @@ public class CuentaGastoImpl implements CuentaGasto {
 
 	@Override
 	public Map<String, Double> getDistribuciones() {
-		return distribuiciones;
+		return distribuciones;
 	}
 
 	@Override
 	public Gasto getGasto(String nombre) {
-		return this.gasto.getValue();
+	    return this.gastoAsociado;
 	}
 	
 	@Override
@@ -86,7 +105,8 @@ public class CuentaGastoImpl implements CuentaGasto {
 		if(!participantes.contains(pagador)) {
 			throw new IllegalArgumentException("El pagador debe ser un miembro de la cuenta");
 		}
-		this.gasto = new Pair<String, Gasto>(pagador, gasto);
+		this.nombrePagador = pagador;
+		this.gastoAsociado = gasto;
 		this.saldos.put(pagador, gasto.getCantidad());
 		//Movemos el pagador al incio de la lista de participantes
 		this.participantes.remove(pagador);
@@ -103,7 +123,7 @@ public class CuentaGastoImpl implements CuentaGasto {
 			throw new IllegalArgumentException("El valor debe estar entre 0 y 100, ambos inclusive.");
 		}
 		//Reescribe la asociacion si nombre ya estaba añadido
-		distribuiciones.put(nombre, value);
+		distribuciones.put(nombre, value);
 		recalcularSaldos();
 	}
 
@@ -112,20 +132,26 @@ public class CuentaGastoImpl implements CuentaGasto {
 		if(distribuciones == null || distribuciones.isEmpty()) {
 			throw new IllegalArgumentException("Debe haber al menos una distribuición.");
 		}
-		this.distribuiciones = distribuciones;
+		this.distribuciones = distribuciones;
 		recalcularSaldos();
 	}
 
 	@Override
 	public void recalcularSaldos() {
 		
+		if (this.participantes == null || this.gastoAsociado == null || this.saldos == null || this.distribuciones == null) {
+	        return; 
+	    }
+		
 		for(String p : this.participantes) {
 			//Al saldo actual de la persona se le resta su porcentaje asignado del gasto
-			double nuevoSaldo = saldos.get(p) - this.gasto.getValue().getCantidad()*(this.distribuiciones.get(p)/100.0);
+			double nuevoSaldo = saldos.get(p) - this.gastoAsociado.getCantidad() * (this.distribuciones.get(p) / 100.0);
 			this.saldos.put(p, nuevoSaldo);
 		}
 	}
 	
+	//TODO: Esta puesto como ignore porque no se si será necesario en algun momento, si no lo es, se puede borrar sin ningun problema
+	@JsonIgnore
 	public UUID getId() {
 		return this.ID;
 	}

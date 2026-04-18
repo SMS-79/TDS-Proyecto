@@ -9,14 +9,17 @@ import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
 import umu.tds.gestor.importador.impl.ImportadorGastosTXTImpl;
 import umu.tds.gestor.modelo.Alerta;
+import umu.tds.gestor.modelo.CuentaGasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.Categoria;
+import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.impl.RepositorioAlertasImpl;
 import umu.tds.gestor.repository.impl.RepositorioCategoriasImpl;
+import umu.tds.gestor.repository.impl.RepositorioCuentasImpl;
 import umu.tds.gestor.repository.impl.RepositorioGastosImpl;
 import umu.tds.gestor.repository.impl.RepositorioNotificacionesImpl;
 
@@ -27,6 +30,7 @@ public class ControladorGestion {
 	private RepositorioAlertasImpl repAlertas = RepositorioAlertasImpl.getInstancia();
 	private RepositorioNotificacionesImpl repNotif = RepositorioNotificacionesImpl.getInstancia();
 	private AlerNotifGestorImpl gestorAlertas = AlerNotifGestorImpl.getInstancia();
+	private RepositorioCuentasImpl repCuentas = RepositorioCuentasImpl.getInstancia();
 	
 	
 	public ControladorGestion() {
@@ -156,5 +160,11 @@ public class ControladorGestion {
 		
 		importador.leerFichero(rutaFichero);
 	}
+	
+	public void crearCuenta(String... nombres) {
+		CuentaGastoImpl cuenta = new CuentaGastoImpl(nombres);
+		repCuentas.añadirCuenta(cuenta);
+	}
+    
 }
 

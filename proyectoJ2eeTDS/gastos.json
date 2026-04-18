@@ -1,40 +1,5 @@
 {
-  "gastos" : [ {
-    "id_gastos" : "99491332-4e9e-4cad-8bea-e637f983a996",
-    "categoria" : {
-      "nombre" : "Entretenimiento"
-    },
-    "fecha" : [ 2026, 4, 15 ],
-    "cantidad" : 100.0
-  }, {
-    "id_gastos" : "0404645d-d53f-489c-8e39-de2544d31cae",
-    "categoria" : {
-      "nombre" : "Entretenimiento"
-    },
-    "fecha" : [ 2026, 4, 16 ],
-    "cantidad" : 1000.0
-  }, {
-    "id_gastos" : "e27c3f70-1d13-4030-8717-030d71d7194d",
-    "categoria" : {
-      "nombre" : "Entretenimiento"
-    },
-    "fecha" : [ 2026, 4, 15 ],
-    "cantidad" : 10000.0
-  }, {
-    "id_gastos" : "1a6e1a48-cf24-4a78-bce0-c470a69ad7d1",
-    "categoria" : {
-      "nombre" : "Entretenimiento"
-    },
-    "fecha" : [ 2026, 4, 15 ],
-    "cantidad" : 500.0
-  }, {
-    "id_gastos" : "526b1977-9155-40b0-8ca5-fbe3cb60b41c",
-    "categoria" : {
-      "nombre" : "Alimentación"
-    },
-    "fecha" : [ 2026, 4, 15 ],
-    "cantidad" : 1201.0
-  } ],
+  "gastos" : [ ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
@@ -42,39 +7,49 @@
   }, {
     "nombre" : "Entretenimiento"
   } ],
-  "alertas" : [ {
-    "tipo" : "semanal",
-    "id_alert" : "d429849d-37bc-499b-b142-a1ae1b85c0e0",
-    "categoria" : {
-      "nombre" : "Entretenimiento"
+  "alertas" : [ ],
+  "notificaciones" : [ ],
+  "cuentas" : [ {
+    "id_cuenta" : "61de187c-76c1-48ad-a939-5ec0ecdc4685",
+    "nombrePagador" : "Juan",
+    "gastoAsociado" : {
+      "id_gastos" : "7ff4db3d-a78e-4412-a2f1-a301a2ae926a",
+      "categoria" : {
+        "nombre" : "Alimentación"
+      },
+      "fecha" : [ 2026, 4, 18 ],
+      "cantidad" : 50.0
     },
-    "limite" : 58.0,
-    "activacion" : [ 2026, 4, 14 ],
-    "intervalo" : "SEMANAL",
-    "gasto_realizado" : 11500.0
-  }, {
-    "tipo" : "mensual",
-    "id_alert" : "ff453547-3a91-4ee7-83bf-2f94490f43ea",
-    "categoria" : {
-      "nombre" : "Alimentación"
+    "distribuciones" : {
+      "María" : 50.0,
+      "Juan" : 50.0
     },
-    "limite" : 1200.0,
-    "activacion" : [ 2026, 4, 14 ],
-    "intervalo" : "MENSUAL",
-    "gasto_realizado" : 1201.0
-  } ],
-  "notificaciones" : [ {
-    "id_notif" : "67bb2627-f719-40b7-b908-18a4bdb6d6a5",
-    "mensaje" : "Limite semanal de 58.0€ superado. 1000.0€ gastados en total en la categoría Entretenimiento."
+    "saldos" : {
+      "María" : -25.0,
+      "Juan" : 25.0
+    },
+    "participantes" : [ "Juan", "María" ]
   }, {
-    "id_notif" : "bd7e22eb-5792-4679-a4fd-96ee40a0c8aa",
-    "mensaje" : "Limite semanal de 58.0€ superado. 11000.0€ gastados en total en la categoría Entretenimiento."
-  }, {
-    "id_notif" : "f975da24-bc13-4ad2-9549-c60e10bf518c",
-    "mensaje" : "Limite semanal de 58.0€ superado. 11500.0€ gastados en total en la categoría Entretenimiento."
-  }, {
-    "id_notif" : "d0c39a3a-c1bc-4746-a2d9-db44eca7aebd",
-    "mensaje" : "Limite mensual de 1200.0€ superado. 1201.0€ gastados en total en la categoría Alimentación."
-  } ],
-  "cuentas" : [ ]
+    "id_cuenta" : "e4675d2c-ced6-45f2-bc8c-6d7fddcaf10c",
+    "nombrePagador" : "Juan",
+    "gastoAsociado" : {
+      "id_gastos" : "451df4b3-a15a-4b7f-9506-83d10b530f91",
+      "categoria" : {
+        "nombre" : "Alimentación"
+      },
+      "fecha" : [ 2026, 4, 18 ],
+      "cantidad" : 80.0
+    },
+    "distribuciones" : {
+      "María" : 33.333333333333336,
+      "Pedro" : 33.333333333333336,
+      "Juan" : 33.333333333333336
+    },
+    "saldos" : {
+      "María" : -26.66666666666667,
+      "Pedro" : -26.66666666666667,
+      "Juan" : 53.33333333333333
+    },
+    "participantes" : [ "Juan", "María", "Pedro" ]
+  } ]
 }
