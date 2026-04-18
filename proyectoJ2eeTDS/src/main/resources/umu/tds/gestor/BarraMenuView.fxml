@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:controller="umu.tds.gestor.vista.BarraMenuViewController" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.BarraMenuViewController">
 	<top>
 		<MenuBar BorderPane.alignment="CENTER">
 			<menus>
@@ -15,7 +15,8 @@
 						<MenuItem mnemonicParsing="false" onAction="#irAddGasto" text="Añadir Gasto" />
 						<MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
 						<MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
-						<MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" /> 
+						<MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" />
+                  		<MenuItem mnemonicParsing="false" onAction="#irAddCuenta" text="Añadir Cuenta" /> 
 						<MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
 					</items>
 				</Menu>
