@@ -16,6 +16,7 @@
 						<MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
 						<MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
 						<MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" /> 
+						<MenuItem mnemonicParsing="false" onAction="#irNotifList" text="Lista Notificaciones" /> 
 						<MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
 					</items>
 				</Menu>

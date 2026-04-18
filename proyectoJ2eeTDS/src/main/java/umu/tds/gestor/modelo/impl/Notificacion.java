@@ -1,5 +1,7 @@
 package umu.tds.gestor.modelo.impl;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -19,16 +21,18 @@ public class Notificacion {
 	
 	private String mensaje;
 	
+	private LocalDateTime fechaCreacion;
+	
 	public Notificacion() {	}
 	
 	public Notificacion(String m) {
 		this.mensaje = m;
+		this.fechaCreacion = LocalDateTime.now();
 	}
 
 	public UUID getId() {
-		return id;
+		return this.id;
 	}
-
 
 	public String getMensaje() {
 		return mensaje;
@@ -36,6 +40,13 @@ public class Notificacion {
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+	
+	public String getFechaCreacion() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		
+		
+		return this.fechaCreacion.format(formatter);
 	}
 	
 	
