@@ -1,5 +1,6 @@
 package umu.tds.gestor.vista;
 
+import javafx.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,11 @@ public class AddAlertaViewController {
     private TextField campoLimite; 
 
     private ObservableList<Alerta> listaAlertasObservable; 
+    
+    @FXML
+    private javafx.scene.control.Button botonBorrar;
+    
+    private Alerta alertaSeleccionada;
 
     @FXML
     public void initialize(){
@@ -97,6 +103,11 @@ public class AddAlertaViewController {
         comboFiltro.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             filtrarTabla(newVal);
         });
+        
+        tablaAlertas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            this.alertaSeleccionada = newSelection;
+        });
+        botonBorrar.disableProperty().bind(tablaAlertas.getSelectionModel().selectedItemProperty().isNull()); // Para que el botón no se pueda tocar si no hay alerta seleccionada
     }
 
         private void cargarDatosEnTabla(){
@@ -160,4 +171,13 @@ public class AddAlertaViewController {
                 System.err.println("El límite debe ser un número válido. (Ej: 150.50)");
             }
         }
+        
+    	@FXML
+    	private void botonBorrar(ActionEvent evento) {
+    		controlador.borrarAlerta(alertaSeleccionada);
+    		tablaAlertas.getSelectionModel().clearSelection();
+    		cargarDatosEnTabla();
+    		filtrarTabla(comboFiltro.getValue());
+    		tablaAlertas.refresh();
+    	}
 }
