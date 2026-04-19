@@ -63,9 +63,6 @@ public class GastoImpl implements Gasto{
 	}
 	
 	public void setFecha(LocalDate newFecha) {
-		if(fecha == newFecha) {
-			throw new IllegalArgumentException("La fecha debe ser distinta a la actual."); 
-		}
 		this.fecha = newFecha; 
 	}
 	
@@ -76,9 +73,6 @@ public class GastoImpl implements Gasto{
 	
 
 	public void setCategoria(Categoria newCategoria) {
-		if(this.categoria == newCategoria) {
-			throw new IllegalArgumentException("La categoria no puede ser la misma."); 
-		}
 		this.categoria = newCategoria; 
 	}
 	
