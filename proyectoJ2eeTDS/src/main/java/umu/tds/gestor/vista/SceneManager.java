@@ -95,8 +95,8 @@ public class SceneManager {
 		cambiarVista("AddAlertaView");
 	}
 	
-	public void mostrarAddCuenta() {
-		cambiarVista("AddCuentaView");
+	public void mostrarTablaCuentas() {
+		cambiarVista("ListaCuentasView");
 	}
 	
 }

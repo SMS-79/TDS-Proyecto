@@ -6,7 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class AddCuentaViewController {
+public class ListaCuentasViewController {
 
     @FXML
     private TableColumn<?, ?> colGasto;
@@ -18,6 +18,9 @@ public class AddCuentaViewController {
     private TableColumn<?, ?> colParticipantes;
 
     @FXML
+    private TextField nombresFiltro;
+
+    @FXML
     private TextField participantes;
 
     @FXML
@@ -27,7 +30,25 @@ public class AddCuentaViewController {
     private TableColumn<?, ?> propPorcentaje;
 
     @FXML
+    private TableColumn<?, ?> propSaldo;
+
+    @FXML
     private TableView<?> tablaCuentas;
+
+    @FXML
+    void borrarCuenta(ActionEvent event) {
+
+    }
+
+    @FXML
+    void botonFiltrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cambiarDistribuciones(ActionEvent event) {
+
+    }
 
     @FXML
     void crearCuenta(ActionEvent event) {
