@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,7 +50,11 @@ public class HistorialNotificacionesController {
 		
 		colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		colMessage.setCellValueFactory(new PropertyValueFactory<>("mensaje"));
-		colDate.setCellValueFactory(new PropertyValueFactory<>("fechaCreacion"));
+		colDate.setCellValueFactory(cellData -> {
+			LocalDateTime fecha = cellData.getValue().getFechaCreacion();
+			String fechaFormatted = fecha.format(DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm"));
+			return new SimpleStringProperty(fechaFormatted);
+		});
 		
 		cargarDatosEnTabla();
 		

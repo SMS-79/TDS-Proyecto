@@ -42,11 +42,8 @@ public class Notificacion {
 		this.mensaje = mensaje;
 	}
 	
-	public String getFechaCreacion() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		
-		
-		return this.fechaCreacion.format(formatter);
+	public LocalDateTime getFechaCreacion() {		
+		return this.fechaCreacion;
 	}
 	
 	
