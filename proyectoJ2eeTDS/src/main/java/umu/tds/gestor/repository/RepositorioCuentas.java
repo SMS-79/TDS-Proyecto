@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import umu.tds.gestor.modelo.CuentaGasto;
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
 
 public interface RepositorioCuentas {
 	
@@ -12,8 +11,8 @@ public interface RepositorioCuentas {
 	
 	CuentaGasto getCuenta(UUID id);
 
-	void añadirCuenta(CuentaGastoImpl cuenta);
+	void añadirCuenta(CuentaGasto cuenta);
 	
-	List<CuentaGastoImpl> filtrarCuentas(String... nombres);
+	List<CuentaGasto> filtrarCuentas(String... nombres);
 	
 }

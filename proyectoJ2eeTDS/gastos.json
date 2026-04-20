@@ -1,55 +1,70 @@
 {
-  "gastos" : [ ],
+  "gastos" : [ {
+    "id_gastos" : "5744cec9-9d5f-43b9-a0e1-74c8eb5f2047",
+    "categoria" : {
+      "nombre" : "CatPrueba1"
+    },
+    "fecha" : [ 2026, 4, 13 ],
+    "cantidad" : 500.0
+  }, {
+    "id_gastos" : "6da52cc8-b3e5-4761-ac0d-b84311137700",
+    "categoria" : {
+      "nombre" : "CatPrueba2"
+    },
+    "fecha" : [ 2027, 4, 13 ],
+    "cantidad" : 200.0
+  }, {
+    "id_gastos" : "69683c36-261a-4cfe-9d08-44293fc85e3f",
+    "categoria" : {
+      "nombre" : "CatPrueba3"
+    },
+    "fecha" : [ 2028, 4, 13 ],
+    "cantidad" : 800.0
+  } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
     "nombre" : "Transporte"
   }, {
     "nombre" : "Entretenimiento"
+  }, {
+    "nombre" : "CatPrueba1"
+  }, {
+    "nombre" : "CatPrueba2"
+  }, {
+    "nombre" : "CatPrueba3"
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],
   "cuentas" : [ {
-    "id_cuenta" : "61de187c-76c1-48ad-a939-5ec0ecdc4685",
-    "nombrePagador" : "Juan",
-    "gastoAsociado" : {
-      "id_gastos" : "7ff4db3d-a78e-4412-a2f1-a301a2ae926a",
-      "categoria" : {
-        "nombre" : "Alimentación"
-      },
-      "fecha" : [ 2026, 4, 18 ],
-      "cantidad" : 50.0
-    },
+    "tipo" : "equitativa",
+    "id_cuenta" : "328f312f-74b8-464f-b65a-1508ce33fc3e",
+    "nombrePagador" : null,
+    "gastoAsociado" : null,
     "distribuciones" : {
-      "María" : 50.0,
-      "Juan" : 50.0
+      "Raquel" : 33.333333333333336,
+      "Luis" : 33.333333333333336,
+      "Maria" : 33.333333333333336
     },
     "saldos" : {
-      "María" : -25.0,
-      "Juan" : 25.0
+      "Raquel" : 0.0,
+      "Luis" : 0.0,
+      "Maria" : 0.0
     },
-    "participantes" : [ "Juan", "María" ]
+    "participantes" : [ "Raquel", "Luis", "Maria" ]
   }, {
-    "id_cuenta" : "e4675d2c-ced6-45f2-bc8c-6d7fddcaf10c",
-    "nombrePagador" : "Juan",
-    "gastoAsociado" : {
-      "id_gastos" : "451df4b3-a15a-4b7f-9506-83d10b530f91",
-      "categoria" : {
-        "nombre" : "Alimentación"
-      },
-      "fecha" : [ 2026, 4, 18 ],
-      "cantidad" : 80.0
-    },
+    "tipo" : "porcentual",
+    "id_cuenta" : "4fe96d56-5ce4-421c-9433-a6da891f8412",
+    "nombrePagador" : null,
+    "gastoAsociado" : null,
     "distribuciones" : {
-      "María" : 33.333333333333336,
-      "Pedro" : 33.333333333333336,
-      "Juan" : 33.333333333333336
+      "Ana" : 70.0,
+      "Pedro" : 30.0
     },
     "saldos" : {
-      "María" : -26.66666666666667,
-      "Pedro" : -26.66666666666667,
-      "Juan" : 53.33333333333333
+      "Ana" : 0.0,
+      "Pedro" : 0.0
     },
-    "participantes" : [ "Juan", "María", "Pedro" ]
+    "participantes" : [ "Ana", "Pedro" ]
   } ]
 }

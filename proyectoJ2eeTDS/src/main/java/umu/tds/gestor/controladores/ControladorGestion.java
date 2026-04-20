@@ -13,7 +13,7 @@ import umu.tds.gestor.modelo.CuentaGasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
+import umu.tds.gestor.modelo.impl.CuentaGastoEquitativa;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.modelo.impl.Notificacion;
@@ -162,7 +162,8 @@ public class ControladorGestion {
 	}
 	
 	public void crearCuenta(String... nombres) {
-		CuentaGastoImpl cuenta = new CuentaGastoImpl(nombres);
+		//De momento la dejamos equitativa
+		CuentaGasto cuenta = new CuentaGastoEquitativa(nombres);
 		repCuentas.añadirCuenta(cuenta);
 	}
     

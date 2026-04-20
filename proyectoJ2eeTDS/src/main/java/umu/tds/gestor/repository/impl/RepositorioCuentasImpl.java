@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
+import umu.tds.gestor.modelo.CuentaGasto;
 import umu.tds.gestor.repository.RepositorioCuentas;
 
 public class RepositorioCuentasImpl implements RepositorioCuentas {
@@ -21,7 +21,7 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 		return instancia;
 	}
 	
-	private List<CuentaGastoImpl> cuentas = new ArrayList<>();
+	private List<CuentaGasto> cuentas = new ArrayList<>();
 	
 	public RepositorioCuentasImpl() {
 		
@@ -30,21 +30,21 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 		}
 		
 		if(BD.getCuentas() != null) {
-			this.cuentas = (List<CuentaGastoImpl>) BD.getCuentas();
+			this.cuentas = (List<CuentaGasto>) BD.getCuentas();
 		}
 		else {
-			this.cuentas = new ArrayList<CuentaGastoImpl>();
+			this.cuentas = new ArrayList<CuentaGasto>();
 		}
 		
 	}
 	
 	@Override
-	public List<? extends CuentaGastoImpl> getCuentas() {
+	public List<? extends CuentaGasto> getCuentas() {
 		return Collections.unmodifiableList(cuentas);
 	}
 
 	@Override
-	public void añadirCuenta(CuentaGastoImpl cuenta) {
+	public void añadirCuenta(CuentaGasto cuenta) {
 		if(!cuentas.contains(cuenta)) {
 			cuentas.add(cuenta);	
 			BD.guardarFichero();
@@ -52,8 +52,8 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	}
 
 	@Override
-	public CuentaGastoImpl getCuenta(UUID id) {
-		for(CuentaGastoImpl c : cuentas) {
+	public CuentaGasto getCuenta(UUID id) {
+		for(CuentaGasto c : cuentas) {
 			if(c.getId().equals(id)) {
 				return c;
 			}
@@ -62,7 +62,7 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	}
 	
 	//Se le pasa una lista de nombres y solo devuelve las cuentas que contienen TODOS los nombre pasados
-	public List<CuentaGastoImpl> filtrarCuentas(String... nombres) {
+	public List<CuentaGasto> filtrarCuentas(String... nombres) {
 	    return cuentas.stream()
 	            .filter(c -> c.getParticipantes().containsAll(List.of(nombres)))
 	            .toList();
