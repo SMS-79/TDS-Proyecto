@@ -2,11 +2,16 @@ package umu.tds.gestor.vista;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import umu.tds.gestor.Configuracion;
 
 public class ListaCuentasViewController {
+
+    @FXML
+    private Button botonBorrar;
 
     @FXML
     private TableColumn<?, ?> colGasto;
@@ -19,9 +24,6 @@ public class ListaCuentasViewController {
 
     @FXML
     private TextField nombresFiltro;
-
-    @FXML
-    private TextField participantes;
 
     @FXML
     private TableColumn<?, ?> propParticipante;
@@ -46,12 +48,12 @@ public class ListaCuentasViewController {
     }
 
     @FXML
-    void cambiarDistribuciones(ActionEvent event) {
-
+    void crearCuenta(ActionEvent event) {
+    	Configuracion.getInstancia().getSceneManager().mostrarAddCuenta();
     }
 
     @FXML
-    void crearCuenta(ActionEvent event) {
+    void introducirPago(ActionEvent event) {
 
     }
 
