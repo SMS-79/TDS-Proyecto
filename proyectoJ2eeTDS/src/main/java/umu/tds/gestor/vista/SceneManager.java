@@ -118,6 +118,8 @@ public class SceneManager {
 			e.printStackTrace();
 		}
 		
+	public void mostrarNotifList(){
+		cambiarVista("ListaNotificaciones");
 	}
 	
 }

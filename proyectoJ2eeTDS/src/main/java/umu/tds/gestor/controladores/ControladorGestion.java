@@ -88,16 +88,13 @@ public class ControladorGestion {
 		boolean saltaAlerta = false; 
 		
 		for(Alerta a : repAlertas.getAlertas()) {
-			if(a.getCategoria() == null || a.getCategoria().equals(categoria)) {
 				try {
 					gestorAlertas.añadirGastoAlerta(a, newGasto);
-					
 				} catch (LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
 					mensajesAlerta.append(e.getMessage()).append("\n");
 					saltaAlerta = true; 
 				}
-			}
 		}
 		if (saltaAlerta) {
 			throw new LimiteAlertaException(mensajesAlerta.toString()); 
@@ -119,6 +116,10 @@ public class ControladorGestion {
 		crearAlerta(null, limite, intervalo);
 	}
 	
+	public void borrarAlerta(Alerta alerta) {
+		repAlertas.borrarAlerta(alerta);
+	}
+	
 	public void crearNotificacion(String mensaje){
 		repNotif.añadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
@@ -135,17 +136,14 @@ public class ControladorGestion {
 		boolean saltaAlerta = false; 
 		
 		for(Alerta a : repAlertas.getAlertas()) {
-			if(a.getCategoria() == null || a.getCategoria().equals(gasto.getCategoria())) {
 				try {
 					gestorAlertas.añadirGastoAlerta(a, gasto);
-					
 				} catch (LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
 					mensajesAlerta.append(e.getMessage()).append("\n");
 					saltaAlerta = true; 
 				}
 			}
-		}
 		if (saltaAlerta) {
 	        throw new LimiteAlertaException(mensajesAlerta.toString()); 
 	    }
