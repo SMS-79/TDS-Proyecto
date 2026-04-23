@@ -117,6 +117,7 @@ public class SceneManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
 		
 	public void mostrarNotifList(){
 		cambiarVista("ListaNotificaciones");
