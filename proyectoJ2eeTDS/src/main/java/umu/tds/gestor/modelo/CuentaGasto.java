@@ -38,8 +38,7 @@ public abstract class CuentaGasto {
 	
 	//Con deserialize le decimos a Jackson que use una clase en concreto (GastoImpl) en lugar de Gasto, que podria tener varias clases hijas
 	@JsonProperty
-	@JsonDeserialize(as = GastoImpl.class) 
-	protected Gasto gastoAsociado;
+	protected Double gastoAsociado;
 	
 	protected Map<String, Double> distribuciones;
 	protected Map<String, Double> saldos;
@@ -70,16 +69,16 @@ public abstract class CuentaGasto {
 		return distribuciones;
 	}
 
-	public Gasto getGasto(String nombre) {
+	public Double getGastoAsociado() {
 	    return this.gastoAsociado;
 	}
 	
 	@JsonIgnore
-	public UUID getId() {
+	public UUID getID() {
 		return this.ID;
 	}
 
-	public abstract void setGasto(String pagador, Gasto gasto);
+	public abstract void setGasto(String pagador, Double gasto);
 	
 	public abstract void recalcularSaldos();
 }

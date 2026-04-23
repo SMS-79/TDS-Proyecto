@@ -50,11 +50,17 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 			BD.guardarFichero();
 		}
 	}
+	
+	@Override
+	public void borrarCuenta(CuentaGasto cuenta) {
+		cuentas.remove(cuenta);
+		BD.guardarFichero();
+	}
 
 	@Override
 	public CuentaGasto getCuenta(UUID id) {
 		for(CuentaGasto c : cuentas) {
-			if(c.getId().equals(id)) {
+			if(c.getID().equals(id)) {
 				return c;
 			}
 		}

@@ -14,5 +14,7 @@ public interface RepositorioCuentas {
 	void añadirCuenta(CuentaGasto cuenta);
 	
 	List<CuentaGasto> filtrarCuentas(String... nombres);
+
+	void borrarCuenta(CuentaGasto cuenta);
 	
 }

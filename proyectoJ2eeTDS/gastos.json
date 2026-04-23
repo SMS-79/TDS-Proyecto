@@ -1,70 +1,61 @@
 {
-  "gastos" : [ {
-    "id_gastos" : "5744cec9-9d5f-43b9-a0e1-74c8eb5f2047",
-    "categoria" : {
-      "nombre" : "CatPrueba1"
-    },
-    "fecha" : [ 2026, 4, 13 ],
-    "cantidad" : 500.0
-  }, {
-    "id_gastos" : "6da52cc8-b3e5-4761-ac0d-b84311137700",
-    "categoria" : {
-      "nombre" : "CatPrueba2"
-    },
-    "fecha" : [ 2027, 4, 13 ],
-    "cantidad" : 200.0
-  }, {
-    "id_gastos" : "69683c36-261a-4cfe-9d08-44293fc85e3f",
-    "categoria" : {
-      "nombre" : "CatPrueba3"
-    },
-    "fecha" : [ 2028, 4, 13 ],
-    "cantidad" : 800.0
-  } ],
+  "gastos" : [ ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
     "nombre" : "Transporte"
   }, {
     "nombre" : "Entretenimiento"
-  }, {
-    "nombre" : "CatPrueba1"
-  }, {
-    "nombre" : "CatPrueba2"
-  }, {
-    "nombre" : "CatPrueba3"
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],
   "cuentas" : [ {
     "tipo" : "equitativa",
-    "id_cuenta" : "328f312f-74b8-464f-b65a-1508ce33fc3e",
-    "nombrePagador" : null,
-    "gastoAsociado" : null,
+    "id_cuenta" : "17ae1adf-0ffe-4f9d-9289-327724ae5ab0",
+    "nombrePagador" : "Pagador",
+    "gastoAsociado" : 50000.0,
     "distribuciones" : {
-      "Raquel" : 33.333333333333336,
-      "Luis" : 33.333333333333336,
-      "Maria" : 33.333333333333336
+      "Pagador" : 33.333333333333336,
+      "Test3" : 33.333333333333336,
+      "Test2" : 33.333333333333336
     },
     "saldos" : {
-      "Raquel" : 0.0,
-      "Luis" : 0.0,
-      "Maria" : 0.0
+      "Pagador" : 33333.33333333333,
+      "Test3" : -16666.666666666668,
+      "Test2" : -16666.666666666668
     },
-    "participantes" : [ "Raquel", "Luis", "Maria" ]
+    "participantes" : [ "Pagador", "Test2", "Test3" ]
   }, {
-    "tipo" : "porcentual",
-    "id_cuenta" : "4fe96d56-5ce4-421c-9433-a6da891f8412",
-    "nombrePagador" : null,
-    "gastoAsociado" : null,
+    "tipo" : "equitativa",
+    "id_cuenta" : "bc6bed37-b444-477f-aef0-335e596dce65",
+    "nombrePagador" : "Pedro",
+    "gastoAsociado" : 800.0,
     "distribuciones" : {
-      "Ana" : 70.0,
-      "Pedro" : 30.0
+      "Pedro" : 50.0,
+      "Antonio" : 50.0
     },
     "saldos" : {
-      "Ana" : 0.0,
-      "Pedro" : 0.0
+      "Pedro" : 400.0,
+      "Antonio" : -400.0
     },
-    "participantes" : [ "Ana", "Pedro" ]
+    "participantes" : [ "Pedro", "Antonio" ]
+  }, {
+    "tipo" : "equitativa",
+    "id_cuenta" : "1704ad0d-c00d-4727-8ebb-347ce8af24ab",
+    "nombrePagador" : "Pepe",
+    "gastoAsociado" : 999.0,
+    "distribuciones" : {
+      "José" : 25.0,
+      "Enrique" : 25.0,
+      "Antonio" : 25.0,
+      "Pepe" : 25.0
+    },
+    "saldos" : {
+      "José" : -249.75,
+      "Enrique" : -249.75,
+      "Antonio" : -249.75,
+      "Pepe" : 749.25
+    },
+    "participantes" : [ "Pepe", "Antonio", "José", "Enrique" ]
   } ]
 }

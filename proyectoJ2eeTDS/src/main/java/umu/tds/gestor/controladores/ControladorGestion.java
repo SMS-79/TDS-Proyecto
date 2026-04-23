@@ -55,6 +55,10 @@ public class ControladorGestion {
 		return repGastos.getGastos(); 
 	}
 	
+	public List<? extends CuentaGasto> getCuentas(){
+		return repCuentas.getCuentas();
+	}
+	
 	public List<? extends Categoria> getCategorias(){
 		return repCategorias.getCategorias();
 	}
@@ -161,9 +165,9 @@ public class ControladorGestion {
 		importador.leerFichero(rutaFichero);
 	}
 	
-	public void crearCuenta(String... nombres) {
+	public void crearCuenta(Double gasto, String... nombres) {
 		//De momento la dejamos equitativa
-		CuentaGasto cuenta = new CuentaGastoEquitativa(nombres);
+		CuentaGasto cuenta = new CuentaGastoEquitativa(gasto, nombres);
 		repCuentas.añadirCuenta(cuenta);
 	}
     
