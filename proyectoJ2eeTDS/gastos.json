@@ -39,23 +39,5 @@
       "Antonio" : -400.0
     },
     "participantes" : [ "Pedro", "Antonio" ]
-  }, {
-    "tipo" : "equitativa",
-    "id_cuenta" : "1704ad0d-c00d-4727-8ebb-347ce8af24ab",
-    "nombrePagador" : "Pepe",
-    "gastoAsociado" : 999.0,
-    "distribuciones" : {
-      "José" : 25.0,
-      "Enrique" : 25.0,
-      "Antonio" : 25.0,
-      "Pepe" : 25.0
-    },
-    "saldos" : {
-      "José" : -249.75,
-      "Enrique" : -249.75,
-      "Antonio" : -249.75,
-      "Pepe" : 749.25
-    },
-    "participantes" : [ "Pepe", "Antonio", "José", "Enrique" ]
   } ]
 }

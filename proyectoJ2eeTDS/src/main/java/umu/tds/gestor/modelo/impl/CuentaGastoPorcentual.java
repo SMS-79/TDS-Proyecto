@@ -3,9 +3,11 @@ package umu.tds.gestor.modelo.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 
 import umu.tds.gestor.modelo.CuentaGasto;
 
@@ -15,6 +17,28 @@ public class CuentaGastoPorcentual extends CuentaGasto {
 		
 	}
 	
+	public CuentaGastoPorcentual(Double gastoAsociado, Map<String, Double> distribuciones) {
+		if(distribuciones == null || distribuciones.isEmpty()) {
+			throw new IllegalArgumentException("Se debe añadir al menos una persona a la cuenta");
+		}
+		
+		this.gastoAsociado = gastoAsociado;
+		this.distribuciones = new LinkedHashMap<>(distribuciones);
+		this.participantes = new ArrayList<>(distribuciones.keySet());
+		//El pagador siempre será el primero
+		this.nombrePagador = this.participantes.get(0);
+		this.saldos = new LinkedHashMap<String, Double>();
+		this.ID = UUID.randomUUID();
+
+		for (String p : this.participantes) {
+			this.saldos.put(p, 0.0);
+		}
+		
+		//Inicializamos el saldo del pagador y recalculamos todos los saldos
+		this.saldos.put(this.nombrePagador, this.gastoAsociado);
+		recalcularSaldos();
+	}
+
 	public CuentaGastoPorcentual(Double gastoAsociado, String... participantes) {
 		if(Arrays.asList(participantes) == null || Arrays.asList(participantes).isEmpty()) {
 			throw new IllegalArgumentException("Se debe añadir al menos una persona a la cuenta");

@@ -4,6 +4,10 @@ package umu.tds.gestor.controladores;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+
 
 import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
@@ -14,6 +18,7 @@ import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.CuentaGastoEquitativa;
+import umu.tds.gestor.modelo.impl.CuentaGastoPorcentual;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 import umu.tds.gestor.modelo.impl.Notificacion;
@@ -165,11 +170,26 @@ public class ControladorGestion {
 		importador.leerFichero(rutaFichero);
 	}
 	
-	public void crearCuenta(Double gasto, String... nombres) {
-		//De momento la dejamos equitativa
-		CuentaGasto cuenta = new CuentaGastoEquitativa(gasto, nombres);
+	public void crearCuenta(Double gasto, Map<String, Double> distribuciones) {
+		String[] nombres = distribuciones.keySet().toArray(new String[0]);
+		CuentaGasto cuenta;
+		
+		// Si todos los porcentajes son nulos, creamos una cuenta equitativa
+		if (distribuciones.values().stream().allMatch(Objects::isNull)) {
+			cuenta = new CuentaGastoEquitativa(gasto, nombres);
+		} else {
+			cuenta = new CuentaGastoPorcentual(gasto, distribuciones);
+		}
+
+		
 		repCuentas.añadirCuenta(cuenta);
 	}
-    
+	
+	public void borrarCuenta(CuentaGasto cuenta) {
+		repCuentas.borrarCuenta(cuenta);
+	}
+
+	
 }
+
 
