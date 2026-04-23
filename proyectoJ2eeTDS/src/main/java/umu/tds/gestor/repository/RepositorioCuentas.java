@@ -11,8 +11,10 @@ public interface RepositorioCuentas {
 	
 	CuentaGasto getCuenta(UUID id);
 
-	void crearCuenta(String... nombres);
+	void añadirCuenta(CuentaGasto cuenta);
 	
 	List<CuentaGasto> filtrarCuentas(String... nombres);
+
+	void borrarCuenta(CuentaGasto cuenta);
 	
 }

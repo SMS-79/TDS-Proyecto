@@ -37,6 +37,10 @@ public class BarraMenuViewController {
 	}
 	
 	@FXML
+	private void irACuentas() throws IOException{
+		Configuracion.getInstancia().getSceneManager().mostrarTablaCuentas();
+    
+  @FXML
 	private void irNotifList() throws IOException{
 		Configuracion.getInstancia().getSceneManager().mostrarNotifList();
 	}
