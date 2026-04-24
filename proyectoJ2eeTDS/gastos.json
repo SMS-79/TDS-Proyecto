@@ -1,26 +1,5 @@
 {
-  "gastos" : [ {
-    "id_gastos" : "e5a9b99e-4b30-4369-80c7-9349a57a8c23",
-    "categoria" : {
-      "nombre" : "Transporte"
-    },
-    "fecha" : [ 2026, 4, 19 ],
-    "cantidad" : 100.0
-  }, {
-    "id_gastos" : "e8117086-e75f-4287-8fe8-1baac185f99c",
-    "categoria" : {
-      "nombre" : "Alimentación"
-    },
-    "fecha" : [ 2026, 4, 30 ],
-    "cantidad" : 99999.0
-  }, {
-    "id_gastos" : "de25effe-f1cd-47e9-a582-5a268475562d",
-    "categoria" : {
-      "nombre" : "Alimentación"
-    },
-    "fecha" : [ 2026, 4, 29 ],
-    "cantidad" : 141414.0
-  } ],
+  "gastos" : [  ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {

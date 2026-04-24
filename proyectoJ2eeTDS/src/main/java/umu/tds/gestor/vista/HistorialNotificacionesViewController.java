@@ -21,7 +21,7 @@ import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.Notificacion;
 
-public class HistorialNotificacionesController {
+public class HistorialNotificacionesViewController {
 	private static final Logger log = LogManager.getLogger();
 	
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");

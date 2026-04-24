@@ -126,13 +126,23 @@ public class ControladorGestion {
 		repNotif.añadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
 	
-	public void cambiarCantidadGasto(GastoImpl gasto, double precio) throws LimiteAlertaException {
+	public void editarGasto(GastoImpl gasto, double precio, Categoria categoria, LocalDate fecha ) throws LimiteAlertaException {
 
 		for(Alerta a : repAlertas.getAlertas()) {
 			gestorAlertas.quitarGastoAlerta(a, gasto);
 		}
 		
-		repGastos.cambiarCantidadGasto(gasto, precio); 
+		if(gasto.getCantidad() != precio) {
+			repGastos.cambiarCantidadGasto(gasto, precio); 
+		}
+		if(!gasto.getCategoria().equals(categoria)) {
+			repGastos.cambiarCategoriaGasto(gasto, categoria); 
+		}
+		if(!gasto.getFecha().equals(fecha)) {
+			repGastos.cambiarFechaGasto(gasto, fecha);
+		}
+		
+		
 		
 		StringBuilder mensajesAlerta = new StringBuilder(); 
 		boolean saltaAlerta = false; 
@@ -151,9 +161,6 @@ public class ControladorGestion {
 	    }
 	}
 	
-	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
-		repGastos.cambiarFechaGasto(gasto, fecha); 
-	}
 	
 	public void importarGastos(String rutaFichero) throws LimiteAlertaException {
 		ImportadorGastos importador = null;
