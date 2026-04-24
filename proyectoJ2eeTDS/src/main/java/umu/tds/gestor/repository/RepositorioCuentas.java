@@ -17,4 +17,6 @@ public interface RepositorioCuentas {
 
 	void borrarCuenta(CuentaGasto cuenta);
 	
+	boolean realizarPago(CuentaGasto cuenta, String miembro, Double pago);
+	
 }

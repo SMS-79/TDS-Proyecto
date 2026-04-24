@@ -9,5 +9,37 @@
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],
-  "cuentas" : [ ]
+  "cuentas" : [ {
+    "tipo" : "equitativa",
+    "id_cuenta" : "17ae1adf-0ffe-4f9d-9289-327724ae5ab0",
+    "nombrePagador" : "Pagador",
+    "gastoAsociado" : 50000.0,
+    "distribuciones" : {
+      "Pagador" : 33.333333333333336,
+      "Test3" : 33.333333333333336,
+      "Test2" : 33.333333333333336
+    },
+    "saldos" : {
+      "Pagador" : 33333.33333333333,
+      "Test3" : -16666.666666666668,
+      "Test2" : -16666.666666666668
+    },
+    "participantes" : [ "Pagador", "Test2", "Test3" ]
+  }, {
+    "tipo" : "equitativa",
+    "id_cuenta" : "57728114-4579-49ab-bd6a-5dc2a2390bf0",
+    "nombrePagador" : "Pepe",
+    "gastoAsociado" : 800.0,
+    "distribuciones" : {
+      "Pepe" : 33.333333333333336,
+      "Jose" : 33.333333333333336,
+      "Pedro" : 33.333333333333336
+    },
+    "saldos" : {
+      "Pepe" : 267.33333333333326,
+      "Jose" : -266.6666666666667,
+      "Pedro" : -0.6666666666666856
+    },
+    "participantes" : [ "Pepe", "Jose", "Pedro" ]
+  } ]
 }

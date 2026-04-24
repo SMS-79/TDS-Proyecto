@@ -1,6 +1,7 @@
 package umu.tds.gestor.repository.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -69,8 +70,27 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	
 	//Se le pasa una lista de nombres y solo devuelve las cuentas que contienen TODOS los nombre pasados
 	public List<CuentaGasto> filtrarCuentas(String... nombres) {
-	    return cuentas.stream()
-	            .filter(c -> c.getParticipantes().containsAll(List.of(nombres)))
+		
+		//Normaliza los nombres pasados como argumento para evitar que el filtro sea case sensitive
+	    List<String> nombresNormalizados = Arrays.stream(nombres)
+	            .map(String::toLowerCase)
 	            .toList();
+		
+		//Pasa cada participante a minuscula y devuelve los nombres normalizados
+	    return cuentas.stream()
+	            .filter(c -> c.getParticipantes().stream()
+	            		.map(String::toLowerCase)
+	            		.toList()
+	            		.containsAll(nombresNormalizados))
+	            .toList();
+	}
+	
+	@Override
+	public boolean realizarPago(CuentaGasto cuenta, String miembro, Double pago) {
+		boolean exito = cuenta.pagar(miembro, pago);
+		if (exito) {
+			BD.guardarFichero();
+		}
+		return exito;
 	}
 }
