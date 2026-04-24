@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
+import umu.tds.gestor.modelo.CuentaGasto;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.BaseDeDatos;
@@ -36,19 +36,19 @@ private static BaseDeDatosImpl BD = null;
 	@JsonProperty("notificaciones")
 	private List<Notificacion> notificaciones;
 	@JsonProperty("cuentas")
-	private List<CuentaGastoImpl> cuentas;
+	private List<CuentaGasto> cuentas;
 	
 	private File fichero;
 	
 	
 	private BaseDeDatosImpl() {
-		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<Notificacion>(), new ArrayList<CuentaGastoImpl>());
+		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<Notificacion>(), new ArrayList<CuentaGasto>());
 	}
 	
 	private BaseDeDatosImpl(List<GastoImpl> gastos, 
 						List<Categoria> categorias,
 						List<Alerta> alertas, List<Notificacion> notificaciones,
-						List<CuentaGastoImpl> cuentas) {
+						List<CuentaGasto> cuentas) {
 		this.gastos = gastos; 
 		this.categorias = categorias;
 		this.alertas = alertas;
@@ -123,11 +123,11 @@ private static BaseDeDatosImpl BD = null;
 		this.notificaciones = notificaciones;
 	}
 	
-	public List<CuentaGastoImpl> getCuentas() {
+	public List<CuentaGasto> getCuentas() {
 		return this.cuentas;
 	}
 
-	public void setCuentas(List<CuentaGastoImpl> cuentas) {
+	public void setCuentas(List<CuentaGasto> cuentas) {
 		this.cuentas = cuentas;
 	}
 	

@@ -126,6 +126,30 @@ public class SceneManager {
 		cambiarVista("AddAlertaView");
 	}
 	
+	public void mostrarTablaCuentas() {
+		cambiarVista("ListaCuentasView");
+	}
+	
+	public void mostrarAddCuenta() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("AddCuentaViewPopUp.fxml"));
+			Parent root = fxmlLoader.load();
+			
+			Stage popUpAddGasto = new Stage(); 
+			popUpAddGasto.setTitle("Crear nueva cuenta");
+			
+			popUpAddGasto.initModality(Modality.APPLICATION_MODAL);
+			popUpAddGasto.initOwner(this.stage);
+			popUpAddGasto.setResizable(false);
+			
+			Scene scene = new Scene(root);
+			popUpAddGasto.setScene(scene);
+			popUpAddGasto.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
 	public void mostrarNotifList(){
 		cambiarVista("ListaNotificaciones");
 	}

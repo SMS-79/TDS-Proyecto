@@ -6,12 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 import umu.tds.gestor.modelo.CuentaGasto;
-import umu.tds.gestor.modelo.impl.CuentaGastoImpl;
 import umu.tds.gestor.repository.RepositorioCuentas;
 
 public class RepositorioCuentasImpl implements RepositorioCuentas {
 
 	private static RepositorioCuentasImpl instancia = null;
+	
+	private BaseDeDatosImpl BD = BaseDeDatosImpl.getBD();
 	
 	public static RepositorioCuentasImpl getInstancia() {
 		if(instancia == null) {
@@ -22,21 +23,44 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	
 	private List<CuentaGasto> cuentas = new ArrayList<>();
 	
+	public RepositorioCuentasImpl() {
+		
+		if(BaseDeDatosImpl.getBD() != null) {
+			this.BD = BaseDeDatosImpl.getBD();
+		}
+		
+		if(BD.getCuentas() != null) {
+			this.cuentas = (List<CuentaGasto>) BD.getCuentas();
+		}
+		else {
+			this.cuentas = new ArrayList<CuentaGasto>();
+		}
+		
+	}
+	
 	@Override
 	public List<? extends CuentaGasto> getCuentas() {
 		return Collections.unmodifiableList(cuentas);
 	}
 
 	@Override
-	public void crearCuenta(String... nombres) {
-		CuentaGasto cuenta = new CuentaGastoImpl(nombres);
-		cuentas.add(cuenta);
+	public void añadirCuenta(CuentaGasto cuenta) {
+		if(!cuentas.contains(cuenta)) {
+			cuentas.add(cuenta);	
+			BD.guardarFichero();
+		}
+	}
+	
+	@Override
+	public void borrarCuenta(CuentaGasto cuenta) {
+		cuentas.remove(cuenta);
+		BD.guardarFichero();
 	}
 
 	@Override
 	public CuentaGasto getCuenta(UUID id) {
 		for(CuentaGasto c : cuentas) {
-			if(c.getId().equals(id)) {
+			if(c.getID().equals(id)) {
 				return c;
 			}
 		}

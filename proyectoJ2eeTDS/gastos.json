@@ -21,55 +21,37 @@
   }, {
     "nombre" : "Entretenimiento"
   } ],
-  "alertas" : [ {
-    "tipo" : "semanal",
-    "id_alert" : "8368b248-b552-420f-8156-be2b5590d13e",
-    "categoria" : {
-      "nombre" : "Transporte"
+  "alertas" : [ ],
+  "notificaciones" : [ ],
+  "cuentas" : [ {
+    "tipo" : "equitativa",
+    "id_cuenta" : "17ae1adf-0ffe-4f9d-9289-327724ae5ab0",
+    "nombrePagador" : "Pagador",
+    "gastoAsociado" : 50000.0,
+    "distribuciones" : {
+      "Pagador" : 33.333333333333336,
+      "Test3" : 33.333333333333336,
+      "Test2" : 33.333333333333336
     },
-    "limite" : 60.0,
-    "activacion" : [ 2026, 4, 19 ],
-    "intervalo" : "SEMANAL",
-    "gasto_realizado" : 199699.0
-  }, {
-    "tipo" : "mensual",
-    "id_alert" : "49a46faa-7b8b-4978-809f-a2d144661d17",
-    "categoria" : {
-      "nombre" : "Alimentación"
+    "saldos" : {
+      "Pagador" : 33333.33333333333,
+      "Test3" : -16666.666666666668,
+      "Test2" : -16666.666666666668
     },
-    "limite" : 1000.0,
-    "activacion" : [ 2026, 4, 19 ],
-    "intervalo" : "MENSUAL",
-    "gasto_realizado" : 100111.0
-  } ],
-  "notificaciones" : [ {
-    "id_notif" : "6617d809-e648-41af-b09a-e367703e4c64",
-    "mensaje" : "Limite semanal de 60.0€ superado. 100.0€ gastados en total en la categoría Transporte.",
-    "fechaCreacion" : [ 2026, 4, 19, 12, 10, 57, 818029800 ]
+    "participantes" : [ "Pagador", "Test2", "Test3" ]
   }, {
-    "id_notif" : "f8774dba-a4bb-44c8-93b7-a072b28103a1",
-    "mensaje" : "Limite mensual de 1000.0€ superado. 99999.0€ gastados en total en la categoría Alimentación.",
-    "fechaCreacion" : [ 2026, 4, 19, 12, 11, 46, 961493600 ]
-  }, {
-    "id_notif" : "f21cfe43-d47f-44d0-843b-0573ba6b6c52",
-    "mensaje" : "Limite mensual de 1000.0€ superado. 241413.0€ gastados en total en la categoría Alimentación.",
-    "fechaCreacion" : [ 2026, 4, 19, 12, 12, 25, 104368100 ]
-  }, {
-    "id_notif" : "9e6bc9c1-f204-4bbd-8593-6baf294ebe7c",
-    "mensaje" : "Limite semanal de 60.0€ superado. 101.0€ gastados en total en la categoría Transporte.",
-    "fechaCreacion" : [ 2026, 4, 19, 13, 4, 54, 42811300 ]
-  }, {
-    "id_notif" : "4e814b47-9b44-4e2d-944c-644e2f411ad9",
-    "mensaje" : "Limite mensual de 1000.0€ superado. 100111.0€ gastados en total en la categoría Alimentación.",
-    "fechaCreacion" : [ 2026, 4, 19, 13, 54, 43, 107951900 ]
-  }, {
-    "id_notif" : "cfbb2a33-7b55-4af0-886b-9fc105b9abae",
-    "mensaje" : "Limite semanal de 60.0€ superado. 199999.0€ gastados en total en la categoría Transporte.",
-    "fechaCreacion" : [ 2026, 4, 19, 13, 59, 0, 975629900 ]
-  }, {
-    "id_notif" : "b05afa1b-56c9-4ff0-a3ce-412ea5d39b54",
-    "mensaje" : "Limite semanal de 60.0€ superado. 199699.0€ gastados en total en la categoría Transporte.",
-    "fechaCreacion" : [ 2026, 4, 19, 13, 59, 9, 910356300 ]
-  } ],
-  "cuentas" : [ ]
+    "tipo" : "equitativa",
+    "id_cuenta" : "bc6bed37-b444-477f-aef0-335e596dce65",
+    "nombrePagador" : "Pedro",
+    "gastoAsociado" : 800.0,
+    "distribuciones" : {
+      "Pedro" : 50.0,
+      "Antonio" : 50.0
+    },
+    "saldos" : {
+      "Pedro" : 400.0,
+      "Antonio" : -400.0
+    },
+    "participantes" : [ "Pedro", "Antonio" ]
+  } ]
 }
