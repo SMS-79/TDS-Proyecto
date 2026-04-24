@@ -58,7 +58,7 @@
             <HBox alignment="CENTER" spacing="25.0">
                <children>
                   <Button lineSpacing="15.0" mnemonicParsing="false" onAction="#crearAlerta" prefHeight="27.0" prefWidth="83.0" text="Crear alerta" />
-                 	<Button fx:id="botonBorrar" lineSpacing="20.0" mnemonicParsing="false" onAction="#botonBorrar" prefHeight="27.0" prefWidth="89.0" text="Borrar alerta">
+                 	<Button fx:id="botonBorrar" lineSpacing="20.0" mnemongicParsing="false" onAction="#botonBorrar" prefHeight="27.0" prefWidth="89.0" text="Borrar alerta">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
