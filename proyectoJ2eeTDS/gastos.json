@@ -1,19 +1,5 @@
 {
-  "gastos" : [ {
-    "id_gastos" : "e5a9b99e-4b30-4369-80c7-9349a57a8c23",
-    "categoria" : {
-      "nombre" : "Transporte"
-    },
-    "fecha" : [ 2026, 4, 19 ],
-    "cantidad" : 199699.0
-  }, {
-    "id_gastos" : "de25effe-f1cd-47e9-a582-5a268475562d",
-    "categoria" : {
-      "nombre" : "Alimentación"
-    },
-    "fecha" : [ 2026, 4, 29 ],
-    "cantidad" : 112.0
-  } ],
+  "gastos" : [  ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
@@ -23,35 +9,5 @@
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],
-  "cuentas" : [ {
-    "tipo" : "equitativa",
-    "id_cuenta" : "17ae1adf-0ffe-4f9d-9289-327724ae5ab0",
-    "nombrePagador" : "Pagador",
-    "gastoAsociado" : 50000.0,
-    "distribuciones" : {
-      "Pagador" : 33.333333333333336,
-      "Test3" : 33.333333333333336,
-      "Test2" : 33.333333333333336
-    },
-    "saldos" : {
-      "Pagador" : 33333.33333333333,
-      "Test3" : -16666.666666666668,
-      "Test2" : -16666.666666666668
-    },
-    "participantes" : [ "Pagador", "Test2", "Test3" ]
-  }, {
-    "tipo" : "equitativa",
-    "id_cuenta" : "bc6bed37-b444-477f-aef0-335e596dce65",
-    "nombrePagador" : "Pedro",
-    "gastoAsociado" : 800.0,
-    "distribuciones" : {
-      "Pedro" : 50.0,
-      "Antonio" : 50.0
-    },
-    "saldos" : {
-      "Pedro" : 400.0,
-      "Antonio" : -400.0
-    },
-    "participantes" : [ "Pedro", "Antonio" ]
-  } ]
+  "cuentas" : [ ]
 }

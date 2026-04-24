@@ -5,27 +5,34 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.BarraMenuViewController">
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.BarraMenuViewController">
 	<top>
 		<MenuBar BorderPane.alignment="CENTER">
 			<menus>
-				<Menu mnemonicParsing="false" text="Tienda">
-					<items>
-						<MenuItem mnemonicParsing="false" onAction="#irAGastos" text="Lista de Gastos" />
-						<MenuItem mnemonicParsing="false" onAction="#irAddGasto" text="Añadir Gasto" />
-						<MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
-						<MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
-						<MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" />
-            <MenuItem mnemonicParsing="false" onAction="#irACuentas" text="Ver Cuentas" /> 
-						<MenuItem mnemonicParsing="false" onAction="#irNotifList" text="Lista Notificaciones" /> 
-						<MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
-					</items>
-				</Menu>
-				<Menu mnemonicParsing="false" text="Ayuda">
-					<items>
-						<MenuItem mnemonicParsing="false" onAction="#abrirAcerca" text="Acerca de miTienda" />
-					</items>
-				</Menu>
+            <Menu mnemonicParsing="false" text="Gastos">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#irAGastos" text="Lista de Gastos" />
+                  <MenuItem mnemonicParsing="false" onAction="#irAddGasto" text="Añadir Gasto" />
+                  <MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Alertas">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#irAddAlerta" text="Añadir Alerta" />
+                  <MenuItem mnemonicParsing="false" onAction="#irNotifList" text="Lista Notificaciones" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Cuentas">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#irACuentas" text="Ver Cuentas" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Misc">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
+                  <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
+               </items>
+            </Menu>
 			</menus>
 		</MenuBar>
 	</top>
