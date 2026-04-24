@@ -4,13 +4,18 @@ import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.MainAppFX;
+import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
+import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class SceneManager {
 	
@@ -77,6 +82,32 @@ public class SceneManager {
 		
 	}
 	
+	public void mostrarEditarGasto(GastoImpl g) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("EditGastoViewPopUp.fxml"));
+			
+			Parent root = fxmlLoader.load();
+			
+			EditGastoViewPopUpController controladorVista =  fxmlLoader.getController();
+			controladorVista.setGasto(g);
+			
+			Stage popUpEditGasto = new Stage();
+			popUpEditGasto.setTitle("Editar gasto");
+			
+			popUpEditGasto.initModality(Modality.APPLICATION_MODAL);
+			popUpEditGasto.initOwner(this.stage);
+			popUpEditGasto.setResizable(false);
+			
+			Scene scene = new Scene(root);
+			popUpEditGasto.setScene(scene);
+			popUpEditGasto.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+
+	
 	public void mostrarCreadorCategorias() {
 		cambiarVista("AddCategoriaView");
 	}
@@ -121,6 +152,14 @@ public class SceneManager {
 		
 	public void mostrarNotifList(){
 		cambiarVista("ListaNotificaciones");
+	}
+	
+	public void saltarAlerta(LimiteAlertaException e) {
+		Alert alert = new Alert(Alert.AlertType.WARNING);
+		alert.setTitle("¡Límite de Alerta Superado!");
+		alert.setHeaderText("Has superado uno o más límites de gasto");
+		alert.setContentText(e.getMessage());
+		alert.showAndWait();	
 	}
 	
 }

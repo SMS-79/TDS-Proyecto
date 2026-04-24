@@ -62,6 +62,9 @@ public class ListaGastosViewController {
 	@FXML
 	private Button botonBorrar;
 	
+	@FXML
+	private Button botonEditar;
+	
 	
 	@FXML
 	public void initialize() {
@@ -89,7 +92,7 @@ public class ListaGastosViewController {
 		}
 		
 		botonBorrar.disableProperty().bind(tablaGastos.getSelectionModel().selectedItemProperty().isNull());
-		
+		botonEditar.disableProperty().bind(tablaGastos.getSelectionModel().selectedItemProperty().isNull());
 	}
 	
 	public void cargarDatosEnTabla() { // Método para recargar la tabla cuando queramos
@@ -102,7 +105,7 @@ public class ListaGastosViewController {
 	// Para cuando se hagan los repositorios de categoría
 	
 	@FXML
-	private void botonBuscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
+	private void buscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
 		Button botonPulsado = (Button) evento.getSource();
 		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
@@ -123,9 +126,15 @@ public class ListaGastosViewController {
 	}
 	
 	@FXML
-	private void botonBorrar(ActionEvent evento) {
+	private void borrar(ActionEvent evento) {
 		controlador.borrarGasto(gastoSeleccionado);
 		tablaGastos.getItems().remove(gastoSeleccionado);
+		tablaGastos.getSelectionModel().clearSelection();
+	}
+	
+	@FXML
+	private void editar(ActionEvent evento) {
+		Configuracion.getInstancia().getSceneManager().mostrarEditarGasto(gastoSeleccionado);
 		tablaGastos.getSelectionModel().clearSelection();
 	}
 	

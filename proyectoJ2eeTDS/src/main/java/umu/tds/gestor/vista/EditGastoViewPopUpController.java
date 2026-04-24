@@ -1,6 +1,7 @@
 package umu.tds.gestor.vista;
 
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,18 +15,22 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.Categoria;
+import umu.tds.gestor.modelo.impl.GastoImpl;
 
-public class AddGastoViewPopUpController{
+public class EditGastoViewPopUpController{
 
 	private static final Logger log = LogManager.getLogger();
 	
 	private ControladorGestion controlador;
+	
+	private GastoImpl gastoSelected;
 	
 	@FXML
 	private ChoiceBox<Categoria> boxCategorias;
@@ -43,14 +48,15 @@ public class AddGastoViewPopUpController{
 	}
 	
 	@FXML
-	private void crearGasto(ActionEvent event) throws IOException{
+	private void editarGasto(ActionEvent event) throws IOException{
 		try {
 			Categoria cat = boxCategorias.getValue();
 			LocalDate fechaGasto = fecha.getValue(); 
 			double precio = Double.parseDouble(cantidad.getText());
 			
-			controlador.crearGasto(cat, fechaGasto, precio);
-			System.out.println("Gasto guardado exitosamente.");
+			controlador.editarGasto(gastoSelected, precio, cat, fechaGasto);
+			
+			System.out.println("Gasto editado exitosamente.");
 			
 			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
 			
@@ -66,7 +72,8 @@ public class AddGastoViewPopUpController{
 			stage.close();
 	
 		} catch (IllegalArgumentException e) {
-			System.err.println("Error al crear el gasto: " + e.getMessage());
+			System.err.println("Error al editar el gasto: " + e.getMessage());
+			System.err.println(e.getCause());
 	
 		}
 	}
@@ -76,5 +83,12 @@ public class AddGastoViewPopUpController{
 			ObservableList<Categoria> listaModif = FXCollections.observableArrayList(controlador.getCategorias()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
 			boxCategorias.setItems(listaModif);
 		}
+	}
+	
+	public void setGasto(GastoImpl g) {
+		this.gastoSelected = g;
+		this.boxCategorias.setValue(g.getCategoria());
+		this.fecha.setValue(g.getFecha());
+		this.cantidad.setText(Double.toString(g.getCantidad()));
 	}
 }
