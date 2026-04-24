@@ -48,17 +48,19 @@
     "participantes" : [ "Pagador", "Test2", "Test3" ]
   }, {
     "tipo" : "equitativa",
-    "id_cuenta" : "bc6bed37-b444-477f-aef0-335e596dce65",
-    "nombrePagador" : "Pedro",
+    "id_cuenta" : "57728114-4579-49ab-bd6a-5dc2a2390bf0",
+    "nombrePagador" : "Pepe",
     "gastoAsociado" : 800.0,
     "distribuciones" : {
-      "Pedro" : 50.0,
-      "Antonio" : 50.0
+      "Pepe" : 33.333333333333336,
+      "Jose" : 33.333333333333336,
+      "Pedro" : 33.333333333333336
     },
     "saldos" : {
-      "Pedro" : 400.0,
-      "Antonio" : -400.0
+      "Pepe" : 267.33333333333326,
+      "Jose" : -266.6666666666667,
+      "Pedro" : -0.6666666666666856
     },
-    "participantes" : [ "Pedro", "Antonio" ]
+    "participantes" : [ "Pepe", "Jose", "Pedro" ]
   } ]
 }

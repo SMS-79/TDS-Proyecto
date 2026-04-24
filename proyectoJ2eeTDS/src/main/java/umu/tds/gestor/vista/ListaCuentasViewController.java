@@ -120,7 +120,14 @@ public class ListaCuentasViewController {
 
     @FXML
     void introducirPago(ActionEvent event) {
-
+        controlador.setCuentaSeleccionada(cuentaSeleccionada);
+    	Configuracion.getInstancia().getSceneManager().mostrarAddPago();
+    	
+    	// Una vez se cierra el popup (showAndWait), refrescamos las tablas
+    	cargarTablaCuentas();
+    	if (cuentaSeleccionada != null) {
+    		mostrarTablaDistribuciones(cuentaSeleccionada);
+    	}
     }
     
     //Con este metodo podemos recargar la tabla, por ejemplo cuando añadamos una cuenta

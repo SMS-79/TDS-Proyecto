@@ -84,4 +84,13 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	            		.containsAll(nombresNormalizados))
 	            .toList();
 	}
+	
+	@Override
+	public boolean realizarPago(CuentaGasto cuenta, String miembro, Double pago) {
+		boolean exito = cuenta.pagar(miembro, pago);
+		if (exito) {
+			BD.guardarFichero();
+		}
+		return exito;
+	}
 }
