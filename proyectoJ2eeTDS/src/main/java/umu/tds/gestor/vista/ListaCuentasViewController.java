@@ -1,5 +1,7 @@
 package umu.tds.gestor.vista;
 
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -16,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.CuentaGasto;
+import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class ListaCuentasViewController {
@@ -95,7 +98,19 @@ public class ListaCuentasViewController {
 
     @FXML
     void botonFiltrar(ActionEvent event) {
-
+    		
+    	String textoFiltro = nombresFiltro.getText();
+    	
+    	if(textoFiltro.equals("")) {
+    		cargarTablaCuentas();
+    	} else {
+        	String[] resultado = Arrays.stream(textoFiltro.split(","))
+        			.map(String::trim)
+        			.toArray(String[]::new);
+    		
+        	List<CuentaGasto> cuentasFiltradas = controlador.filtrarCuenta(resultado);
+        	tablaCuentas.getItems().setAll(cuentasFiltradas);
+    	}
     }
 
     @FXML

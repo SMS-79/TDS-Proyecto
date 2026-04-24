@@ -113,6 +113,7 @@ public class AddCuentaViewPopUpController {
         Pair<String, Double> seleccion = tablaMiembros.getSelectionModel().getSelectedItem();
         if (seleccion != null) {
             miembros.remove(seleccion);
+            tablaMiembros.getSelectionModel().clearSelection();
             //Si la tabla se queda vacía, reseteamos el modo
             if (miembros.isEmpty()) {
                 isPorcentual = null;

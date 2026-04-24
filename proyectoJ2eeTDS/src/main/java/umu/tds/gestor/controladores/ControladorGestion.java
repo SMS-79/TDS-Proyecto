@@ -186,6 +186,10 @@ public class ControladorGestion {
 	public void borrarCuenta(CuentaGasto cuenta) {
 		repCuentas.borrarCuenta(cuenta);
 	}
+	
+	public List<CuentaGasto> filtrarCuenta(String... nombres) {
+		return repCuentas.filtrarCuentas(nombres);
+	}
 
 	
 }
