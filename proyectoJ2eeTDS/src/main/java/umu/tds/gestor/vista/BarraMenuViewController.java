@@ -68,5 +68,10 @@ public class BarraMenuViewController {
 			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
 		}
 	}
+	
+	@FXML
+	private void irACalendario() throws IOException{
+		Configuracion.getInstancia().getSceneManager().mostrarCalendario();
+	}
 
 }

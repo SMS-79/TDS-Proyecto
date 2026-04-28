@@ -172,7 +172,11 @@ public class SceneManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-  }
+	}
+	
+	public void mostrarCalendario() {
+		cambiarVista("CalendarioView");
+	}
   
 	public void saltarAlerta(LimiteAlertaException e) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
