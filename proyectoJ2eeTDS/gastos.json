@@ -1,5 +1,19 @@
 {
-  "gastos" : [  ],
+  "gastos" : [ {
+    "id_gastos" : "09145489-e234-45b2-8242-ff923a573c7e",
+    "categoria" : {
+      "nombre" : "Transporte"
+    },
+    "fecha" : [ 2026, 5, 6 ],
+    "cantidad" : 600.0
+  }, {
+    "id_gastos" : "6210466f-41ee-4bae-b7aa-d4df549c8964",
+    "categoria" : {
+      "nombre" : "Transporte"
+    },
+    "fecha" : [ 2026, 7, 1 ],
+    "cantidad" : 300.0
+  } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {
