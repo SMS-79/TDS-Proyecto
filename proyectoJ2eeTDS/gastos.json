@@ -1,5 +1,33 @@
 {
-  "gastos" : [  ],
+  "gastos" : [ {
+    "id_gastos" : "f496a5c6-0870-48d5-9a26-b4b6a2837f82",
+    "categoria" : {
+      "nombre" : "Transporte"
+    },
+    "fecha" : [ 2026, 4, 29 ],
+    "cantidad" : 123.0
+  }, {
+    "id_gastos" : "5ff79a01-481f-416c-8f5d-b9927902508a",
+    "categoria" : {
+      "nombre" : "Transporte"
+    },
+    "fecha" : [ 2026, 4, 29 ],
+    "cantidad" : 111111.0
+  }, {
+    "id_gastos" : "c730afcb-fc0d-4391-9611-f8972973335f",
+    "categoria" : {
+      "nombre" : "Entretenimiento"
+    },
+    "fecha" : [ 2026, 4, 30 ],
+    "cantidad" : 1551515.0
+  }, {
+    "id_gastos" : "6f01daef-9f11-4662-be71-eb89f4981fa9",
+    "categoria" : {
+      "nombre" : "Alimentación"
+    },
+    "fecha" : [ 2026, 4, 22 ],
+    "cantidad" : 13143.0
+  } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
   }, {

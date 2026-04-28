@@ -130,6 +130,10 @@ public class SceneManager {
 		cambiarVista("ListaCuentasView");
 	}
 	
+	public void mostrarGraficoGastos() {
+		cambiarVista("GraficoBarrasGasto");
+	}
+	
 	public void mostrarAddCuenta() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("AddCuentaViewPopUp.fxml"));

@@ -12,6 +12,7 @@
             <Menu mnemonicParsing="false" text="Gastos">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#irAGastos" text="Lista de Gastos" />
+                  <MenuItem mnemonicParsing="false" onAction="#irAGraficoGastos" text="Gráfico de Gastos" />
                   <MenuItem mnemonicParsing="false" onAction="#irAddGasto" text="Añadir Gasto" />
                   <MenuItem mnemonicParsing="false" onAction="#irACategorias" text="Añadir Categoria" />
                </items>
