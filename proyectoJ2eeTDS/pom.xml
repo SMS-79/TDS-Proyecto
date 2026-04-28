@@ -76,6 +76,11 @@
         <artifactId>jackson-datatype-jsr310</artifactId>
         <version>2.15.2</version> 
     </dependency>
+    <dependency>
+		<groupId>com.calendarfx</groupId>
+		<artifactId>view</artifactId>
+		<version>11.12.7</version>
+	</dependency>
   </dependencies>
 
   <build>
