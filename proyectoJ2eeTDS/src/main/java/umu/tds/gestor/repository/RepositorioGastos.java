@@ -3,6 +3,7 @@ package umu.tds.gestor.repository;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.UUID;
 
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
@@ -22,5 +23,7 @@ public interface RepositorioGastos {
 	void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha);
 	
 	void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria);
+	
+	GastoImpl getGastoPorID(UUID id);
 
 }

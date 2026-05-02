@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21.0.10" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.TerminalViewController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umu.tds.gestor.vista.TerminalViewController">
    <children>
       <TextArea fx:id="terminalPanel" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="800.0" style="-fx-control-inner-background: black; -fx-background-color: black; -fx-background-radius: 0; -fx-font-family: 'Consolas', 'Monaco', 'Courier New', monospace; -fx-text-fill: white;" wrapText="true" VBox.vgrow="ALWAYS">
          <font>
@@ -14,7 +14,7 @@
          </font></TextArea>
       <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="22.0">
          <children>
-            <TextField alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="22.0" style="-fx-control-inner-background: black; -fx-background-color: black; -fx-prompt-text-fill: gray; -fx-background-radius: 0; -fx-background-insets: 0;" text="&gt;" />
+            <TextField alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="86.0" style="-fx-control-inner-background: black; -fx-background-color: black; -fx-prompt-text-fill: gray; -fx-background-radius: 0; -fx-background-insets: 0;" text="AppGestion&gt;" />
             <TextField fx:id="terminalLinea" maxHeight="-Infinity" onAction="#enterComando" prefHeight="26.0" promptText="[help] para ver todos los comandos" style="-fx-control-inner-background: black; -fx-background-color: black; -fx-prompt-text-fill: gray; -fx-background-radius: 0; -fx-background-insets: 0; -fx-font-family: 'Consolas', 'Monaco', 'Courier New', monospace; -fx-text-fill: white;" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
