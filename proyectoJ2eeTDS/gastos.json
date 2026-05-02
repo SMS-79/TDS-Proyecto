@@ -1,18 +1,11 @@
 {
   "gastos" : [ {
-    "id_gastos" : "09145489-e234-45b2-8242-ff923a573c7e",
+    "id_gastos" : "a2ad86e2-73b2-448e-89c5-33312765c001",
     "categoria" : {
-      "nombre" : "Transporte"
+      "nombre" : "catMod10"
     },
-    "fecha" : [ 2026, 5, 6 ],
-    "cantidad" : 600.0
-  }, {
-    "id_gastos" : "6210466f-41ee-4bae-b7aa-d4df549c8964",
-    "categoria" : {
-      "nombre" : "Transporte"
-    },
-    "fecha" : [ 2026, 7, 1 ],
-    "cantidad" : 300.0
+    "fecha" : [ 2022, 12, 22 ],
+    "cantidad" : 100.25
   } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
@@ -20,6 +13,30 @@
     "nombre" : "Transporte"
   }, {
     "nombre" : "Entretenimiento"
+  }, {
+    "nombre" : "Comida"
+  }, {
+    "nombre" : "Transporte Público"
+  }, {
+    "nombre" : "Ocio"
+  }, {
+    "nombre" : "Gasolina"
+  }, {
+    "nombre" : "Regalos"
+  }, {
+    "nombre" : "Reparaciones"
+  }, {
+    "nombre" : "Gastos Médicos"
+  }, {
+    "nombre" : "catTest"
+  }, {
+    "nombre" : "d344e7b4-5fb5-4c00-b348-2edf314d7ae6"
+  }, {
+    "nombre" : "catTestMod2"
+  }, {
+    "nombre" : "catPrueba"
+  }, {
+    "nombre" : "catMod10"
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],

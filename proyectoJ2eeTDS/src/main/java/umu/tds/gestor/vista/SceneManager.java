@@ -181,4 +181,8 @@ public class SceneManager {
 		alert.setContentText(e.getMessage());
 		alert.showAndWait();	
 	}
+	
+	public void mostrarTerminal(){
+		cambiarVista("TerminalView");
+	}
 }
