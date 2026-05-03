@@ -70,7 +70,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	}
 	
 	@Override
-	public void añadirGasto(GastoImpl gasto) {
+	public void anadirGasto(GastoImpl gasto) {
 		gastos.add(gasto); 
 		BD.guardarFichero();
 	}

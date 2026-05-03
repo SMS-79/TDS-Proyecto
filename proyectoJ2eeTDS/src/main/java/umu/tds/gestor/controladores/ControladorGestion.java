@@ -83,14 +83,14 @@ public class ControladorGestion {
 		GastoImpl newGasto = new GastoImpl(categoria, fecha, precio); 
 		
 		
-		repGastos.añadirGasto(newGasto);
+		repGastos.anadirGasto(newGasto);
 		
 		StringBuilder mensajesAlerta = new StringBuilder(); 
 		boolean saltaAlerta = false; 
 		
 		for(Alerta a : repAlertas.getAlertas()) {
 				try {
-					gestorAlertas.añadirGastoAlerta(a, newGasto);
+					gestorAlertas.anadirGastoAlerta(a, newGasto);
 				} catch (LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
 					mensajesAlerta.append(e.getMessage()).append("\n");
@@ -104,13 +104,13 @@ public class ControladorGestion {
 	
 	public Categoria crearCategoria(String cat) {
 		Categoria nuevaCategoria = new Categoria(cat);
-		repCategorias.aniadirCategoria(nuevaCategoria);
+		repCategorias.anadirCategoria(nuevaCategoria);
 		return nuevaCategoria;
 	}
 	
 	
 	public void crearAlerta(Categoria categoria, double limite, Intervalo intervalo) {
-		repAlertas.añadirAlerta(gestorAlertas.crearAlerta(categoria ,limite, intervalo));
+		repAlertas.anadirAlerta(gestorAlertas.crearAlerta(categoria ,limite, intervalo));
 	}
 	
 	public void crearAlerta(double limite, Intervalo intervalo) {
@@ -122,7 +122,7 @@ public class ControladorGestion {
 	}
 	
 	public void crearNotificacion(String mensaje){
-		repNotif.añadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
+		repNotif.anadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
 	
 	public void editarGasto(GastoImpl gasto, double precio, Categoria categoria, LocalDate fecha ) throws LimiteAlertaException {
@@ -148,7 +148,7 @@ public class ControladorGestion {
 		
 		for(Alerta a : repAlertas.getAlertas()) {
 				try {
-					gestorAlertas.añadirGastoAlerta(a, gasto);
+					gestorAlertas.anadirGastoAlerta(a, gasto);
 				} catch (LimiteAlertaException e) {
 					crearNotificacion(e.getMessage());
 					mensajesAlerta.append(e.getMessage()).append("\n");
@@ -189,7 +189,7 @@ public class ControladorGestion {
 		}
 
 		
-		repCuentas.añadirCuenta(cuenta);
+		repCuentas.anadirCuenta(cuenta);
 	}
 	
 	public void borrarCuenta(CuentaGasto cuenta) {

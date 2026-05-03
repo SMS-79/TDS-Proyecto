@@ -60,7 +60,7 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 	}
 
 	@Override
-	public void aniadirCategoria(Categoria categoria) {
+	public void anadirCategoria(Categoria categoria) {
 		if(!categorias.contains(categoria)) {
 			categorias.add(categoria);	
 			BD.guardarFichero();

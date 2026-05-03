@@ -82,7 +82,7 @@ public abstract class Alerta {
 		this.gastoRealizado = 0;
 	}
 	
-	public abstract void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException;
+	public abstract void anadirGastoAlerta(GastoImpl g) throws LimiteAlertaException;
 	
 	public abstract void quitarGastoAlerta(GastoImpl g);
 

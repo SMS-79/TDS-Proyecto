@@ -13,9 +13,18 @@ public class Categoria{
 		this.nombre = nombre.trim(); 
 	}
 	
+	public String getNombre() {
+		return this.nombre;
+	}
 	
+	@Override
 	public String toString() { 
-		return this.nombre; // Para que luego salga el texto del campo en la lista de la vista principal
+		return this.getNombre(); // Para que luego salga el texto del campo en la lista de la vista principal
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
 	}
 
 	@Override
@@ -29,6 +38,7 @@ public class Categoria{
 		Categoria other = (Categoria) obj;
 		return Objects.equals(nombre, other.nombre);
 	}
+	
 	
 	
 	

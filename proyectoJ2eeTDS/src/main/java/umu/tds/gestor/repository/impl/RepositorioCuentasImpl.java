@@ -45,7 +45,7 @@ public class RepositorioCuentasImpl implements RepositorioCuentas {
 	}
 
 	@Override
-	public void añadirCuenta(CuentaGasto cuenta) {
+	public void anadirCuenta(CuentaGasto cuenta) {
 		if(!cuentas.contains(cuenta)) {
 			cuentas.add(cuenta);	
 			BD.guardarFichero();

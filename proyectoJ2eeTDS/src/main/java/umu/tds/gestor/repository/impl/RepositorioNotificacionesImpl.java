@@ -52,7 +52,7 @@ public class RepositorioNotificacionesImpl implements RepositorioNotificaciones 
 	}
 	
 	@Override
-	public void añadirNotificacion(Notificacion notif){
+	public void anadirNotificacion(Notificacion notif){
 		notificaciones.add(notif);
 		BD.guardarFichero();
 	}

@@ -10,7 +10,7 @@ public interface AlerNotifGestor {
 	
 	Alerta crearAlerta(Categoria cat, double lim, Intervalo tipo);
 	
-	void añadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException;
+	void anadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException;
 	
 	void quitarGastoAlerta(Alerta a, GastoImpl g);
 	

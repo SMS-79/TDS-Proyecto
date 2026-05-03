@@ -14,7 +14,7 @@ public interface RepositorioGastos {
 	
 	List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias);
 	
-	void añadirGasto(GastoImpl gasto);
+	void anadirGasto(GastoImpl gasto);
 	
 	void borrarGasto(GastoImpl gasto);
 	

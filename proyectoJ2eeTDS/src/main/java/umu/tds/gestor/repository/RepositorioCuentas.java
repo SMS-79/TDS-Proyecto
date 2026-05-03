@@ -11,7 +11,7 @@ public interface RepositorioCuentas {
 	
 	CuentaGasto getCuenta(UUID id);
 
-	void añadirCuenta(CuentaGasto cuenta);
+	void anadirCuenta(CuentaGasto cuenta);
 	
 	List<CuentaGasto> filtrarCuentas(String... nombres);
 

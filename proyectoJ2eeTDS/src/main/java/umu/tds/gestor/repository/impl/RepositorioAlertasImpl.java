@@ -56,7 +56,7 @@ public class RepositorioAlertasImpl implements RepositorioAlertas {
 	}
 	
 	@Override
-	public void añadirAlerta(Alerta alerta) {
+	public void anadirAlerta(Alerta alerta) {
 		alertas.add(alerta);
 		BD.guardarFichero();
 	}

@@ -10,6 +10,6 @@ public interface RepositorioCategorias {
 	
 	List<? extends Categoria> filtrarCategorias(String categoriaId);
 	
-	void aniadirCategoria(Categoria categoria);
+	void anadirCategoria(Categoria categoria);
 	
 }

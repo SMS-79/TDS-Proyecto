@@ -11,6 +11,6 @@ public interface RepositorioNotificaciones {
 
 	Notificacion filtrarNotificacion(UUID id);
 	
-	void añadirNotificacion(Notificacion notif);
+	void anadirNotificacion(Notificacion notif);
 	
 }

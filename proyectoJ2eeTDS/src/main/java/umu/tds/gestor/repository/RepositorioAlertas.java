@@ -13,7 +13,7 @@ public interface RepositorioAlertas {
 	
 	List<? extends Alerta> filtrarAlerta(Optional<Categoria> categoria, Intervalo interv, double limite);
 	
-	void añadirAlerta(Alerta alerta);
+	void anadirAlerta(Alerta alerta);
 	
 	void borrarAlerta(Alerta alerta);
 	
