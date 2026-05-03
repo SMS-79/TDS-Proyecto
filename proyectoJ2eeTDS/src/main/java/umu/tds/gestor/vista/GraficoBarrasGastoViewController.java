@@ -48,17 +48,17 @@ public class GraficoBarrasGastoViewController {
 		for(Categoria c : controlador.getCategorias()) {
 			XYChart.Series<String, Number> serieN = new XYChart.Series<String, Number>();
 			XYChart.Series<String, Number> serieC = new XYChart.Series<String, Number>();
-			serieN.setName(c.getNombre());
-			serieC.setName(c.getNombre());
+			serieN.setName(c.toString());
+			serieC.setName(c.toString());
 			
-			XYChart.Data<String, Number> datos1 = new XYChart.Data<String, Number>(c.getNombre(), controlador.filtrarGastos(null, null, null, List.of(c)).size());;
+			XYChart.Data<String, Number> datos1 = new XYChart.Data<String, Number>(c.toString(), controlador.filtrarGastos(null, null, null, List.of(c)).size());;
 			
 			
 			int sum = 0;
 			for(Gasto g : controlador.filtrarGastos(null, null, null, List.of(c))) {
 				sum += g.getCantidad();
 			}
-			XYChart.Data<String, Number> datos2 = new XYChart.Data<String, Number>(c.getNombre(), sum);
+			XYChart.Data<String, Number> datos2 = new XYChart.Data<String, Number>(c.toString(), sum);
 
 			
 			serieN.getData().add(datos1);

@@ -1,11 +1,11 @@
 {
   "gastos" : [ {
-    "id_gastos" : "a2ad86e2-73b2-448e-89c5-33312765c001",
+    "id_gastos" : "34b56027-a1d4-48d7-85fe-d11f3c435fc1",
     "categoria" : {
-      "nombre" : "catMod10"
+      "nombre" : "Ali"
     },
-    "fecha" : [ 2022, 12, 22 ],
-    "cantidad" : 100.25
+    "fecha" : [ 2005, 12, 10 ],
+    "cantidad" : 900.0
   } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
@@ -37,6 +37,8 @@
     "nombre" : "catPrueba"
   }, {
     "nombre" : "catMod10"
+  }, {
+    "nombre" : "Ali"
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],

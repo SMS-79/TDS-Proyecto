@@ -78,8 +78,8 @@ public class AddAlertaViewController {
         });
         colCategoria.setCellValueFactory(cellData ->{
         	Categoria categoria = cellData.getValue().getCategoria();
-        	if (categoria != null && categoria.getNombre() != null) {
-        		return new SimpleStringProperty(categoria.getNombre());
+        	if (categoria != null) {
+        		return new SimpleStringProperty(categoria.toString());
         	}
         	else {
         		return new SimpleStringProperty("Sin categoria");

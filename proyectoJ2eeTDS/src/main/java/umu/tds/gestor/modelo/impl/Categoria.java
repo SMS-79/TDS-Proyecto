@@ -14,11 +14,6 @@ public class Categoria{
 	}
 	
 	
-	public String getNombre() {
-		return nombre; 
-	}
-	
-	
 	public String toString() { 
 		return this.nombre; // Para que luego salga el texto del campo en la lista de la vista principal
 	}

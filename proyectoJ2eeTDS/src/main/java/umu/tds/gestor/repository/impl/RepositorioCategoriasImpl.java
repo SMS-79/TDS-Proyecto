@@ -55,7 +55,7 @@ public class RepositorioCategoriasImpl implements RepositorioCategorias {
 	@Override
 	public List<? extends Categoria> filtrarCategorias(String categoriaId) {
 		return categorias.stream()
-				.filter(c -> c.getNombre().startsWith(categoriaId))
+				.filter(c -> c.toString().startsWith(categoriaId))
 				.toList();
 	}
 

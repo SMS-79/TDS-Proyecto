@@ -67,7 +67,6 @@ public class GastoImpl implements Gasto{
 	}
 	
 	public void setCantidad(double newCantidad) {
-		
 		this.cantidad = newCantidad; 
 	}
 	

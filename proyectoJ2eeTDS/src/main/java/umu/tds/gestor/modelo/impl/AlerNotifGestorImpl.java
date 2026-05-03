@@ -44,8 +44,8 @@ public class AlerNotifGestorImpl implements AlerNotifGestor {
 	
 	//Función para añadir gastos a las alertas y comprobar que no exceda el límite
 	@Override
-	public void añadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException {
-		a.añadirGastoAlerta(g);		
+	public void anadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException {
+		a.anadirGastoAlerta(g);		
 	}
 	
 	@Override

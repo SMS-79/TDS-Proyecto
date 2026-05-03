@@ -35,7 +35,7 @@ public class AlertaSemanal extends Alerta {
 	public Intervalo getIntervalo() { return this.intervalo; }
 	
 	@Override
-	public void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
+	public void anadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusWeeks(1).isAfter(LocalDate.now())) {
@@ -56,7 +56,7 @@ public class AlertaSemanal extends Alerta {
 				if(gastoRealizado >= limite) {
 					String mensaje = "Limite semanal de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
 					if(this.categoria.isPresent()) {
-						mensaje += " en la categoría " + this.categoria.get().getNombre(); 
+						mensaje += " en la categoría " + this.categoria.get().toString(); 
 					}	
 					mensaje += '.';
 					throw new LimiteAlertaException(mensaje);

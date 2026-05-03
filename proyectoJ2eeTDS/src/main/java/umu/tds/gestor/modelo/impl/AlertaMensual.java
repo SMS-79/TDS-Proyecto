@@ -36,7 +36,7 @@ public class AlertaMensual extends Alerta {
 	
 	
 	@Override
-	public void añadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
+	public void anadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {
@@ -54,7 +54,7 @@ public class AlertaMensual extends Alerta {
 				if(gastoRealizado >= limite) {
 					String mensaje = "Limite mensual de " + limite +  "€ superado. " + gastoRealizado + "€ gastados en total";
 					if(this.categoria.isPresent()) {
-						mensaje += " en la categoría " + this.categoria.get().getNombre(); 
+						mensaje += " en la categoría " + this.categoria.get().toString(); 
 					}	
 					mensaje += '.';
 					throw new LimiteAlertaException(mensaje);
