@@ -22,6 +22,11 @@ public class BarraMenuViewController {
 	}
 	
 	@FXML
+	private void irAGraficoGastos(ActionEvent e) {
+		Configuracion.getInstancia().getSceneManager().mostrarGraficoGastos();
+	}
+	
+	@FXML
 	private void irAddGasto(ActionEvent e) {
 		Configuracion.getInstancia().getSceneManager().mostrarAddGasto();
 	}
