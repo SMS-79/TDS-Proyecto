@@ -10,11 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import umu.tds.gestor.modelo.impl.CuentaGastoEquitativa;
 import umu.tds.gestor.modelo.impl.CuentaGastoPorcentual;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -54,7 +52,11 @@ public abstract class CuentaGasto {
 	}
 
 	public Map<String, Double> getSaldos() {
-		return saldos;
+		return this.saldos;
+	}
+	
+	public Double getSaldoMiembro(String miembro) {
+		return this.saldos.get(miembro);
 	}
 
 	public void setParticipantes(List<String> participantes) {
@@ -62,15 +64,39 @@ public abstract class CuentaGasto {
 	}
 
 	public List<String> getParticipantes() {
-		return participantes;
+		return this.participantes;
 	}
 
 	public Map<String, Double> getDistribuciones() {
-		return distribuciones;
+		return this.distribuciones;
 	}
 
 	public Double getGastoAsociado() {
 	    return this.gastoAsociado;
+	}
+	
+	public String getNombrePagador() {
+	    return this.nombrePagador;
+	}
+	
+	public boolean pagar(String miembro, Double pago) {
+		
+		//El pagador principal no puede realiar un pago ya que ya ha pagado
+		if(!participantes.contains(miembro) || miembro.equals(this.nombrePagador)) { return false; }
+		
+		Double saldoAux = this.getSaldoMiembro(miembro);
+		
+		//Solo permitimos pagos si al realizarlo nos quedamos en negativo o a 0
+		if((saldoAux + pago) <= 0) {
+			//Aumentamos el salddo del miembro
+			this.saldos.put(miembro, saldoAux + pago);
+			
+			//Restamos el pago al saldo del pagador
+			Double saldoPagador = this.getSaldoMiembro(this.nombrePagador);
+			this.saldos.put(this.nombrePagador, saldoPagador - pago);
+			return true;
+		}
+		return false;
 	}
 	
 	@JsonIgnore

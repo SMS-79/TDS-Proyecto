@@ -6,8 +6,7 @@ import java.time.Month;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-
+import java.util.UUID;
 
 import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
@@ -36,6 +35,8 @@ public class ControladorGestion {
 	private RepositorioNotificacionesImpl repNotif = RepositorioNotificacionesImpl.getInstancia();
 	private AlerNotifGestorImpl gestorAlertas = AlerNotifGestorImpl.getInstancia();
 	private RepositorioCuentasImpl repCuentas = RepositorioCuentasImpl.getInstancia();
+	
+	private CuentaGasto cuentaSeleccionada;
 	
 	
 	public ControladorGestion() {
@@ -176,7 +177,8 @@ public class ControladorGestion {
 	}
 	
 	public void crearCuenta(Double gasto, Map<String, Double> distribuciones) {
-		String[] nombres = distribuciones.keySet().toArray(new String[0]);
+		// Ponemos String[]::new para que decirle a .roArray que queremos que el array sea de strings
+		String[] nombres = distribuciones.keySet().toArray(String[]::new);
 		CuentaGasto cuenta;
 		
 		// Si todos los porcentajes son nulos, creamos una cuenta equitativa
@@ -192,6 +194,26 @@ public class ControladorGestion {
 	
 	public void borrarCuenta(CuentaGasto cuenta) {
 		repCuentas.borrarCuenta(cuenta);
+	}
+	
+	public List<CuentaGasto> filtrarCuenta(String... nombres) {
+		return repCuentas.filtrarCuentas(nombres);
+	}
+
+	public CuentaGasto getCuentaSeleccionada() {
+		return cuentaSeleccionada;
+	}
+
+	public void setCuentaSeleccionada(CuentaGasto cuenta) {
+		this.cuentaSeleccionada = cuenta;
+	}
+	
+	public boolean realizarPagoCuenta(CuentaGasto cuenta, String miembro, Double pago) {
+		return repCuentas.realizarPago(cuenta, miembro, pago);
+	}
+	
+	public GastoImpl getGastoPorID(UUID id) {
+		return repGastos.getGastoPorID(id);
 	}
 
 	

@@ -7,6 +7,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -90,6 +91,14 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	public void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria) {
 		gasto.setCategoria(categoria);
 		BD.guardarFichero();
+	}
+	
+	@Override
+	public GastoImpl getGastoPorID(UUID id) {
+		return gastos.stream()
+				.filter(g -> g.getIdGasto().equals(id))
+				.findFirst()	//Uso findFirst porque filter devuelve otro stream y orElse no acepta stream
+				.orElse(null);
 	}
 	
 

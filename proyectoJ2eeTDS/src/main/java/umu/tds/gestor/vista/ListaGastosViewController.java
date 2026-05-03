@@ -2,6 +2,7 @@ package umu.tds.gestor.vista;
 
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +16,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +40,9 @@ public class ListaGastosViewController {
 	
 	@FXML
 	private TextField categoriaFilter;
+	
+	@FXML
+	private MenuButton menuMeses; 
 	
 	@FXML 
 	private TextField precio;
@@ -74,6 +81,14 @@ public class ListaGastosViewController {
 		colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
 		colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 		colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+		
+		// Lista para filtrar por meses especificos
+		String[] nombreMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+		        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+		for (String mes : nombreMeses) {
+			CheckMenuItem item = new CheckMenuItem(mes);
+			menuMeses.getItems().add(item); 
+		}
 		
 		cargarDatosEnTabla();
 		
@@ -117,7 +132,34 @@ public class ListaGastosViewController {
 		LocalDate inicio = dpFechaInicio.getValue(); 
 		LocalDate fin = dpFechaFin.getValue(); 
 		
-		List<? extends GastoImpl> resultados = controlador.filtrarGastos(null, inicio, fin, categorias);
+		List<Month> mesesFiltro = new ArrayList<>();
+		
+		for (MenuItem item : menuMeses.getItems()) {
+			CheckMenuItem checkItem = (CheckMenuItem) item; 
+			
+			if (checkItem.isSelected()) {
+					switch (checkItem.getText()) {
+	                case "Enero": mesesFiltro.add(Month.JANUARY); break;
+	                case "Febrero": mesesFiltro.add(Month.FEBRUARY); break;
+	                case "Marzo": mesesFiltro.add(Month.MARCH); break;
+	                case "Abril": mesesFiltro.add(Month.APRIL); break;
+	                case "Mayo": mesesFiltro.add(Month.MAY); break;
+	                case "Junio": mesesFiltro.add(Month.JUNE); break;
+	                case "Julio": mesesFiltro.add(Month.JULY); break;
+	                case "Agosto": mesesFiltro.add(Month.AUGUST); break;
+	                case "Septiembre": mesesFiltro.add(Month.SEPTEMBER); break;
+	                case "Octubre": mesesFiltro.add(Month.OCTOBER); break;
+	                case "Noviembre": mesesFiltro.add(Month.NOVEMBER); break;
+	                case "Diciembre": mesesFiltro.add(Month.DECEMBER); break;
+	            }
+			}
+		}
+		
+		if(mesesFiltro.isEmpty()) {
+			mesesFiltro = null; 
+		}
+		
+		List<? extends GastoImpl> resultados = controlador.filtrarGastos(mesesFiltro, inicio, fin, categorias);
 		tablaGastos.getItems().setAll(resultados);
 		
 		if(resultados != null) {

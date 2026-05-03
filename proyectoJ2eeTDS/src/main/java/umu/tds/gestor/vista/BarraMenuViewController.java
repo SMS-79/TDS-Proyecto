@@ -73,5 +73,10 @@ public class BarraMenuViewController {
 			Configuracion.getInstancia().getSceneManager().mostrarTablaGastos();
 		}
 	}
+	
+    @FXML
+    void irTerminal(ActionEvent event) {
+    	Configuracion.getInstancia().getSceneManager().mostrarTerminal();
+    }
 
 }
