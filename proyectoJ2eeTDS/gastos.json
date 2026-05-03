@@ -1,18 +1,207 @@
 {
   "gastos" : [ {
-    "id_gastos" : "09145489-e234-45b2-8242-ff923a573c7e",
+    "id_gastos" : "90c3571e-1698-4b2c-a8ba-1f19b7dcd79b",
     "categoria" : {
-      "nombre" : "Transporte"
+      "nombre" : "Comida"
     },
-    "fecha" : [ 2026, 5, 6 ],
-    "cantidad" : 600.0
+    "fecha" : [ 2022, 3, 2 ],
+    "cantidad" : 4.5
   }, {
-    "id_gastos" : "6210466f-41ee-4bae-b7aa-d4df549c8964",
+    "id_gastos" : "45fb16cb-471f-4338-be94-d9fcb79c55ca",
     "categoria" : {
-      "nombre" : "Transporte"
+      "nombre" : "Transporte Público"
     },
-    "fecha" : [ 2026, 7, 1 ],
-    "cantidad" : 300.0
+    "fecha" : [ 2022, 3, 2 ],
+    "cantidad" : 6.0
+  }, {
+    "id_gastos" : "21aca697-fc15-4726-8933-0ff55973f684",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 3, 1 ],
+    "cantidad" : 3.99
+  }, {
+    "id_gastos" : "56dbb1ce-927d-4af0-8e12-65bc4bfb78a6",
+    "categoria" : {
+      "nombre" : "Gasolina"
+    },
+    "fecha" : [ 2022, 3, 1 ],
+    "cantidad" : 45.0
+  }, {
+    "id_gastos" : "10d43f03-d697-4005-bf69-fc67ab1d6ffb",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 3, 1 ],
+    "cantidad" : 18.5
+  }, {
+    "id_gastos" : "6b9cf992-5960-41a4-a9fd-adbd4fef565c",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 3, 1 ],
+    "cantidad" : 12.0
+  }, {
+    "id_gastos" : "e1c589f9-3155-464f-bced-4dcfdd2120d2",
+    "categoria" : {
+      "nombre" : "Transporte Público"
+    },
+    "fecha" : [ 2022, 3, 1 ],
+    "cantidad" : 1.5
+  }, {
+    "id_gastos" : "15f6b23e-0897-4546-a188-3828c348987f",
+    "categoria" : {
+      "nombre" : "Regalos"
+    },
+    "fecha" : [ 2022, 2, 28 ],
+    "cantidad" : 9.9
+  }, {
+    "id_gastos" : "6ceef1bf-66c9-4b11-9a5d-a951532c55d0",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 28 ],
+    "cantidad" : 32.4
+  }, {
+    "id_gastos" : "d42207fc-cfb3-416b-a057-5e21e2e3ee82",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 2, 27 ],
+    "cantidad" : 2.99
+  }, {
+    "id_gastos" : "f421f5ea-5ceb-4b0f-8f16-6fb976b3bd30",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 21.0
+  }, {
+    "id_gastos" : "5ce35dc7-897a-4202-9efd-549fd7a2ecdb",
+    "categoria" : {
+      "nombre" : "Gasolina"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 30.0
+  }, {
+    "id_gastos" : "64e62db6-8e3f-4266-8b24-9b7f593248be",
+    "categoria" : {
+      "nombre" : "Reparaciones"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 7.5
+  }, {
+    "id_gastos" : "279a10fb-9a97-4ef5-beea-d01e20a9d7f0",
+    "categoria" : {
+      "nombre" : "Transporte Público"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 20.0
+  }, {
+    "id_gastos" : "4ebd1c82-d7f2-415e-897c-0f7ca90b2443",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 5.25
+  }, {
+    "id_gastos" : "32dd0822-24c0-4176-8470-899e8caf5cef",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 2, 26 ],
+    "cantidad" : 6.0
+  }, {
+    "id_gastos" : "064d06e8-0bad-4faf-9b09-93b5d0db060a",
+    "categoria" : {
+      "nombre" : "Gastos Médicos"
+    },
+    "fecha" : [ 2022, 2, 25 ],
+    "cantidad" : 12.75
+  }, {
+    "id_gastos" : "daca8c87-f7bc-4c85-99db-ec658dead78f",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 2, 24 ],
+    "cantidad" : 4.99
+  }, {
+    "id_gastos" : "7145b60c-fcd7-4e4a-9573-b975f9b5096f",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 24 ],
+    "cantidad" : 28.0
+  }, {
+    "id_gastos" : "da1ffb84-9648-4a50-a3af-9ed4e46ae639",
+    "categoria" : {
+      "nombre" : "Transporte Público"
+    },
+    "fecha" : [ 2022, 2, 24 ],
+    "cantidad" : 11.0
+  }, {
+    "id_gastos" : "bb889e8f-049e-4ccc-b22f-a12003198087",
+    "categoria" : {
+      "nombre" : "Regalos"
+    },
+    "fecha" : [ 2022, 2, 23 ],
+    "cantidad" : 15.0
+  }, {
+    "id_gastos" : "44ce47e9-cab1-4e35-8b1f-5504240ce233",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 23 ],
+    "cantidad" : 24.6
+  }, {
+    "id_gastos" : "d5dd6c56-3ff1-45cf-961e-2a34fd6dbc73",
+    "categoria" : {
+      "nombre" : "Gasolina"
+    },
+    "fecha" : [ 2022, 2, 23 ],
+    "cantidad" : 20.0
+  }, {
+    "id_gastos" : "d9483430-8fb0-4fb6-8e3d-c065f26c1a18",
+    "categoria" : {
+      "nombre" : "Transporte Público"
+    },
+    "fecha" : [ 2022, 2, 22 ],
+    "cantidad" : 14.5
+  }, {
+    "id_gastos" : "cee15498-10db-40d8-9574-a1d11776b97b",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 2, 21 ],
+    "cantidad" : 5.99
+  }, {
+    "id_gastos" : "b2b817e6-4f99-48e2-88ba-8e99ed916aa5",
+    "categoria" : {
+      "nombre" : "Reparaciones"
+    },
+    "fecha" : [ 2022, 2, 21 ],
+    "cantidad" : 19.8
+  }, {
+    "id_gastos" : "bba3d07a-2707-498b-b892-713f4072ee30",
+    "categoria" : {
+      "nombre" : "Gastos Médicos"
+    },
+    "fecha" : [ 2022, 2, 21 ],
+    "cantidad" : 8.4
+  }, {
+    "id_gastos" : "bb5e6733-144f-4605-9eeb-82991677b1ef",
+    "categoria" : {
+      "nombre" : "Comida"
+    },
+    "fecha" : [ 2022, 2, 21 ],
+    "cantidad" : 3.2
+  }, {
+    "id_gastos" : "1e2e4f22-94f1-43fe-a374-f8a8e5161d92",
+    "categoria" : {
+      "nombre" : "Ocio"
+    },
+    "fecha" : [ 2022, 2, 20 ],
+    "cantidad" : 16.0
   } ],
   "categorias" : [ {
     "nombre" : "Alimentación"
@@ -20,6 +209,20 @@
     "nombre" : "Transporte"
   }, {
     "nombre" : "Entretenimiento"
+  }, {
+    "nombre" : "Comida"
+  }, {
+    "nombre" : "Transporte Público"
+  }, {
+    "nombre" : "Ocio"
+  }, {
+    "nombre" : "Gasolina"
+  }, {
+    "nombre" : "Regalos"
+  }, {
+    "nombre" : "Reparaciones"
+  }, {
+    "nombre" : "Gastos Médicos"
   } ],
   "alertas" : [ ],
   "notificaciones" : [ ],
