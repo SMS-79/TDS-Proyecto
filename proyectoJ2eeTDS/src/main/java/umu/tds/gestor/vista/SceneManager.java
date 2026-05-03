@@ -130,6 +130,10 @@ public class SceneManager {
 		cambiarVista("ListaCuentasView");
 	}
 	
+	public void mostrarGraficoGastos() {
+		cambiarVista("GraficoBarrasGasto");
+	}
+	
 	public void mostrarAddCuenta() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("AddCuentaViewPopUp.fxml"));
@@ -184,5 +188,9 @@ public class SceneManager {
 		alert.setHeaderText("Has superado uno o más límites de gasto");
 		alert.setContentText(e.getMessage());
 		alert.showAndWait();	
+	}
+	
+	public void mostrarTerminal(){
+		cambiarVista("TerminalView");
 	}
 }

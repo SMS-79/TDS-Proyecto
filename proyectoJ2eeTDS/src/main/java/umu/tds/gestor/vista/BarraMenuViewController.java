@@ -22,6 +22,11 @@ public class BarraMenuViewController {
 	}
 	
 	@FXML
+	private void irAGraficoGastos(ActionEvent e) {
+		Configuracion.getInstancia().getSceneManager().mostrarGraficoGastos();
+	}
+	
+	@FXML
 	private void irAddGasto(ActionEvent e) {
 		Configuracion.getInstancia().getSceneManager().mostrarAddGasto();
 	}
@@ -73,5 +78,9 @@ public class BarraMenuViewController {
 	private void irACalendario() throws IOException{
 		Configuracion.getInstancia().getSceneManager().mostrarCalendario();
 	}
+    @FXML
+    void irTerminal(ActionEvent event) {
+    	Configuracion.getInstancia().getSceneManager().mostrarTerminal();
+    }
 
 }

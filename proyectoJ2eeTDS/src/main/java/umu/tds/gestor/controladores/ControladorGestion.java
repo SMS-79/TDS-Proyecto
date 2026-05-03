@@ -6,8 +6,7 @@ import java.time.Month;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-
+import java.util.UUID;
 
 import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
@@ -211,6 +210,10 @@ public class ControladorGestion {
 	
 	public boolean realizarPagoCuenta(CuentaGasto cuenta, String miembro, Double pago) {
 		return repCuentas.realizarPago(cuenta, miembro, pago);
+	}
+	
+	public GastoImpl getGastoPorID(UUID id) {
+		return repGastos.getGastoPorID(id);
 	}
 
 	
