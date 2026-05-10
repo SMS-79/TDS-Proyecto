@@ -9,8 +9,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 import umu.tds.gestor.importador.ImportadorGastos;
-import umu.tds.gestor.importador.impl.ImportadorGastosCSVImpl;
-import umu.tds.gestor.importador.impl.ImportadorGastosTXTImpl;
+import umu.tds.gestor.importador.ImportadorGastosFactory;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.CuentaGasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
@@ -162,33 +161,17 @@ public class ControladorGestion {
 	
 	
 	public void importarGastos(String rutaFichero) throws LimiteAlertaException {
-		ImportadorGastos importador = null;
-		String rutaMin = rutaFichero.toLowerCase();
-		//Aqui podria ser mejor usar una factoria, sacar la logica del if a un fichero a parte para crear el importador.
-		if (rutaMin.endsWith(".csv")) {
-			importador = new ImportadorGastosCSVImpl();
-		} else if (rutaMin.endsWith(".txt")) {
-			importador = new ImportadorGastosTXTImpl();
-		} else {
-			throw new IllegalArgumentException("Formato de fichero no soportado.");
-		}
-		
+		ImportadorGastos importador = ImportadorGastosFactory.getImportador(rutaFichero);
 		importador.leerFichero(rutaFichero);
 	}
 	
-	public void crearCuenta(Double gasto, Map<String, Double> distribuciones) {
-		// Ponemos String[]::new para que decirle a .roArray que queremos que el array sea de strings
-		String[] nombres = distribuciones.keySet().toArray(String[]::new);
-		CuentaGasto cuenta;
-		
-		// Si todos los porcentajes son nulos, creamos una cuenta equitativa
-		if (distribuciones.values().stream().allMatch(Objects::isNull)) {
-			cuenta = new CuentaGastoEquitativa(gasto, nombres);
-		} else {
-			cuenta = new CuentaGastoPorcentual(gasto, distribuciones);
-		}
-
-		
+	public void crearCuentaEquitativa(Double gasto, String... nombres) {
+		CuentaGasto cuenta = new CuentaGastoEquitativa(gasto, nombres);
+		repCuentas.anadirCuenta(cuenta);
+	}
+	
+	public void crearCuentaPorcentual(Double gasto, Map<String, Double> distribuciones) {
+		CuentaGasto cuenta = new CuentaGastoPorcentual(gasto, distribuciones);
 		repCuentas.anadirCuenta(cuenta);
 	}
 	

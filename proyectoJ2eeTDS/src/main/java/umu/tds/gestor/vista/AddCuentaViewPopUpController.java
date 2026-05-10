@@ -153,15 +153,14 @@ public class AddCuentaViewPopUpController {
                 for (Pair<String, Double> p : miembros) {
                     distribuciones.put(p.getKey(), p.getValue());
                 }
-                controlador.crearCuenta(gasto, distribuciones);
+                controlador.crearCuentaPorcentual(gasto, distribuciones);
                 
             } else {
-                //Pasamos un mapa con porcentajes nulos para que el controlador decida que cuenta crear
-                Map<String, Double> distribuciones = new LinkedHashMap<>();
-                for (Pair<String, Double> p : miembros) {
-                    distribuciones.put(p.getKey(), null);
+                String[] nombres = new String[miembros.size()];
+                for (int i = 0; i < miembros.size(); i++) {
+                    nombres[i] = miembros.get(i).getKey();
                 }
-                controlador.crearCuenta(gasto, distribuciones);
+                controlador.crearCuentaEquitativa(gasto, nombres);
             }
 
             Configuracion.getInstancia().getSceneManager().mostrarTablaCuentas();
