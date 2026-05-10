@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-
-import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.RepositorioNotificaciones;
 

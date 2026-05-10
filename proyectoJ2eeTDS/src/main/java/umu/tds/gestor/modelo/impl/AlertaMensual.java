@@ -3,7 +3,6 @@ package umu.tds.gestor.modelo.impl;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import umu.tds.gestor.modelo.Alerta;

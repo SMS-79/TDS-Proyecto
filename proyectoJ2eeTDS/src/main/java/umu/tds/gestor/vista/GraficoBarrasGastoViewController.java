@@ -3,30 +3,18 @@ package umu.tds.gestor.vista;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.ScrollPaneLayout;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.impl.Categoria;
 
 public class GraficoBarrasGastoViewController {
-	
-	private static final Logger log = LogManager.getLogger(); 
-	
+		
 	private ControladorGestion controlador;
 
 	

@@ -7,14 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.DatePicker;
@@ -24,7 +20,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
 import umu.tds.gestor.modelo.impl.Categoria;
@@ -32,7 +27,6 @@ import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class ListaGastosViewController {
 	
-	private static final Logger log = LogManager.getLogger();
 	
 	private ControladorGestion controlador; 
 	
@@ -99,13 +93,6 @@ public class ListaGastosViewController {
 			}
 		});
 		
-		ObservableList<GastoImpl> lista = null;
-		try {
-			lista = FXCollections.observableArrayList(new ArrayList<GastoImpl>());
-		} catch (Exception e) {
-			log.error("Error inicializando TiendaViewController", e);
-		}
-		
 		botonBorrar.disableProperty().bind(tablaGastos.getSelectionModel().selectedItemProperty().isNull());
 		botonEditar.disableProperty().bind(tablaGastos.getSelectionModel().selectedItemProperty().isNull());
 	}
@@ -122,7 +109,6 @@ public class ListaGastosViewController {
 	@FXML
 	private void buscar(ActionEvent evento) { // Método con el que enlazamos On Action de SceneBuilder
 		
-		Button botonPulsado = (Button) evento.getSource();
 		System.out.println("Has pulsado el boton de buscar"); // Usamos este mensaje para saber que botón estamos pulsando, se puede usar el mismo metodo pra distintos botones
 		List<? extends Categoria> categorias = null;
 		
@@ -180,14 +166,5 @@ public class ListaGastosViewController {
 		tablaGastos.getSelectionModel().clearSelection();
 	}
 	
-	/*
-	@FXML
-	private void botonCerrar(ActionEvent event) {
-	    // Sacamos el botón del evento, luego su escena, y luego su ventana, y la cerramos
-	    Node source = (Node) event.getSource();
-	    Stage stage = (Stage) source.getScene().getWindow();
-	    stage.close();
-	}
-	*/
 
 }

@@ -4,9 +4,6 @@ import javafx.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +22,6 @@ import umu.tds.gestor.modelo.impl.Intervalo;
 
 public class AddAlertaViewController {
 
-    private static final Logger log = LogManager.getLogger(); 
 
     private ControladorGestion controlador; 
 

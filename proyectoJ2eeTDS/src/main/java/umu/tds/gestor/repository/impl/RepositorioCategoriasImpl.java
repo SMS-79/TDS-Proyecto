@@ -1,15 +1,10 @@
 
 package umu.tds.gestor.repository.impl;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioCategorias;
 
 public class RepositorioCategoriasImpl implements RepositorioCategorias {

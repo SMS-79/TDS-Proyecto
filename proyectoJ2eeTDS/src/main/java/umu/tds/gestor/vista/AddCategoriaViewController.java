@@ -1,9 +1,6 @@
 package umu.tds.gestor.vista;
 
-import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,11 +15,9 @@ import umu.tds.gestor.modelo.impl.Categoria;
 
 public class AddCategoriaViewController {
 
-	private static final Logger log = LogManager.getLogger();
 	
 	private ControladorGestion controlador; 
 	
-	private Categoria categoriaSeleccionada;
 	
 	@FXML
 	private TextField categoriaId;
@@ -43,18 +38,6 @@ public class AddCategoriaViewController {
 		
 		cargarDatosEnTabla();
 		
-		tablaCategorias.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-			if (newSelection != null) {
-				this.categoriaSeleccionada = newSelection;
-			}
-		});
-		
-		ObservableList<Categoria> lista = null;
-		try {
-			lista = FXCollections.observableArrayList(new ArrayList<Categoria>());
-		} catch (Exception e) {
-			log.error("Error inicializando TiendaViewController", e);
-		}
 		
 		
 	}

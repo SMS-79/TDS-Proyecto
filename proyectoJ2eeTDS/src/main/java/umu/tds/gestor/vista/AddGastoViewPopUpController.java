@@ -2,16 +2,11 @@ package umu.tds.gestor.vista;
 
 import java.io.IOException;
 import java.time.LocalDate;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -22,8 +17,6 @@ import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.Categoria;
 
 public class AddGastoViewPopUpController{
-
-	private static final Logger log = LogManager.getLogger();
 	
 	private ControladorGestion controlador;
 	

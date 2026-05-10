@@ -2,7 +2,6 @@ package umu.tds.gestor.vista;
 
 import javafx.event.ActionEvent;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import com.calendarfx.model.Calendar;
