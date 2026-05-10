@@ -74,6 +74,10 @@ public class BarraMenuViewController {
 		}
 	}
 	
+	@FXML
+	private void irACalendario() throws IOException{
+		Configuracion.getInstancia().getSceneManager().mostrarCalendario();
+	}
     @FXML
     void irTerminal(ActionEvent event) {
     	Configuracion.getInstancia().getSceneManager().mostrarTerminal();
