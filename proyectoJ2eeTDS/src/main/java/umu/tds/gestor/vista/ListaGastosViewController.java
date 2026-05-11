@@ -22,15 +22,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class ListaGastosViewController {
 	
 	
 	private ControladorGestion controlador; 
 	
-	private GastoImpl gastoSeleccionado;
+	private Gasto gastoSeleccionado;
 	
 	@FXML
 	private TextField categoriaFilter;
@@ -48,17 +48,17 @@ public class ListaGastosViewController {
 	private DatePicker dpFechaFin; 
 	
 	@FXML 
-	public TableView<GastoImpl> tablaGastos; 
+	public TableView<Gasto> tablaGastos; 
 	
 	
 	@FXML
-	private TableColumn<GastoImpl, UUID> colID;
+	private TableColumn<Gasto, UUID> colID;
 	@FXML
-	private TableColumn<GastoImpl, Categoria> colCategoria;
+	private TableColumn<Gasto, Categoria> colCategoria;
 	@FXML
-	private TableColumn<GastoImpl, LocalDate> colFecha;
+	private TableColumn<Gasto, LocalDate> colFecha;
 	@FXML
-	private TableColumn<GastoImpl, Double> colCantidad;
+	private TableColumn<Gasto, Double> colCantidad;
 	
 	@FXML
 	private Button botonBorrar;
@@ -99,7 +99,7 @@ public class ListaGastosViewController {
 	
 	public void cargarDatosEnTabla() { // Método para recargar la tabla cuando queramos
 		if(controlador.getGastos() != null) {
-			ObservableList<GastoImpl> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
+			ObservableList<Gasto> listaModif = FXCollections.observableArrayList(controlador.getGastos()); // Convertir la tabla de gastos en una que se pueda modificar por JavaFX
 			tablaGastos.setItems(listaModif);
 		}
 	}
@@ -145,7 +145,7 @@ public class ListaGastosViewController {
 			mesesFiltro = null; 
 		}
 		
-		List<? extends GastoImpl> resultados = controlador.filtrarGastos(mesesFiltro, inicio, fin, categorias);
+		List<? extends Gasto> resultados = controlador.filtrarGastos(mesesFiltro, inicio, fin, categorias);
 		tablaGastos.getItems().setAll(resultados);
 		
 		if(resultados != null) {

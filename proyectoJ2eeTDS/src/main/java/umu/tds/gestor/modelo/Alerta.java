@@ -12,7 +12,6 @@ import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlertaMensual;
 import umu.tds.gestor.modelo.impl.AlertaSemanal;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Intervalo;
 
 
@@ -82,8 +81,8 @@ public abstract class Alerta {
 		this.gastoRealizado = 0;
 	}
 	
-	public abstract void anadirGastoAlerta(GastoImpl g) throws LimiteAlertaException;
+	public abstract void anadirGastoAlerta(Gasto g) throws LimiteAlertaException;
 	
-	public abstract void quitarGastoAlerta(GastoImpl g);
+	public abstract void quitarGastoAlerta(Gasto g);
 
 }

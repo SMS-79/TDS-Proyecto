@@ -18,8 +18,6 @@ public abstract class Configuracion {
 	
 	public abstract ControladorGestion getControladorGestion();
 	
-	public abstract String getRutaAlamacen(); 
-	
 	public SceneManager getSceneManager() {
 		return sceneManager; 
 	}

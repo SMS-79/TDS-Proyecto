@@ -11,9 +11,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class TerminalViewController {
 
@@ -75,7 +75,7 @@ public class TerminalViewController {
     		    
     		    try {
     		        UUID id = UUID.fromString(comando[1]);
-    		        GastoImpl gasto = getGastoPorID(id);
+    		        Gasto gasto = getGastoPorID(id);
     		        
     		        if (gasto != null) {
     		            controlador.borrarGasto(gasto);
@@ -174,7 +174,7 @@ public class TerminalViewController {
        terminalPanel.appendText(String.format(formato, "ID", "CATEGORIA", "FECHA", "CANTIDAD"));
        terminalPanel.appendText("----------------------------------------------------------------------------------\n");
        
-       for(GastoImpl g : controlador.getGastos()) {
+       for(Gasto g : controlador.getGastos()) {
            terminalPanel.appendText(String.format(formato, 
                g.getIdGasto().toString(), 
                g.getCategoria(), 
@@ -183,9 +183,9 @@ public class TerminalViewController {
            ));
        }	
    }
-   
-   private GastoImpl getGastoPorID(UUID id) {
+    
+   private Gasto getGastoPorID(UUID id) {
 	   return controlador.getGastoPorID(id);
    }
-   
+    
 }

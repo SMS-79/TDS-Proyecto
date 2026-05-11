@@ -2,6 +2,7 @@ package umu.tds.gestor.modelo.impl;
 
 import umu.tds.gestor.modelo.AlerNotifGestor;
 import umu.tds.gestor.modelo.Alerta;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 public class AlerNotifGestorImpl implements AlerNotifGestor {
@@ -43,12 +44,12 @@ public class AlerNotifGestorImpl implements AlerNotifGestor {
 	
 	//Función para añadir gastos a las alertas y comprobar que no exceda el límite
 	@Override
-	public void anadirGastoAlerta(Alerta a, GastoImpl g) throws LimiteAlertaException {
+	public void anadirGastoAlerta(Alerta a, Gasto g) throws LimiteAlertaException {
 		a.anadirGastoAlerta(g);		
 	}
 	
 	@Override
-	public void quitarGastoAlerta(Alerta a, GastoImpl g){
+	public void quitarGastoAlerta(Alerta a, Gasto g){
 		a.quitarGastoAlerta(g);		
 	}
 

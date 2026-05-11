@@ -32,7 +32,7 @@
             <Menu mnemonicParsing="false" text="Misc">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#irImportarGastos" text="Importar Gastos" />
-                  <MenuItem mnemonicParsing="false" onAction="#irTerminal" text="Linea de comandos" />
+                  <MenuItem mnemonicParsing="false" onAction="#irTerminal" text="Línea de comandos" />
                   <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
                </items>
             </Menu>

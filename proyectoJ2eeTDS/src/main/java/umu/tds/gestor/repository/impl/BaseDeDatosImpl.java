@@ -7,10 +7,10 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.CuentaGasto;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.modelo.impl.Notificacion;
 import umu.tds.gestor.repository.BaseDeDatos;
 
@@ -27,7 +27,7 @@ private static BaseDeDatosImpl BD = null;
 	}
 	
 	@JsonProperty("gastos")
-	private List<GastoImpl> gastos;
+	private List<Gasto> gastos;
 	@JsonProperty("categorias")
 	private List<Categoria> categorias; 
 	@JsonProperty("alertas")
@@ -41,10 +41,10 @@ private static BaseDeDatosImpl BD = null;
 	
 	
 	private BaseDeDatosImpl() {
-		this(new ArrayList<GastoImpl>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<Notificacion>(), new ArrayList<CuentaGasto>());
+		this(new ArrayList<Gasto>(), new ArrayList<Categoria>(), new ArrayList<Alerta>(), new ArrayList<Notificacion>(), new ArrayList<CuentaGasto>());
 	}
 	
-	private BaseDeDatosImpl(List<GastoImpl> gastos, 
+	private BaseDeDatosImpl(List<Gasto> gastos, 
 						List<Categoria> categorias,
 						List<Alerta> alertas, List<Notificacion> notificaciones,
 						List<CuentaGasto> cuentas) {
@@ -90,11 +90,11 @@ private static BaseDeDatosImpl BD = null;
 	    }
 	}
 
-	public List<GastoImpl> getGastos() {
+	public List<? extends Gasto> getGastos() {
 		return this.gastos;
 	}
 
-	public void setGastos(List<GastoImpl> gastos) {
+	public void setGastos(List<Gasto> gastos) {
 		this.gastos = gastos;
 	}
 

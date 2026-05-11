@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import umu.tds.gestor.modelo.Alerta;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 
 @JsonIdentityInfo(
@@ -35,7 +36,7 @@ public class AlertaMensual extends Alerta {
 	
 	
 	@Override
-	public void anadirGastoAlerta(GastoImpl g) throws LimiteAlertaException{
+	public void anadirGastoAlerta(Gasto g) throws LimiteAlertaException{
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {
@@ -63,7 +64,7 @@ public class AlertaMensual extends Alerta {
 	}
 	
 	@Override
-	public void quitarGastoAlerta(GastoImpl g){
+	public void quitarGastoAlerta(Gasto g){
 		
 		// Si ha pasado una semana se reinicia el contador del gasto total
 		if(!activacion.plusMonths(1).isAfter(LocalDate.now())) {

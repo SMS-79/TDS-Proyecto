@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.impl.Categoria;
 import umu.tds.gestor.modelo.impl.GastoImpl;
 import umu.tds.gestor.repository.RepositorioGastos;
@@ -26,7 +27,7 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	}
 	
 	
-	private List<GastoImpl> gastos;
+	private List<Gasto> gastos;
 	
 	private RepositorioGastosImpl() {
 		
@@ -35,17 +36,17 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 		}
 		
 		if(BD.getGastos() != null) {
-			this.gastos = (List<GastoImpl>) BD.getGastos();
+			this.gastos = (List<Gasto>) BD.getGastos();
 		}
 		else {
-			this.gastos = new ArrayList<GastoImpl>();
+			this.gastos = new ArrayList<Gasto>();
 		}
 	}
 	
 	
 	
 	@Override
-	public List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
+	public List<? extends Gasto> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
 		return gastos.stream()
 				.filter(f -> meses == null || meses.isEmpty() || meses.contains(f.getFecha().getMonth()))
 				.filter(f -> fechaInicio == null || !f.getFecha().isBefore(fechaInicio))
@@ -55,47 +56,48 @@ public class RepositorioGastosImpl implements RepositorioGastos{
 	}
 	
 	@Override
-	public void borrarGasto(GastoImpl gasto) {
+	public void borrarGasto(Gasto gasto) {
 		gastos.remove(gasto);
 		BD.guardarFichero();
 	}
 	
 	@Override
-	public List<? extends GastoImpl> getGastos(){
+	public List<? extends Gasto> getGastos(){
 		return Collections.unmodifiableList(gastos); 
 	}
 	
 	@Override
-	public void anadirGasto(GastoImpl gasto) {
-		gastos.add(gasto); 
+	public void anadirGasto(Gasto gasto) {
+		gastos.add((GastoImpl) gasto); 
 		BD.guardarFichero();
 	}
 	
 	@Override
-	public void cambiarCantidadGasto(GastoImpl gasto, double precio) {
+	public void cambiarCantidadGasto(Gasto gasto, double precio) {
 		gasto.setCantidad(precio);
 		BD.guardarFichero();
 	}
 	
 	@Override
-	public void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha) {
+	public void cambiarFechaGasto(Gasto gasto, LocalDate fecha) {
 		gasto.setFecha(fecha);
 		BD.guardarFichero();
 	}
 	
 	@Override
-	public void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria) {
+	public void cambiarCategoriaGasto(Gasto gasto, Categoria categoria) {
 		gasto.setCategoria(categoria);
 		BD.guardarFichero();
 	}
 	
 	@Override
-	public GastoImpl getGastoPorID(UUID id) {
+	public Gasto getGastoPorID(UUID id) {
 		return gastos.stream()
 				.filter(g -> g.getIdGasto().equals(id))
 				.findFirst()	//Uso findFirst porque filter devuelve otro stream y orElse no acepta stream
 				.orElse(null);
 	}
+	
 	
 
 }
