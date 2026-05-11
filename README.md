@@ -5,7 +5,7 @@ Este repositorio contiene el proyecto de la asignatura **Tecnologías de Desarro
 ##  Integrantes del Grupo
 * **Salvador Martínez Sánchez** (`salvador.m.s@um.es`) - Subgrupo 1.2
 * **Juan Navarro Fernández** (`juan.navarrof@um.es`) - Subgrupo 1.1
-* **Pedro Chico Caballero** (`pedro.chicoc@umu.es`) - Subgrupo 1.2
+* **Pedro Chico Caballero** (`pedro.chicoc@um.es`) - Subgrupo 1.2
 
 ##  Descripción del Proyecto
 La aplicación permite a los usuarios registrar, modificar, borrar y analizar sus gastos personales de forma sencilla. Los datos persisten localmente en formato JSON utilizando la librería Jackson. 
