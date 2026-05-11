@@ -13,16 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class EditGastoViewPopUpController{
 
 	
 	private ControladorGestion controlador;
 	
-	private GastoImpl gastoSelected;
+	private Gasto gastoSelected;
 	
 	@FXML
 	private ChoiceBox<Categoria> boxCategorias;
@@ -77,7 +77,7 @@ public class EditGastoViewPopUpController{
 		}
 	}
 	
-	public void setGasto(GastoImpl g) {
+	public void setGasto(Gasto g) {
 		this.gastoSelected = g;
 		this.boxCategorias.setValue(g.getCategoria());
 		this.fecha.setValue(g.getFecha());

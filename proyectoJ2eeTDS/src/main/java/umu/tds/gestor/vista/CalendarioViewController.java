@@ -16,8 +16,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.BorderPane;
 import umu.tds.gestor.Configuracion;
 import umu.tds.gestor.controladores.ControladorGestion;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class CalendarioViewController {
 
@@ -89,12 +89,12 @@ public class CalendarioViewController {
     }
     private void cargarGastosEnCalendario() {
     	miFuente.getCalendars().clear();
-        Calendar calendarioGastos = new Calendar("Mis Gastos");
+        
+		Calendar calendarioGastos = new Calendar("Mis Gastos");
         calendarioGastos.setStyle(Style.STYLE1); 
-
-        List<? extends GastoImpl> misGastos = controlador.getGastos();
+        List<? extends Gasto> misGastos = controlador.getGastos();
         String filtroCategoria = comboCategoria.getValue();
-        for (GastoImpl gasto : misGastos) {
+        for (Gasto gasto : misGastos) {
         	if("Todas".equals(filtroCategoria) ||
         	gasto.getCategoria().getNombre().equals(filtroCategoria)) {
         

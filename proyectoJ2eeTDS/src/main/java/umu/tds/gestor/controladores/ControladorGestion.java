@@ -11,6 +11,7 @@ import umu.tds.gestor.importador.ImportadorGastos;
 import umu.tds.gestor.importador.ImportadorGastosFactory;
 import umu.tds.gestor.modelo.Alerta;
 import umu.tds.gestor.modelo.CuentaGasto;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
 import umu.tds.gestor.modelo.impl.AlerNotifGestorImpl;
 import umu.tds.gestor.modelo.impl.Categoria;
@@ -43,7 +44,7 @@ public class ControladorGestion {
 		crearCategoria("Entretenimiento");
 	}
 	
-	public List<? extends GastoImpl> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
+	public List<? extends Gasto> filtrarGastos(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias) {
 	    return repGastos.filtrarGasto(meses, fechaInicio, fechaFin, categorias);
 	}
 	
@@ -51,11 +52,11 @@ public class ControladorGestion {
 	    return repCategorias.filtrarCategorias(categoriaId);
 	}
 	
-	public void borrarGasto(GastoImpl gasto) {
+	public void borrarGasto(Gasto gasto) {
 		repGastos.borrarGasto(gasto); 
 	}
 	
-	public List<? extends GastoImpl> getGastos(){
+	public List<? extends Gasto> getGastos(){
 		return repGastos.getGastos(); 
 	}
 	
@@ -123,7 +124,7 @@ public class ControladorGestion {
 		repNotif.anadirNotificacion(gestorAlertas.crearNotificacion(mensaje));
 	}
 	
-	public void editarGasto(GastoImpl gasto, double precio, Categoria categoria, LocalDate fecha ) throws LimiteAlertaException {
+	public void editarGasto(Gasto gasto, double precio, Categoria categoria, LocalDate fecha ) throws LimiteAlertaException {
 
 		for(Alerta a : repAlertas.getAlertas()) {
 			gestorAlertas.quitarGastoAlerta(a, gasto);
@@ -181,7 +182,7 @@ public class ControladorGestion {
 	public List<CuentaGasto> filtrarCuenta(String... nombres) {
 		return repCuentas.filtrarCuentas(nombres);
 	}
-
+	
 	public CuentaGasto getCuentaSeleccionada() {
 		return cuentaSeleccionada;
 	}
@@ -194,9 +195,10 @@ public class ControladorGestion {
 		return repCuentas.realizarPago(cuenta, miembro, pago);
 	}
 	
-	public GastoImpl getGastoPorID(UUID id) {
+	public Gasto getGastoPorID(UUID id) {
 		return repGastos.getGastoPorID(id);
 	}
+
 
 	
 }

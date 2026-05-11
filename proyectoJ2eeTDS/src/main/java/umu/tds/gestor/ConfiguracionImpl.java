@@ -14,12 +14,4 @@ public class ConfiguracionImpl extends Configuracion{
 	public ControladorGestion getControladorGestion() {
 		return controlador;
 	}
-
-	@Override
-	public String getRutaAlamacen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	//Implementar metodos abstractos
 }

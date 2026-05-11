@@ -5,25 +5,25 @@ import java.time.Month;
 import java.util.List;
 import java.util.UUID;
 
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.impl.Categoria;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public interface RepositorioGastos {
 
-	List<? extends GastoImpl> getGastos();
+	List<? extends Gasto> getGastos();
 	
-	List<? extends GastoImpl> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias);
+	List<? extends Gasto> filtrarGasto(List<Month> meses, LocalDate fechaInicio, LocalDate fechaFin, List<? extends Categoria> categorias);
 	
-	void anadirGasto(GastoImpl gasto);
+	void anadirGasto(Gasto gasto);
 	
-	void borrarGasto(GastoImpl gasto);
+	void borrarGasto(Gasto gasto);
 	
-	void cambiarCantidadGasto(GastoImpl gasto, double precio); // faltan parametros
+	void cambiarCantidadGasto(Gasto gasto, double precio); // faltan parametros
 	
-	void cambiarFechaGasto(GastoImpl gasto, LocalDate fecha);
+	void cambiarFechaGasto(Gasto gasto, LocalDate fecha);
 	
-	void cambiarCategoriaGasto(GastoImpl gasto, Categoria categoria);
+	void cambiarCategoriaGasto(Gasto gasto, Categoria categoria);
 	
-	GastoImpl getGastoPorID(UUID id);
+	Gasto getGastoPorID(UUID id);
 
 }

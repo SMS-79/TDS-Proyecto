@@ -12,8 +12,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import umu.tds.gestor.MainAppFX;
+import umu.tds.gestor.modelo.Gasto;
 import umu.tds.gestor.modelo.exceptions.LimiteAlertaException;
-import umu.tds.gestor.modelo.impl.GastoImpl;
 
 public class SceneManager {
 	
@@ -80,7 +80,7 @@ public class SceneManager {
 		
 	}
 	
-	public void mostrarEditarGasto(GastoImpl g) {
+	public void mostrarEditarGasto(Gasto g) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(MainAppFX.class.getResource("EditGastoViewPopUp.fxml"));
 			
