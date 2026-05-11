@@ -44,7 +44,6 @@ Toda la documentación requerida para la evaluación se encuentra en la carpeta 
 * [2. Especificación de las historias de usuario](docs/historias_usuario.md)
 * [3. Diagrama de interacción](docs/diagrama_interaccion.md)
 * [4. Arquitectura de la aplicación](docs/arquitectura.md)
-* [5. Patrones de diseño aplicados](docs/patrones_diseno.md)
-* [6. Manual de usuario](docs/manual_usuario.md)
+* [5. Manual de usuario](docs/manual_usuario.md)
 
 ---
